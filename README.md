@@ -1,5 +1,3 @@
-
-
 ## Contact
 For queries, please contact: [tenspickofficial@gmail.com](mailto:tenspickofficial@gmail.com)
 # IJAMC - International Journal of Advanced Computing & Mechanical Systems
