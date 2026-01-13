@@ -52,5 +52,14 @@
     "published": "2025-12-24",
     "doi": "https://doi.org/10.5281/zenodo.18234813",
     "issue": "1"
+  },
+    {
+    "title": "DEDUCT: A Secure Deduplication Framework for Textual Data in Cloud Environments",
+    "authors": "Himabindu B, Vempalli  Mallikarjuna, Sadiyam Padmanabhan Mukeshkumar, Kencha Harsha Vardhan, Dasari Chandra",
+    "article_id": "IJACM-BEBB7D71",
+    "pages": "1-9",
+    "published": "2026-01-13",
+    "doi": "https://doi.org/10.5281/zenodo.18235545",
+    "issue": "1"
   }
 ]
