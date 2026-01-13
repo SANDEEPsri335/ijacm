@@ -1,21 +1,28 @@
-// js/current-issue.js - Compact View Paper Button
+// js/current-issue.js - Shows only current month's articles with correct Volume/Issue
 document.addEventListener('DOMContentLoaded', function() {
     const JSON_FILE = '../data/articles.json';
-    const ITEMS_PER_PAGE = 9; // 3 columns × 3 rows
+    const ITEMS_PER_PAGE = 9;
     let currentPage = 1;
     let allArticles = [];
+    let currentMonthArticles = [];
+    let currentVolume = 1;
+    let currentIssue = 1;
     
     // DOM Elements
     const articlesContainer = document.getElementById('articles-container');
     const paginationContainer = document.getElementById('pagination');
     const totalPapersElement = document.getElementById('total-papers');
     const latestDateElement = document.getElementById('latest-date');
+    const currentMonthElement = document.getElementById('current-month');
+    const volumeIssueElement = document.getElementById('volume-issue');
     
     // Initialize
     init();
     
     async function init() {
         await loadArticles();
+        filterCurrentMonthArticles();
+        calculateCurrentVolumeIssue();
         renderArticles();
         renderPagination();
     }
@@ -37,23 +44,77 @@ document.addEventListener('DOMContentLoaded', function() {
                 return dateB - dateA;
             });
             
-            // Update header info
-            totalPapersElement.textContent = allArticles.length;
-            
-            if (allArticles.length > 0) {
-                latestDateElement.textContent = formatDate(allArticles[0].published);
-            } else {
-                latestDateElement.textContent = 'No date';
-            }
-            
         } catch (error) {
             console.error('Error loading articles:', error);
             allArticles = getFallbackArticles();
-            totalPapersElement.textContent = allArticles.length;
-            
-            if (allArticles.length > 0) {
-                latestDateElement.textContent = formatDate(allArticles[0].published);
+        }
+    }
+    
+    function filterCurrentMonthArticles() {
+        if (allArticles.length === 0) return;
+        
+        // Get the latest article date
+        const latestArticle = allArticles[0];
+        const latestDate = parseDateString(latestArticle.published);
+        
+        // Get current month and year from latest article
+        const currentYear = latestDate.getFullYear();
+        const currentMonth = latestDate.getMonth(); // 0-based month
+        
+        // Filter articles from the same month and year
+        currentMonthArticles = allArticles.filter(article => {
+            const articleDate = parseDateString(article.published);
+            return articleDate.getFullYear() === currentYear && 
+                   articleDate.getMonth() === currentMonth;
+        });
+        
+        // Sort current month articles by date (newest first)
+        currentMonthArticles.sort((a, b) => {
+            const dateA = parseDateString(a.published);
+            const dateB = parseDateString(b.published);
+            return dateB - dateA;
+        });
+        
+        // Update header info
+        totalPapersElement.textContent = currentMonthArticles.length;
+        latestDateElement.textContent = formatDate(latestArticle.published);
+        
+        // Display current month and year
+        if (currentMonthElement) {
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            currentMonthElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+        }
+    }
+    
+    function calculateCurrentVolumeIssue() {
+        if (allArticles.length === 0) return;
+        
+        // Get the latest article date
+        const latestArticle = allArticles[0];
+        const latestDate = parseDateString(latestArticle.published);
+        const currentYear = latestDate.getFullYear();
+        const currentMonth = latestDate.getMonth(); // 0-based
+        
+        // Calculate Volume: 1 for first year, increments each year
+        // Find the minimum year from all articles
+        let minYear = currentYear;
+        allArticles.forEach(article => {
+            const articleDate = parseDateString(article.published);
+            if (articleDate.getFullYear() < minYear) {
+                minYear = articleDate.getFullYear();
             }
+        });
+        
+        // Volume = currentYear - minYear + 1
+        currentVolume = currentYear - minYear + 1;
+        
+        // Calculate Issue: 1 for January, 2 for February, etc.
+        currentIssue = currentMonth + 1; // Month is 0-based, issue is 1-based
+        
+        // Update volume/issue display if element exists
+        if (volumeIssueElement) {
+            volumeIssueElement.innerHTML = `Volume: <span>Vol ${currentVolume}</span> • Issue: <span>Issue ${currentIssue}</span>`;
         }
     }
     
@@ -93,31 +154,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function getFallbackArticles() {
         return [
-         {
+            {
                 "title": "Paper 1",
                 "authors": "Author A",
                 "article_id": "IJACM_01",
                 "pages": "1-5",
-                "published": "2025-01-01",
+                "published": new Date().toISOString().split('T')[0],
                 "doi": "https://doi.org/1",
-                "issue": "1"
-            },
-            {
-                "title": "Paper 2",
-                "authors": "Author B",
-                "article_id": "IJACM_02",
-                "pages": "6-10",
-                "published": "2025-01-02",
-                "doi": "https://doi.org/2",
-                "issue": "1"
-            },
-            {
-                "title": "Paper 3",
-                "authors": "Author C",
-                "article_id": "IJACM_03",
-                "pages": "11-15",
-                "published": "2025-01-03",
-                "doi": "https://doi.org/3",
                 "issue": "1"
             }
         ];
@@ -126,12 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderArticles() {
         const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
         const endIndex = startIndex + ITEMS_PER_PAGE;
-        const pageArticles = allArticles.slice(startIndex, endIndex);
+        const pageArticles = currentMonthArticles.slice(startIndex, endIndex);
         
-        if (allArticles.length === 0) {
+        if (currentMonthArticles.length === 0) {
             articlesContainer.innerHTML = `
                 <div class="no-articles">
-                    <p>No articles available in current issue</p>
+                    <p>No articles available for current issue</p>
                 </div>
             `;
             return;
@@ -170,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="meta-row">
                         <span class="meta-label">Issue:</span>
-                        <span class="meta-value">Vol 1 Issue ${article.issue || '1'}</span>
+                        <span class="meta-value">Vol ${currentVolume} • Issue ${currentIssue}</span>
                     </div>
                     <div class="meta-row">
                         <span class="meta-label">DOI:</span>
@@ -195,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function renderPagination() {
-        const totalPages = Math.ceil(allArticles.length / ITEMS_PER_PAGE);
+        const totalPages = Math.ceil(currentMonthArticles.length / ITEMS_PER_PAGE);
         
         if (totalPages <= 1) {
             paginationContainer.innerHTML = '';
@@ -245,10 +288,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Global function for pagination buttons
     window.changePage = function(page) {
-        if (page < 1 || page > Math.ceil(allArticles.length / ITEMS_PER_PAGE)) return;
+        if (page < 1 || page > Math.ceil(currentMonthArticles.length / ITEMS_PER_PAGE)) return;
         currentPage = page;
         renderArticles();
         renderPagination();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
+    // Add a refresh function to update the current issue
+    window.refreshCurrentIssue = async function() {
+        await loadArticles();
+        filterCurrentMonthArticles();
+        calculateCurrentVolumeIssue();
+        currentPage = 1;
+        renderArticles();
+        renderPagination();
     };
 });
