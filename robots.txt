@@ -1,0 +1,45 @@
+# ============================================
+# robots.txt for IJACM Journal
+# Last updated: [Today's Date]
+# ============================================
+
+# ---------- ALL SEARCH ENGINES ----------
+User-agent: *
+Disallow: /admin/
+Disallow: /administrator/
+Disallow: /components/
+Disallow: /data/
+Disallow: /js/
+Disallow: /login/
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /tmp/
+
+# ALLOW everything else
+Allow: /
+
+# ---------- GOOGLE SPECIFIC ----------
+# Google Scholar needs access to everything
+User-agent: Googlebot
+User-agent: Googlebot-Scholar
+Allow: /
+
+# Google Images can access images
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /paper/
+
+# ---------- BAD BOTS (OPTIONAL) ----------
+# Block some aggressive bots that waste server resources
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SEMrushBot
+Disallow: /
+
+# ---------- SITEMAP ----------
+# Tell Google where to find your sitemap
+Sitemap: https://ijacm.com/sitemap.xml
