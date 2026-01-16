@@ -113,6 +113,17 @@
       "pdf": "IJACM-A3F60F57.pdf",  
       "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
       "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    },
+        {
+      "id": "IJACM-F3AF7761",
+      "title": "Deep Learning Framework for Estimating Brain Age from Neuroimaging",
+      "authors": ["Pallela Lohitha", "K Haribabu", "Kolli Dileepkumar", "Kesavan Mohith", "Veluru Jaswanth"],
+      "date": "2026/01/17",
+      "pages": "43-51",
+      "doi": "10.5281/zenodo.18269572",
+      "pdf": "IJACM-F3AF7761.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
     }
   ]
 }
