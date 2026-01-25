@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Call for Papers | IJACM Research Journal</title>
+    <meta name="description"
+        content="IJACM invites authors to submit original research papers in computer science, management and applied sciences for upcoming issues.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ijacm.com/pages/call-for-papers.html">
+
+    <meta charset="UTF-8">
+    <meta name="keywords"
+        content="call for papers 2025, journal call for papers, submit research paper, engineering journal submission, computer science journal, mechanical engineering research">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /*Reuse global styles from other pages*/
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #1a237e;
+            --secondary: #00b0ff;
+            --accent: #ff4081;
+            --accent-yellow: #ffc107;
+            --bg-dark: #0b2c4d;
+            --bg-darker: #061a2f;
+            --text-light: #f5f7ff;
+            --text-muted: #b0bec5;
+            --white: #ffffff;
+            --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+            --radius-md: 12px;
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s ease;
+        }
+
+        main {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            min-height: 500px;
+        }
+
+        .cfp-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .cfp-header h1 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .cfp-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .deadlines-box {
+            background: rgba(13, 27, 42, 0.6);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-left: 5px solid var(--accent-yellow);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 0 auto 50px;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .deadlines-box h2 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .deadline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .deadline-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .deadline-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .deadline-date {
+            display: block;
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .topics-section {
+            margin-bottom: 50px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .topic-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .topic-list li {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .topic-list li::before {
+            content: '•';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        .submit-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0, 176, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .cfp-header h1 {
+                font-size: 2rem;
+            }
+
+            .deadline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="cfp-header">
+            <h1>Call for Papers – IJACM</h1>
+
+            <p>
+                IJACM invites original, unpublished research papers from academicians,
+                researchers and industry professionals for upcoming journal issues.
+            </p>
+
+            <p>
+                Authors are encouraged to submit papers in computer science, management,
+                applied sciences and emerging technologies.
+            </p>
+        </div>
+
+        <section class="deadlines-box">
+            <h2><i class="fas fa-calendar-alt"></i> Upcoming Issue & Submission Deadlines</h2>
+            <div class="deadline-grid">
+                <div class="deadline-item">
+                    <span class="deadline-label">Volume / Issue</span>
+                    <span class="deadline-date">Volume 2, Issue 1</span>
+                </div>
+                <div class="deadline-item">
+                    <span class="deadline-label">Submission Deadline</span>
+                    <span class="deadline-date">Open Now</span>
+                </div>
+                <div class="deadline-item">
+                    <span class="deadline-label">Publication Date</span>
+                    <span class="deadline-date">Monthly</span>
+                </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.95rem; color: #fff;">
+                <i class="fas fa-bolt"></i> Fast Track Review: Acceptance notification within 5-7 days of submission.
+            </p>
+        </section>
+
+        <section class="topics-section">
+            <h2 style="text-align: center; color: white; margin-bottom: 30px;">Topics of Interest</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <h3><i class="fas fa-laptop-code"></i> Advanced Computing</h3>
+                    <ul class="topic-list">
+                        <li>Artificial Intelligence & Machine Learning</li>
+                        <li>Cloud Computing & Big Data Analytics</li>
+                        <li>Internet of Things (IoT) & Cyber Systems</li>
+                        <li>Blockchain Technology</li>
+                        <li>Computer Vision & Image Processing</li>
+                    </ul>
+                </div>
+                <div class="topic-card">
+                    <h3><i class="fas fa-cogs"></i> Mechanical Systems</h3>
+                    <ul class="topic-list">
+                        <li>Robotics & Automation</li>
+                        <li>Mechatronics & Control Systems</li>
+                        <li>Thermal & Fluid Engineering</li>
+                        <li>Materials Science & Composite Materials</li>
+                        <li>Industrial Engineering & Manufacturing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="submit-cta">
+            <a href="submit.html" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Your Paper Now</a>
+            <p style="margin-top: 15px; color: var(--text-muted);">Email submissions also accepted:
+                ijacmeditor@gmail.com</p>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

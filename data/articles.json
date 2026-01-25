@@ -1,0 +1,141 @@
+{
+  "journal_name": "International Journal of Advanced Computing and Mechanical Systems",
+  "journal_issn": "",
+  "volume": "2",
+  "year": "2025",
+  "articles": [
+    {
+      "id": "IJACM-EB6C94D4",
+      "title": "Design of a Trapdoor-Enabled Symmetric Scheme for Secure Ciphertext Discovery",
+      "authors": ["Ramya P", "Rama Devi"],
+      "date": "2025/12/05",
+      "pages": "1-7",
+      "doi": "10.5281/zenodo.18212533",
+      "pdf": "IJACM-EB6C94D4.pdf",
+      "abstract": "This paper presents a novel symmetric encryption scheme with trapdoor functionality enabling authorized parties to efficiently search encrypted data. The proposed approach combines lattice-based cryptography with searchable encryption techniques to achieve both security and practical search efficiency. Experimental results demonstrate significant improvements in search time compared to existing methods while maintaining IND-CCA security.",
+      "keywords": ["searchable encryption", "trapdoor", "symmetric cryptography", "cloud security"]
+    },
+    {
+      "id": "IJACM-1C6C2DE8",
+      "title": "Entity-Driven Design for Secure Identity Administration",
+      "authors": ["Dinesh K", "Uma Mahesh", "T Naresh"],
+      "date": "2025/12/06",
+      "pages": "8-15",
+      "doi": "10.5281/zenodo.18212727",
+      "pdf": "IJACM-1C6C2DE8.pdf",
+      "abstract": "We propose an entity-driven design framework for identity administration systems that enhances security through distributed trust models. The framework implements role-based access control with dynamic permission assignment, reducing attack surfaces by 40% compared to traditional systems.",
+      "keywords": ["identity management", "RBAC", "distributed trust", "access control"]
+    },
+    {
+      "id": "IJACM-D1275BC9",
+      "title": "Prognostic Maintenance Modeling in Resource-Constrained Wireless Sensor Architectures",
+      "authors": ["Sathish Kumar M", "Avinash P", "Rajitha E"],
+      "date": "2025/12/12",
+      "pages": "16-22",
+      "doi": "10.5281/zenodo.18214041",
+      "pdf": "IJACM-D1275BC9.pdf",
+      "abstract": "This research develops a prognostic maintenance model optimized for resource-constrained wireless sensor networks. The model uses lightweight machine learning algorithms to predict equipment failures with 92% accuracy while consuming 60% less energy than existing approaches.",
+      "keywords": ["prognostic maintenance", "wireless sensors", "edge computing", "predictive analytics"]
+    },
+    {
+      "id": "IJACM-E4947F98",
+      "title": "Statistical Signal Occupancy Detection in Smart Wireless Systems",
+      "authors": ["Nanda Kumar M", "Arun Prabhakar"],
+      "date": "2025/12/20",
+      "pages": "23-28",
+      "doi": "10.5281/zenodo.18224735",
+      "pdf": "IJACM-E4947F98.pdf",
+      "abstract": "We present a statistical method for signal occupancy detection in cognitive radio networks. The algorithm improves spectrum utilization by 35% through adaptive thresholding and Bayesian inference techniques.",
+      "keywords": ["cognitive radio", "spectrum sensing", "signal detection", "Bayesian inference"]
+    },
+    {
+      "id": "IJACM-FCE54392",
+      "title": "High-Efficiency Thermal Management Using Nanomaterial-Enhanced Heat Exchanger Designs",
+      "authors": ["K Saravana", "Avaneeth Sinha", "Rakesh Jain"],
+      "date": "2025/12/24",
+      "pages": "29-32",
+      "doi": "10.5281/zenodo.18234241",
+      "pdf": "IJACM-FCE54392.pdf",
+      "abstract": "This study investigates graphene-enhanced heat exchangers for high-power computing applications. Experimental results show 45% improvement in heat dissipation compared to traditional copper-based systems.",
+      "keywords": ["thermal management", "nanomaterials", "heat exchangers", "graphene"]
+    },
+    {
+      "id": "IJACM-429BB5C7",
+      "title": "Frictional Stability and Surface Integrity of Aluminum-Based Composite Materials",
+      "authors": ["S. Karthivelan", "M. Arunprasath", "V. Magesh Kumar"],
+      "date": "2025/12/24",
+      "pages": "33-38",
+      "doi": "10.5281/zenodo.18234813",
+      "pdf": "IJACM-429BB5C7.pdf",
+      "abstract": "We analyze the frictional properties of aluminum matrix composites reinforced with silicon carbide particles. The composites show 50% improvement in wear resistance while maintaining machinability for automotive applications.",
+      "keywords": ["composite materials", "aluminum alloys", "tribology", "surface engineering"]
+    },
+    {
+      "id": "IJACM-BEBB7D71",
+      "title": "DEDUCT: A Secure Deduplication Framework for Textual Data in Cloud Environments",
+      "authors": ["Himabindu B", "Vempalli Mallikarjuna", "Sadiyam Padmanabhan Mukeshkumar", "Kencha Harsha Vardhan", "Dasari Chandra"],
+      "date": "2026/01/13",
+      "pages": "1-9",
+      "doi": "10.5281/zenodo.18235545",
+      "pdf": "IJACM-BEBB7D71.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    },
+        {
+      "id": "IJACM-9ED1A14D",
+      "title": "Classification of Heart Failure Using Machine Learning: A Comparative Study ",
+      "authors": ["N. Hema Sai Reddy", "Muli Lokeshwari", "Adavala Dhanush", "S. Dilli"],
+      "date": "2026/01/16",
+      "pages": "10-23",
+      "doi": "10.5281/zenodo.18266319",
+      "pdf": "IJACM-9ED1A14D.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    },
+        {
+      "id": "IJACM-4148675E",
+      "title": "Influencers Ranking and Engagement Analysis",
+      "authors": ["Hima Bindu B1", "Kolathur Vikas Reddy", "Sabhavath Sandhya Bai", "Derungula Venkatadri", "Rahul Kumar", "Thirumanyam Uday Kumar"],
+      "date": "2026/01/16",
+      "pages": "24-34",
+      "doi": "10.5281/zenodo.18266896",
+      "pdf": "IJACM-4148675E.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    },
+        {
+      "id": "IJACM-A3F60F57",
+      "title": "Block Chain Based Digital Certificate Generation and Verification System",
+      "authors": ["Thupakula Leena Sri", "Kashina Chinna Narasimha Reddy", "Nimmakayala Kethana", "Dwarakacharla Guru Prasanth Reddy", "Kollathuru Lavanya"],
+      "date": "2026/01/17",
+      "pages": "35-42",
+      "doi": "10.5281/zenodo.18267700",
+      "pdf": "IJACM-A3F60F57.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    },
+        {
+      "id": "IJACM-F3AF7761",
+      "title": "Deep Learning Framework for Estimating Brain Age from Neuroimaging",
+      "authors": ["Pallela Lohitha", "K Haribabu", "Kolli Dileepkumar", "Kesavan Mohith", "Veluru Jaswanth"],
+      "date": "2026/01/17",
+      "pages": "43-51",
+      "doi": "10.5281/zenodo.18269572",
+      "pdf": "IJACM-F3AF7761.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    }
+    ,
+        {
+      "id": "IJACM-7DBC730C",
+      "title": "Preserving Security of Crypto Transactions with Machine Learning Methodologies",
+      "authors": ["S Shilpa", "G Hemalatha", "P Jyothi", "V Aadhinarayana Reddy", "T Hemasai", "Nagaiah Karthik"],
+      "date": "2026/01/19",
+      "pages": "52-59",
+      "doi": "10.5281/zenodo.18300338",
+      "pdf": "IJACM-7DBC730C.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    }
+  ]
+}

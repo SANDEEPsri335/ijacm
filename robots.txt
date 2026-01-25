@@ -1,0 +1,29 @@
+# ============================================
+# robots.txt for IJACM Journal
+# Optimized for Googlebot & Scholar
+# ============================================
+
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /components/
+Disallow: /data/
+Disallow: /bg/
+Disallow: /tmp/
+# Allow checking assets for rendering
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /paper/
+
+# Google Scholar & Googlebot Specifics
+User-agent: Googlebot
+Allow: /
+Allow: .js
+Allow: .css
+
+User-agent: Googlebot-Scholar
+Allow: /
+
+# Sitemap Location
+Sitemap: https://ijacm.com/sitemap.xml

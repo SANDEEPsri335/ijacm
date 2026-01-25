@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>International Journal of Advanced Computingand Mechanical Systems | IJACM</title>
+    <meta name="description" content="Read International Journal of Advanced Computingand Mechanical Systems in International Journal of Advanced Computing and Mechanical Systems. Open access engineering research.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https:/ijacm.com/articles/IJACM-9ED1A14D.html">
+    <!-- Academic Metadata -->
+    <meta name="citation_title" content="International Journal of Advanced Computingand Mechanical Systems">
+    <meta name="citation_journal_title" content="International Journal of Advanced Computing and Mechanical Systems">
+    <meta name="citation_pdf_url" content="https://ijacm.com/paper/IJACM-9ED1A14D.pdf">
+    
+    
+    
+    
+    <!-- Academic Metadata -->
+    
+    
+    
+    <meta charset="UTF-8">
+    
+    
+
+    <!-- ===== REQUIRED GOOGLE SCHOLAR TAGS ===== -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- ===== ADDITIONAL GOOGLE SCHOLAR TAGS ===== -->
+    
+    
+    
+    
+
+    <!-- ===== DUBLIN CORE TAGS ===== -->
+    <meta name="dc.identifier" content="https://doi.org/10.5281/zenodo.18266319">
+    <meta name="dc.type" content="Text">
+    <meta name="dc.title" content="Classification of Heart Failure Using Machine Learning: A Comparative Study ">
+    <meta name="dc.creator" content="N. Hema Sai Reddy">
+    <meta name="dc.subject" content="Heart Disease Predication, Machine Learning, Ensemble Models, Classification">
+    <meta name="dc.date" content="2026/01/16">
+    <meta name="dc.publisher" content="International Journal of Advanced Computing and Mechanical Systems">
+    <meta name="dc.language" content="en">
+    <meta name="dc.rights" content="Copyright © 2026 IJACM">
+
+    <!-- ===== OPEN GRAPH TAGS ===== -->
+    <meta property="og:title" content="Classification of Heart Failure Using Machine Learning: A Comparative Study ">
+    <meta property="og:description" content="Heart disease continues to be one of the leading causes of mortality worldwide, making early and accurate diagnosis essential for effective treatment ...">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ijacm.com/articles/IJACM-9ED1A14D.html">
+
+    <!-- ===== TWITTER CARDS ===== -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Classification of Heart Failure Using Machine Learning: A Comparative Study ">
+    <meta name="twitter:description" content="Heart disease continues to be one of the leading causes of mortality worldwide, making early and accurate diagnosis essential for effective treatment ...">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0d1b2a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            height: 130px;
+            display: flex;
+            padding: 10px 40px;
+            align-items: center;
+            background: #1a2639;
+            justify-content: space-between;
+        }
+
+        .logo img { height: 110px; width: auto; }
+
+        .title {
+            flex: 1;
+            text-align: center;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .submit-btn a {
+            background: #00b0ff;
+            color: #0d1b2a;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        main {
+            min-height: calc(100vh - 130px);
+            padding: 40px 20px;
+        }
+
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(26, 38, 57, 0.8);
+            border-radius: 15px;
+        }
+
+        .article-title {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .authors {
+            color: #00b0ff;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            background: rgba(0, 176, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .meta-item strong { color: #00b0ff; }
+
+        .abstract-section { margin: 30px 0; }
+
+        .abstract-section h2 {
+            color: white;
+            border-bottom: 2px solid #00b0ff;
+            padding-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .abstract-text {
+            line-height: 1.6;
+            font-size: 16px;
+            margin-top: 15px;
+            text-align: justify;
+        }
+
+        .keywords-section { margin: 30px 0; }
+
+        .keywords-section h2 {
+            color: white;
+            border-bottom: 2px solid #00b0ff;
+            padding-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .keywords-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .keyword-tag {
+            background: rgba(0, 176, 255, 0.2);
+            color: #00b0ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        /* ===== CITATION SECTION STYLES ===== */
+        .citation-section {
+            margin: 40px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 176, 255, 0.3);
+        }
+
+        .citation-section h2 {
+            color: white;
+            border-bottom: 2px solid #00b0ff;
+            padding-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .citation-section h2 i {
+            color: #00b0ff;
+        }
+
+        .citation-content {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00b0ff;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #e0e0e0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .citation-note {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .download-btn {
+            background: #d32f2f;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #00b0ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a2639;
+            margin-top: 40px;
+        }
+
+        .footer p { margin: 5px 0; color: #ccc; }
+        .footer a { color: #00b0ff; text-decoration: none; margin: 0 10px; }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; height: auto; padding: 20px; }
+            .title { margin: 15px 0; }
+            .title h1 { font-size: 20px; }
+            .article-container { padding: 25px; margin: 20px; }
+            .article-title { font-size: 24px; }
+            .citation-content { font-size: 13px; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../assets/logo.png" alt="IJACM Logo">
+        </div>
+        <div class="title">
+            <h1>International Journal of Advanced Computing<br>and Mechanical Systems</h1>
+        </div>
+        <div class="submit-btn">
+            <a href="../pages/submit.html">Submit Paper</a>
+        </div>
+    </div>
+
+    <!-- ARTICLE CONTENT -->
+    <main>
+        <div class="article-container">
+            <div style="margin-bottom: 30px;">
+                <a href="../pages/current-issue.html" class="back-link">
+                    ← Back to Current Issue
+                </a>
+            </div>
+
+            <h1 class="article-title">Classification of Heart Failure Using Machine Learning: A Comparative Study </h1>
+
+            <div class="authors">
+                <strong>Authors:</strong> N. Hema Sai Reddy, Muli Lokeshwari, Adavala Dhanush, S. Dilli1
+            </div>
+
+            <div class="article-meta">
+                <div class="meta-item">
+                    <strong>Published:</strong> 2026/01/16
+                </div>
+                <div class="meta-item">
+                    <strong>Pages:</strong> 10-23
+                </div>
+                <div class="meta-item">
+                    <strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.18266319" target="_blank" style="color: #00b0ff;">10.5281/zenodo.18266319</a>
+                </div>
+                <div class="meta-item">
+                    <strong>Article ID:</strong> IJACM-9ED1A14D
+                </div>
+                <div class="meta-item">
+                    <strong>Journal:</strong> International Journal of Advanced Computing and Mechanical Systems
+                </div>
+                <div class="meta-item">
+                    <strong>Volume:</strong> 2, <strong>Issue:</strong> 1
+                </div>
+                <div class="meta-item">
+                    <strong>Article Type:</strong> Research-Article
+                </div>
+            </div>
+
+            <div class="abstract-section">
+                <h2>Abstract</h2>
+                <div class="abstract-text">
+                    Heart disease continues to be one of the leading causes of mortality worldwide, making early and accurate diagnosis essential for effective treatment and prevention. In recent years, machine learning techniques have gained significant attention in healthcare applications due to their ability to analyze complex medical data and support clinical decision-making. This paper presents a comprehensive heart disease prediction framework based on a comparative analysis of seventeen machine learning models, including AdaBoost, Random Forest, Support Vector Machine, Extra Trees, Logistic Regression, Ridge Classifier, XGBoost, Passive Aggressive Classifier, Linear Discriminant Analysis, Gradient Boosting, Stacking, Bagging, Naïve Bayes, k-Nearest Neighbors, Stochastic Gradient Descent, Quadratic Discriminant Analysis, and Decision Tree.
+                </div>
+            </div>
+
+            <div class="keywords-section">
+                <h2>Keywords</h2>
+                <div class="keywords-tags">
+                    <span class="keyword-tag">Heart Disease Predication</span>
+                    <span class="keyword-tag">Machine Learning</span>
+                    <span class="keyword-tag">Ensemble Models</span>
+                    <span class="keyword-tag">Classification</span>
+                </div>
+            </div>
+
+            <!-- CITATION SECTION -->
+            <div class="citation-section">
+                <h2><i class="fas fa-quote-right"></i> How to Cite this Article</h2>
+                <div class="citation-content">
+N. Hema Sai Reddy, Muli Lokeshwari, Adavala Dhanush, S. Dilli1. "Classification of Heart Failure Using Machine Learning: A Comparative Study ". International Journal of Advanced Computing and Mechanical Systems. 2026/01/16;2(1):10-23. doi:10.5281/zenodo.18266319
+                </div>
+                <div class="citation-note">
+                    APA Citation Format | Copy and paste for your references
+                </div>
+            </div>
+
+            <div class="download-section">
+                <a href="../paper/IJACM-9ED1A14D.pdf"
+                   target="_blank"
+                   class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>&copy; 2026 International Journal of Advanced Computing and Mechanical Systems</p>
+        <p>
+            <a href="../index.html">Home</a> |
+            <a href="../pages/current-issue.html">Current Issue</a>
+        </p>
+    </div>
+</body>
+</html>
