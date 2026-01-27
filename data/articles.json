@@ -136,6 +136,17 @@
       "pdf": "IJACM-7DBC730C.pdf",  
       "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
       "keywords": ["data deduplication", "cloud storage", "convergent encryption", "proof-of-ownership"]
+    },
+     {
+      "id": "IJACM-20048426",
+      "title": "Detecting and Mitigating Botnet Attacks in Software-Defined Networks Using Deep Learning Techniques",
+      "authors": ["Himabindu B", "Nuthalapati Jahnavi", "Vathalurula Navya Sree", "Chamanchula Amrutha", "Kakarla Jyothendra", "MS Dileep""],
+      "date": "2026/01/26",
+      "pages": "60-68",
+      "doi": "10.65883/ijacm.2026v2i1.01",
+      "pdf": "IJACM-20048426.pdf",  
+      "abstract": "Software Defined Networking (SDN) has transformed modern network architectures by separating control and data planes, offering centralized management and enhanced flexibility. However, this centralization introduces security vulnerabilities, making the controller a prime target for botnet attacks. Such attacks flood the controller with malicious traffic, depleting resources and disrupting services. Traditional detection methods, reliant on static rules and basic machine learning, often fail to adapt to evolving threats, leading to high false alarm rates. To overcome these challenges, this paper proposes a deep learning–based framework for real-time botnet detection and mitigation in SDN. The system collects flow-level data from OpenFlow switches and employs Convolutional Neural Networks (CNN), Long Short-Term Memory (LSTM), and hybrid CNN–LSTM models to distinguish malicious from normal traffic. Upon detection, the controller enforces countermeasures such as flow rule updates, rate limiting, and node isolation. Evaluations using the CICDDoS and Bot-IoT datasets show improved accuracy, precision, recall, and F1-score, demonstrating the framework’s effectiveness in enhancing network security and resilience.",
+      "keywords": ["Software Defined Networking", "Botnet Attacks", "Deep Learning", "SDN Security", "DDoS Detection"]
     }
   ]
 }
