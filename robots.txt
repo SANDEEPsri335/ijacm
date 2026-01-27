@@ -1,29 +1,45 @@
 # ============================================
 # robots.txt for IJACM Journal
-# Optimized for Googlebot & Scholar
+# Google Scholar – TOP PRIORITY (Recommended)
 # ============================================
 
+# ---------- ALL SEARCH ENGINES ----------
 User-agent: *
 Disallow: /admin/
-Disallow: /login/
+Disallow: /administrator/
 Disallow: /components/
 Disallow: /data/
-Disallow: /bg/
+Disallow: /js/
+Disallow: /login/
+Disallow: /cgi-bin/
+Disallow: /private/
 Disallow: /tmp/
-# Allow checking assets for rendering
-Allow: /assets/
-Allow: /css/
-Allow: /js/
-Allow: /paper/
 
-# Google Scholar & Googlebot Specifics
+# Allow everything else
+Allow: /
+
+# ---------- GOOGLE & GOOGLE SCHOLAR ----------
+# Scholar must see EVERYTHING (HTML + PDF)
 User-agent: Googlebot
 Allow: /
-Allow: .js
-Allow: .css
 
 User-agent: Googlebot-Scholar
 Allow: /
 
-# Sitemap Location
+# Google Images (figures, logos, PDFs)
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /paper/
+
+# ---------- BAD BOTS ----------
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SEMrushBot
+Disallow: /
+
+# ---------- SITEMAP ----------
 Sitemap: https://ijacm.com/sitemap.xml
