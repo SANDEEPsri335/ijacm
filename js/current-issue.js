@@ -14,7 +14,7 @@ function initializeCurrentIssue() {
     
     console.log('Initializing current issue...');
     
-    const JSON_FILE = '../data/articles.json';
+    const JSON_FILE = 'data/articles.json';
     const ITEMS_PER_PAGE = 9;
     let currentPage = 1;
     let allArticles = [];
