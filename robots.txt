@@ -9,7 +9,6 @@ Disallow: /admin/
 Disallow: /administrator/
 Disallow: /components/
 Disallow: /data/
-Disallow: /js/
 Disallow: /login/
 Disallow: /cgi-bin/
 Disallow: /private/
