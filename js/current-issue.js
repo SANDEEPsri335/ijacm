@@ -1,4 +1,4 @@
-// js/current-issue.js - FIXED VERSION
+// js/current-issue.js - FIXED FOR PAGES FOLDER
 console.log('current-issue.js loading...');
 
 // Use a flag to prevent multiple initializations
@@ -14,8 +14,8 @@ function initializeCurrentIssue() {
     
     console.log('Initializing current issue...');
     
-    // FIXED: Correct JSON path
-    const JSON_FILE = 'data/articles.json'; // Changed from '../data/articles.json'
+    // FIXED: Since HTML is in pages folder, JSON is one level up
+    const JSON_FILE = '../data/articles.json';
     const ITEMS_PER_PAGE = 9;
     let currentPage = 1;
     let allArticles = [];
@@ -37,41 +37,24 @@ function initializeCurrentIssue() {
     async function loadArticles() {
         try {
             console.log('Loading articles from:', JSON_FILE);
+            console.log('Current page location:', window.location.pathname);
             
-            // Try multiple possible paths
-            let response = null;
-            let jsonData = null;
+            const response = await fetch(JSON_FILE);
             
-            // List of possible paths to try
-            const possiblePaths = [
-                'data/articles.json',
-                '../data/articles.json',
-                './data/articles.json',
-                '/data/articles.json'
-            ];
-            
-            // Try each path until one works
-            for (const path of possiblePaths) {
-                try {
-                    console.log('Trying path:', path);
-                    response = await fetch(path);
-                    if (response.ok) {
-                        jsonData = await response.json();
-                        console.log('Successfully loaded from:', path);
-                        break;
-                    }
-                } catch (err) {
-                    console.log('Failed from path:', path, err.message);
-                }
+            if (!response.ok) {
+                console.error('Response not OK:', response.status, response.statusText);
+                throw new Error(`Failed to load JSON: ${response.status} ${response.statusText}`);
             }
             
-            // If still no data, show error
-            if (!jsonData) {
-                throw new Error('Could not load articles.json from any path');
-            }
+            const data = await response.json();
+            console.log('✅ Successfully loaded JSON data');
+            allArticles = data.articles || [];
+            console.log(`📄 Loaded ${allArticles.length} articles`);
             
-            allArticles = jsonData.articles || [];
-            console.log(`Loaded ${allArticles.length} articles`);
+            // Get volume from JSON
+            if (data.volume) {
+                currentVolume = data.volume;
+            }
             
             // Sort by date (newest first)
             allArticles.sort((a, b) => {
@@ -85,23 +68,21 @@ function initializeCurrentIssue() {
             renderArticles();
             renderPagination();
             
-        } catch (error) {
-            console.error('Error loading articles:', error);
-            showError('Failed to load articles. Please try again later. Check console for details.');
+            console.log('✅ Current issue loaded successfully');
             
-            // Display fallback content
-            if (articlesContainer) {
-                articlesContainer.innerHTML = `
-                    <div class="no-articles" style="text-align: center; padding: 40px;">
-                        <h3>Unable to load articles</h3>
-                        <p>Error: ${error.message}</p>
-                        <p>Make sure the data/articles.json file exists and is accessible.</p>
-                        <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #00b0ff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                            Retry
-                        </button>
-                    </div>
-                `;
-            }
+        } catch (error) {
+            console.error('❌ Error loading articles:', error);
+            console.error('Error details:', {
+                message: error.message,
+                stack: error.stack
+            });
+            
+            showError(`Failed to load articles. <br><br>
+                <strong>Possible issues:</strong><br>
+                1. <code>data/articles.json</code> file not found<br>
+                2. Incorrect file path<br>
+                3. JSON syntax error<br><br>
+                <em>Error: ${error.message}</em>`);
         }
     }
     
@@ -124,7 +105,7 @@ function initializeCurrentIssue() {
                    articleDate.getMonth() === currentMonth;
         });
         
-        console.log(`Current month has ${currentMonthArticles.length} articles`);
+        console.log(`📅 Current month (${currentYear}/${currentMonth+1}) has ${currentMonthArticles.length} articles`);
     }
     
     function updateHeaderInfo() {
@@ -177,26 +158,25 @@ function initializeCurrentIssue() {
         const formattedDate = formatDate(parseDateString(article.date));
         const articleId = article.id;
         
-        // FIXED PDF PATH - Handle both cases properly
+        // FIXED: Since we're in pages folder, PDF paths need adjustment
         let pdfPath = article.pdf;
         
-        // If pdf already contains "paper/", use it as is
-        // If not, add "paper/" prefix
+        // Add "../paper/" prefix since we're in pages folder
         if (!pdfPath.includes('paper/') && !pdfPath.startsWith('http')) {
-            pdfPath = 'paper/' + pdfPath;
+            pdfPath = '../paper/' + pdfPath;
         }
         
-        // Ensure we don't have paper/paper/ duplicate
-        pdfPath = pdfPath.replace('paper/paper/', 'paper/');
+        // Fix double prefixes
+        pdfPath = pdfPath.replace('../paper/../paper/', '../paper/');
         
-        console.log(`PDF path for ${articleId}: ${pdfPath}`);
+        console.log(`📎 PDF path for ${articleId}: ${pdfPath}`);
         
         // Extract PDF file name without extension
         let pdfFileName = pdfPath.split('/').pop();
         pdfFileName = pdfFileName.replace('.pdf', '');
         
-        // Create HTML file path - articles folder is in ROOT
-        const htmlFilePath = `articles/${pdfFileName}.html`;
+        // Create HTML file path - articles folder is in root, so go up from pages
+        const htmlFilePath = `../articles/${pdfFileName}.html`;
         
         // Get first 3 authors, add "et al." if more
         const authors = article.authors.length > 3 
@@ -262,7 +242,7 @@ function initializeCurrentIssue() {
         }
         
         articlesContainer.innerHTML = pageArticles.map(article => createArticleCard(article)).join('');
-        console.log(`Rendered ${pageArticles.length} articles`);
+        console.log(`✅ Rendered ${pageArticles.length} articles`);
     }
     
     function renderPagination() {
@@ -319,11 +299,16 @@ function initializeCurrentIssue() {
     function showError(message) {
         if (articlesContainer) {
             articlesContainer.innerHTML = `
-                <div class="error-message" style="text-align: center; padding: 40px; color: #ff6b6b;">
-                    <h3>Error</h3>
-                    <p>${message}</p>
-                    <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #00b0ff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                        Retry
+                <div class="error-message" style="text-align: center; padding: 40px; color: #ff6b6b; background: rgba(255, 107, 107, 0.1); border-radius: 10px; border: 1px solid rgba(255, 107, 107, 0.3);">
+                    <h3 style="color: #ff6b6b; margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> Error Loading Articles</h3>
+                    <div style="text-align: left; background: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 5px; margin: 15px 0;">
+                        ${message}
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9em; color: #90a4ae;">
+                        Expected path: <code>../data/articles.json</code>
+                    </p>
+                    <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 25px; background: #00b0ff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 500;">
+                        <i class="fas fa-redo"></i> Retry Loading
                     </button>
                 </div>
             `;
