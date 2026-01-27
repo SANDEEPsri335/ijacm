@@ -1,4 +1,4 @@
-// js/current-issue.js - COMPLETELY FIXED VERSION
+// js/current-issue.js - FIXED VERSION
 console.log('current-issue.js loading...');
 
 // Use a flag to prevent multiple initializations
@@ -14,7 +14,8 @@ function initializeCurrentIssue() {
     
     console.log('Initializing current issue...');
     
-    const JSON_FILE = 'data/articles.json';
+    // FIXED: Correct JSON path
+    const JSON_FILE = 'data/articles.json'; // Changed from '../data/articles.json'
     const ITEMS_PER_PAGE = 9;
     let currentPage = 1;
     let allArticles = [];
@@ -36,11 +37,40 @@ function initializeCurrentIssue() {
     async function loadArticles() {
         try {
             console.log('Loading articles from:', JSON_FILE);
-            const response = await fetch(JSON_FILE);
-            if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
             
-            const data = await response.json();
-            allArticles = data.articles || [];
+            // Try multiple possible paths
+            let response = null;
+            let jsonData = null;
+            
+            // List of possible paths to try
+            const possiblePaths = [
+                'data/articles.json',
+                '../data/articles.json',
+                './data/articles.json',
+                '/data/articles.json'
+            ];
+            
+            // Try each path until one works
+            for (const path of possiblePaths) {
+                try {
+                    console.log('Trying path:', path);
+                    response = await fetch(path);
+                    if (response.ok) {
+                        jsonData = await response.json();
+                        console.log('Successfully loaded from:', path);
+                        break;
+                    }
+                } catch (err) {
+                    console.log('Failed from path:', path, err.message);
+                }
+            }
+            
+            // If still no data, show error
+            if (!jsonData) {
+                throw new Error('Could not load articles.json from any path');
+            }
+            
+            allArticles = jsonData.articles || [];
             console.log(`Loaded ${allArticles.length} articles`);
             
             // Sort by date (newest first)
@@ -57,7 +87,21 @@ function initializeCurrentIssue() {
             
         } catch (error) {
             console.error('Error loading articles:', error);
-            showError('Failed to load articles. Please try again later.');
+            showError('Failed to load articles. Please try again later. Check console for details.');
+            
+            // Display fallback content
+            if (articlesContainer) {
+                articlesContainer.innerHTML = `
+                    <div class="no-articles" style="text-align: center; padding: 40px;">
+                        <h3>Unable to load articles</h3>
+                        <p>Error: ${error.message}</p>
+                        <p>Make sure the data/articles.json file exists and is accessible.</p>
+                        <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #00b0ff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
         }
     }
     
@@ -129,81 +173,81 @@ function initializeCurrentIssue() {
         return date.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
     }
     
-function createArticleCard(article) {
-    const formattedDate = formatDate(parseDateString(article.date));
-    const articleId = article.id;
-    
-    // FIXED PDF PATH - Handle both cases properly
-    let pdfPath = article.pdf;
-    
-    // If pdf already contains "paper/", use it as is
-    // If not, add "paper/" prefix
-    if (!pdfPath.includes('paper/') && !pdfPath.startsWith('http')) {
-        pdfPath = 'paper/' + pdfPath;
+    function createArticleCard(article) {
+        const formattedDate = formatDate(parseDateString(article.date));
+        const articleId = article.id;
+        
+        // FIXED PDF PATH - Handle both cases properly
+        let pdfPath = article.pdf;
+        
+        // If pdf already contains "paper/", use it as is
+        // If not, add "paper/" prefix
+        if (!pdfPath.includes('paper/') && !pdfPath.startsWith('http')) {
+            pdfPath = 'paper/' + pdfPath;
+        }
+        
+        // Ensure we don't have paper/paper/ duplicate
+        pdfPath = pdfPath.replace('paper/paper/', 'paper/');
+        
+        console.log(`PDF path for ${articleId}: ${pdfPath}`);
+        
+        // Extract PDF file name without extension
+        let pdfFileName = pdfPath.split('/').pop();
+        pdfFileName = pdfFileName.replace('.pdf', '');
+        
+        // Create HTML file path - articles folder is in ROOT
+        const htmlFilePath = `articles/${pdfFileName}.html`;
+        
+        // Get first 3 authors, add "et al." if more
+        const authors = article.authors.length > 3 
+            ? `${article.authors.slice(0, 3).join(', ')} et al.`
+            : article.authors.join(', ');
+        
+        return `
+        <div class="article-card">
+            <div class="article-header">
+                <span class="badge research">RESEARCH ARTICLE</span>
+                <span class="badge volume">Vol ${currentVolume}, Issue ${currentIssue}</span>
+            </div>
+            
+            <h3 class="article-title">
+                <a href="${htmlFilePath}" target="_blank" class="article-title-link">
+                    ${article.title}
+                </a>
+            </h3>
+            
+            <div class="article-authors">
+                <i class="fas fa-user-edit"></i> ${authors}
+            </div>
+            
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Published: ${formattedDate}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="far fa-file-alt"></i>
+                    <span>Pages: ${article.pages}</span>
+                </div>
+                ${article.doi ? `
+                <div class="meta-item">
+                    <i class="fas fa-fingerprint"></i>
+                    <span>DOI: <a href="https://doi.org/${article.doi}" target="_blank">${article.doi}</a></span>
+                </div>
+                ` : ''}
+            </div>
+            
+            <div class="article-actions">
+                <a href="${htmlFilePath}" target="_blank" class="btn btn-details">
+                    <i class="fas fa-file-alt"></i> View Details
+                </a>
+                <a href="${pdfPath}" class="btn btn-pdf" target="_blank">
+                    <i class="fas fa-download"></i> PDF
+                </a>
+            </div>
+        </div>
+        `;
     }
-    
-    // Ensure we don't have paper/paper/ duplicate
-    pdfPath = pdfPath.replace('paper/paper/', 'paper/');
-    
-    console.log(`PDF path for ${articleId}: ${pdfPath}`);
-    
-    // Extract PDF file name without extension
-    let pdfFileName = pdfPath.split('/').pop();
-    pdfFileName = pdfFileName.replace('.pdf', '');
-    
-    // Create HTML file path - articles folder is in ROOT
-    const htmlFilePath = `../articles/${pdfFileName}.html`;
-    
-    // Get first 3 authors, add "et al." if more
-    const authors = article.authors.length > 3 
-        ? `${article.authors.slice(0, 3).join(', ')} et al.`
-        : article.authors.join(', ');
-    
-    return `
-    <div class="article-card">
-        <div class="article-header">
-            <span class="badge research">RESEARCH ARTICLE</span>
-            <span class="badge volume">Vol ${currentVolume}, Issue ${currentIssue}</span>
-        </div>
-        
-        <h3 class="article-title">
-            <a href="${htmlFilePath}" target="_blank" class="article-title-link">
-                ${article.title}
-            </a>
-        </h3>
-        
-        <div class="article-authors">
-            <i class="fas fa-user-edit"></i> ${authors}
-        </div>
-        
-        <div class="article-meta">
-            <div class="meta-item">
-                <i class="far fa-calendar-alt"></i>
-                <span>Published: ${formattedDate}</span>
-            </div>
-            <div class="meta-item">
-                <i class="far fa-file-alt"></i>
-                <span>Pages: ${article.pages}</span>
-            </div>
-            ${article.doi ? `
-            <div class="meta-item">
-                <i class="fas fa-fingerprint"></i>
-                <span>DOI: <a href="https://doi.org/${article.doi}" target="_blank">${article.doi}</a></span>
-            </div>
-            ` : ''}
-        </div>
-        
-        <div class="article-actions">
-            <a href="${htmlFilePath}" target="_blank" class="btn btn-details">
-                <i class="fas fa-file-alt"></i> View Details
-            </a>
-            <a href="../${pdfPath}" class="btn btn-pdf" target="_blank">
-                <i class="fas fa-download"></i> PDF
-            </a>
-        </div>
-    </div>
-    `;
-}
     
     function renderArticles() {
         if (!articlesContainer) return;
@@ -234,7 +278,7 @@ function createArticleCard(article) {
         
         // Previous button
         paginationHTML += `<button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" 
-            onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+            onclick="window.changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
             <i class="fas fa-chevron-left"></i>
         </button>`;
         
@@ -249,12 +293,12 @@ function createArticleCard(article) {
         
         for (let i = startPage; i <= endPage; i++) {
             paginationHTML += `<button class="page-btn ${i === currentPage ? 'active' : ''}" 
-                onclick="changePage(${i})">${i}</button>`;
+                onclick="window.changePage(${i})">${i}</button>`;
         }
         
         // Next button
         paginationHTML += `<button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" 
-            onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+            onclick="window.changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
             <i class="fas fa-chevron-right"></i>
         </button>`;
         
