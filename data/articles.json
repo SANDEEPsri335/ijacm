@@ -147,6 +147,17 @@
       "pdf": "IJACM-20048426.pdf",  
       "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
       "keywords": ["Software Defined Networking", "Botnet Attacks", "Deep Learning", "SDN Security", "DDoS Detection"]
+    },
+     {
+      "id": "IJACM-851C7556",
+      "title": "Vitamin Deficiency Detection Using Image Processing",
+      "authors": ["S Shilpa", "C Dinesh Kumar", "P Manoj Kumar", "P Nikhitha", "Ch Harsha Vardhan"],
+      "date": "2026/01/28",
+      "pages": "69-77",
+      "doi": "10.65883/ijacm.2026v2i1.02",
+      "pdf": "IJACM-851C7556.pdf",  
+      "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
+      "keywords": ["Software Defined Networking", "Botnet Attacks", "Deep Learning", "SDN Security", "DDoS Detection"]
     }
   ]
 }
