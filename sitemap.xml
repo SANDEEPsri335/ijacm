@@ -65,7 +65,10 @@
     <lastmod>2026-01-26</lastmod>
   </url>
 
-  
+    <url>
+    <loc>https://ijacm.com/articles/IJACM-851C7556.html</loc>
+    <lastmod>2026-01-28</lastmod>
+  </url>
 
   <!-- =========================
        ARTICLE PDF FILES
@@ -111,5 +114,8 @@
     <loc>https://ijacm.com/paper/IJACM-20048426.pdf</loc>
     <lastmod>2026-01-26</lastmod>
   </url>
-
+  <url>
+    <loc>https://ijacm.com/paper/IJACM-851C7556.pdf</loc>
+    <lastmod>2026-01-28</lastmod>
+  </url>
 </urlset>
