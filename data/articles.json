@@ -159,5 +159,17 @@
       "abstract": "DEDUCT is a novel framework for secure data deduplication in cloud storage. It employs convergent encryption with proof-of-ownership protocols, reducing storage requirements by up to 70% while maintaining data confidentiality.",
       "keywords": ["Software Defined Networking", "Botnet Attacks", "Deep Learning", "SDN Security", "DDoS Detection"]
     }
+    ,
+     {
+      "id": "IJACM-9BB57F3D1",
+      "title": "Development of a Multi-Sensor IoT System for Real-Time Sleep Disorder Monitoring and Alert Generation",
+      "authors": ["B Jhansi", "B.V.Sree Surya Prabha", "P Lavanya", "M Lakshmi Narasimha", "K Ganesh"],
+      "date": "2026/02/02",
+      "pages": "01-08",
+      "doi": "10.65883/ijacm.2026v2i2.01",
+      "pdf": "IJACM-9BB57F3D1.pdf",  
+      "abstract": "Sleep apnea, snoring, and restless sleep are some sleep disorders that are dangerous to health when not diagnosed. Traditional methods of sleep monitoring, especially polysomnography (PSG), are costly, invasive and only suitable in short-term hospital research. In this paper, a smart IoT-based system is proposed that detects sleep disorders and is developed to monitor sleep in real-time and continuously and at home. The system connects SpO2, MEMS accelerator, sound and temperature sensors to an Arduino microcontroller to gather physiological and environmental sleep data. The local display of real-time values and their transmission into the Things peak cloud platform through NodeMCU provide a possibility to be visualized remotely. An alert system based on a GSM transmits instant alerts in the occurrence of abnormal sleep condition. The assessment based on experiments shows that the sensors have a high level of reliability, detect abnormal sleep disorders, and can be monitored using the cloud. The suggested system is not invasive and low cost, and an effective alternative to the conventional hospital-based sleep studies.",
+      "keywords": ["IoT", "Sleep Apnea", "Smart Healthcare", "SpO2 Monitoring", "Cloud computing"]
+    }
   ]
 }
