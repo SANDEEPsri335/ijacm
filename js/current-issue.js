@@ -20,8 +20,10 @@ function initializeCurrentIssue() {
     let currentPage = 1;
     let allArticles = [];
     let currentMonthArticles = [];
-    let currentVolume = 2;
+    let currentVolume = 1;
     let currentIssue = 1;
+    let currentYear = 2025;
+    let currentMonth = 11; // December = 11 (0-indexed)
     
     const articlesContainer = document.getElementById('articles-container');
     const paginationContainer = document.getElementById('pagination');
@@ -64,6 +66,7 @@ function initializeCurrentIssue() {
             });
             
             filterCurrentMonthArticles();
+            calculateVolumeAndIssue(); // Calculate volume and issue dynamically
             updateHeaderInfo();
             renderArticles();
             renderPagination();
@@ -95,8 +98,8 @@ function initializeCurrentIssue() {
         // Get the latest article date
         const latestArticle = allArticles[0];
         const latestDate = parseDateString(latestArticle.date);
-        const currentYear = latestDate.getFullYear();
-        const currentMonth = latestDate.getMonth();
+        currentYear = latestDate.getFullYear();
+        currentMonth = latestDate.getMonth();
         
         // Filter articles from the same month
         currentMonthArticles = allArticles.filter(article => {
@@ -106,6 +109,23 @@ function initializeCurrentIssue() {
         });
         
         console.log(`📅 Current month (${currentYear}/${currentMonth+1}) has ${currentMonthArticles.length} articles`);
+    }
+    
+    function calculateVolumeAndIssue() {
+        if (allArticles.length === 0) return;
+        
+        // Calculate volume based on year
+        if (currentYear === 2025) {
+            currentVolume = 1;
+        } else {
+            // For 2026+, each year gets its own volume
+            currentVolume = 1 + (currentYear - 2025);
+        }
+        
+        // Calculate issue number based on month (January = 1, February = 2, etc.)
+        currentIssue = currentMonth + 1; // +1 because months are 0-indexed
+        
+        console.log(`📊 Volume: ${currentVolume}, Issue: ${currentIssue} (Month: ${getMonthName(currentMonth)})`);
     }
     
     function updateHeaderInfo() {
@@ -121,17 +141,20 @@ function initializeCurrentIssue() {
         }
         
         // Update current month display
-        if (currentMonthElement && allArticles.length > 0) {
-            const latestDate = parseDateString(allArticles[0].date);
-            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-                              'July', 'August', 'September', 'October', 'November', 'December'];
-            currentMonthElement.textContent = `${monthNames[latestDate.getMonth()]} ${latestDate.getFullYear()}`;
+        if (currentMonthElement) {
+            currentMonthElement.textContent = `${getMonthName(currentMonth)} ${currentYear}`;
         }
         
         // Update volume/issue display
         if (volumeIssueElement) {
             volumeIssueElement.innerHTML = `Volume: <span>Vol ${currentVolume}</span> • Issue: <span>Issue ${currentIssue}</span>`;
         }
+    }
+    
+    function getMonthName(monthIndex) {
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+        return monthNames[monthIndex];
     }
     
     function parseDateString(dateStr) {
