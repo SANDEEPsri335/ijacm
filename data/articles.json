@@ -170,6 +170,17 @@
       "pdf": "IJACM-9BB57F3D1.pdf",  
       "abstract": "Sleep apnea, snoring, and restless sleep are some sleep disorders that are dangerous to health when not diagnosed. Traditional methods of sleep monitoring, especially polysomnography (PSG), are costly, invasive and only suitable in short-term hospital research. In this paper, a smart IoT-based system is proposed that detects sleep disorders and is developed to monitor sleep in real-time and continuously and at home. The system connects SpO2, MEMS accelerator, sound and temperature sensors to an Arduino microcontroller to gather physiological and environmental sleep data. The local display of real-time values and their transmission into the Things peak cloud platform through NodeMCU provide a possibility to be visualized remotely. An alert system based on a GSM transmits instant alerts in the occurrence of abnormal sleep condition. The assessment based on experiments shows that the sensors have a high level of reliability, detect abnormal sleep disorders, and can be monitored using the cloud. The suggested system is not invasive and low cost, and an effective alternative to the conventional hospital-based sleep studies.",
       "keywords": ["IoT", "Sleep Apnea", "Smart Healthcare", "SpO2 Monitoring", "Cloud computing"]
+    }    ,
+     {
+      "id": "IJACM-880D528A",
+      "title": "Predicting Hospital Stay Length Using Explainable Machine Learning",
+      "authors": ["S Shilpa', "K Sowmya Lakshmi", "B Hemanth", "Smriti Raj", "G Sreecharan", "V Sreenivas"],
+      "date": "2026/02/07",
+      "pages": "09-20",
+      "doi": "10.65883/ijacm.2026v2i2.02",
+      "pdf": "IJACM-880D528A.pdf",  
+      "abstract": "This research presents a predictive framework for estimating the Length of Stay (LOS) of patients in clinical settings using machine learning integrated with Explainable AI (XAI). Traditional methods for estimating LOS rely heavily on clinical experience, which often results in subjective, slow, and occasionally inaccurate forecasts. By systematically analyzing multidimensional patient data, including demographic profiles, medical histories, pathological test results, and symptom severity, the proposed model delivers precise, data-driven predictions. A core contribution of this project is the application of Explainable AI, which illuminates the underlying decision-making process by quantifying the influence of specific features such as age, comorbidities, and diagnostic indicators. This transparency bridges the gap between complex algorithms and clinical intuition, fostering trust among healthcare professionals. Beyond individualized patient care, the system serves as a strategic tool for hospital administration, enabling optimized bed management, efficient staffing allocation, and streamlined treatment protocols. Ultimately, the framework supports a transition toward proactive hospital planning, reducing operational bottlenecks and enhancing the overall quality of patient care through intelligent, interpretable analytics.",
+      "keywords": ["Length of Stay", "Machine Learning", "Explainable AI", "Hospital Management", "Clinical Decision Support"]
     }
   ]
 }
