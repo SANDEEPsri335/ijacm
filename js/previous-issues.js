@@ -54,74 +54,80 @@ function initializePreviousIssues() {
     }
     
     function processArticles() {
-    // Group articles by year-month
-    const monthMap = new Map();
-    
-    allArticles.forEach(article => {
-        const date = parseDateString(article.date);
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const key = `${year}-${month.toString().padStart(2, '0')}`;
+        // Group articles by year-month
+        const monthMap = new Map();
         
-        if (!monthMap.has(key)) {
-            monthMap.set(key, {
-                year: year,
-                month: month,
-                monthName: getMonthName(month),
-                articles: []
-            });
-        }
-        monthMap.get(key).articles.push(article);
-    });
-    
-    // Sort keys by year and month (newest first)
-    const sortedKeys = Array.from(monthMap.keys()).sort((a, b) => {
-        const [yearA, monthA] = a.split('-').map(Number);
-        const [yearB, monthB] = b.split('-').map(Number);
-        return yearB - yearA || monthB - monthA;
-    });
-    
-    // Assign volume and issue numbers
-    let currentVolume = 0;
-    let currentIssue = 0;
-    let previousYear = null;
-    
-    sortedKeys.forEach((key, index) => {
-        const issue = monthMap.get(key);
-        const year = issue.year;
-        
-        // Determine volume number
-        if (year === 2025) {
-            issue.volume = 1;
-        } else {
-            // For 2026+, each year gets its own volume
-            // Calculate volume based on year difference from 2025
-            issue.volume = 1 + (year - 2025);
-        }
-        
-        // Reset issue counter for each new volume/year
-        if (previousYear !== year) {
-            currentIssue = 1;
-            previousYear = year;
-        } else {
-            currentIssue++;
-        }
-        
-        issue.issue = currentIssue;
-        issue.id = key;
-        
-        // Sort articles within each issue (newest first)
-        issue.articles.sort((a, b) => {
-            const dateA = parseDateString(a.date);
-            const dateB = parseDateString(b.date);
-            return dateB - dateA;
+        allArticles.forEach(article => {
+            const date = parseDateString(article.date);
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const key = `${year}-${month.toString().padStart(2, '0')}`;
+            
+            if (!monthMap.has(key)) {
+                monthMap.set(key, {
+                    year: year,
+                    month: month,
+                    monthName: getMonthName(month),
+                    articles: []
+                });
+            }
+            monthMap.get(key).articles.push(article);
         });
         
-        groupedIssues.push(issue);
-    });
+        // Sort keys by year and month (OLDEST first for chronological issue numbering)
+        const sortedKeys = Array.from(monthMap.keys()).sort((a, b) => {
+            const [yearA, monthA] = a.split('-').map(Number);
+            const [yearB, monthB] = b.split('-').map(Number);
+            return yearA - yearB || monthA - monthB;
+        });
+        
+        // Assign volume and issue numbers
+        let currentVolume = 0;
+        let currentIssue = 0;
+        let previousYear = null;
+        
+        sortedKeys.forEach((key, index) => {
+            const issue = monthMap.get(key);
+            const year = issue.year;
+            
+            // Determine volume number
+            if (year === 2025) {
+                issue.volume = 1;
+            } else {
+                // For 2026+, each year gets its own volume
+                issue.volume = 1 + (year - 2025);
+            }
+            
+            // Reset issue counter for each new volume/year
+            if (previousYear !== year) {
+                currentIssue = 1;  // Start at 1 for each new year
+                previousYear = year;
+            } else {
+                currentIssue++;    // Increment within the same year
+            }
+            
+            issue.issue = currentIssue;
+            issue.id = key;
+            
+            // Sort articles within each issue (newest first)
+            issue.articles.sort((a, b) => {
+                const dateA = parseDateString(a.date);
+                const dateB = parseDateString(b.date);
+                return dateB - dateA;
+            });
+            
+            groupedIssues.push(issue);
+        });
+        
+        // Now sort groupedIssues for display (newest first)
+        groupedIssues.sort((a, b) => {
+            if (a.year !== b.year) return b.year - a.year;
+            return b.month - a.month;
+        });
+        
+        console.log(`Processed ${groupedIssues.length} issues`);
+    }
     
-    console.log(`Processed ${groupedIssues.length} issues`);
-}
     function renderIssues() {
         if (!issuesContainer) return;
         
