@@ -46,7 +46,7 @@
 
         /* Base link styles */
         .nav-container a, 
-        .dropbtn {
+        details.dropdown > summary {
             color: #ffffff;
             font-size: clamp(13px, 1.2vw, 16px);
             font-weight: 500;
@@ -60,6 +60,12 @@
             font-family: inherit;
             display: inline-flex;
             align-items: center;
+            list-style: none;
+        }
+
+        /* Remove default details marker */
+        details.dropdown > summary::-webkit-details-marker {
+            display: none;
         }
 
         .nav-home {
@@ -68,30 +74,29 @@
         }
 
         .nav-container a:hover,
-        .dropbtn:hover {
+        details.dropdown > summary:hover {
             color: #00c6ff;
         }
 
         /* DROPDOWN STYLES */
-        .dropdown {
+        details.dropdown {
             position: relative;
             display: inline-block;
         }
 
-        .dropbtn {
+        details.dropdown > summary {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            position: relative;
         }
 
-        .dropbtn .arrow {
+        .arrow {
             font-size: 14px;
             transition: transform 0.3s ease;
             margin-left: 4px;
         }
 
-        .dropdown.active .dropbtn .arrow {
+        details.dropdown[open] > summary .arrow {
             transform: rotate(180deg);
         }
 
@@ -103,7 +108,7 @@
             background: #0b2b4a;
             padding: 12px;
             border-radius: 12px;
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 8px;
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
@@ -112,18 +117,22 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Show dropdown on hover for desktop */
+        /* Desktop hover behavior */
         @media (min-width: 1001px) {
-            .dropdown:hover .dropdown-menu {
+            details.dropdown:hover {
+                display: inline-block;
+            }
+            
+            details.dropdown:hover > summary {
+                color: #00c6ff;
+            }
+            
+            details.dropdown:hover .dropdown-menu {
                 display: flex;
             }
             
-            .dropdown:hover .dropbtn .arrow {
-                transform: rotate(180deg);
-            }
-            
-            .dropdown:hover .dropbtn {
-                color: #00c6ff;
+            details.dropdown:not(:hover) .dropdown-menu {
+                display: none;
             }
         }
 
@@ -161,7 +170,7 @@
 
         /* MEDIA QUERIES */
         @media (max-width: 1300px) {
-            .nav-container a, .dropbtn {
+            .nav-container a, details.dropdown > summary {
                 font-size: 14px;
                 padding: 12px 4px;
             }
@@ -169,7 +178,7 @@
         }
 
         @media (max-width: 1150px) {
-            .nav-container a, .dropbtn {
+            .nav-container a, details.dropdown > summary {
                 font-size: 13px;
                 padding: 12px 3px;
             }
@@ -216,7 +225,8 @@
 
             /* Reset mobile styles */
             .nav-container a, 
-            .dropbtn,
+            details.dropdown,
+            details.dropdown > summary,
             .nav-container a[href*="indexing"],
             .nav-container a[href*="publication-fee"] {
                 display: block;
@@ -228,22 +238,15 @@
                 text-align: left;
             }
 
-            .dropdown {
-                width: 100%;
+            details.dropdown {
+                position: static;
             }
 
-            .dropbtn {
-                width: 100%;
+            details.dropdown > summary {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: none;
-                border: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .dropbtn .arrow {
-                font-size: 16px;
+                width: 100%;
             }
 
             .dropdown-menu {
@@ -254,12 +257,13 @@
                 border-radius: 0;
                 padding: 0;
                 margin-top: 0;
-                display: none;
+                display: none !important;
                 border: none;
             }
 
-            .dropdown.active .dropdown-menu {
-                display: flex;
+            /* Show dropdown menu when details is open */
+            details.dropdown[open] .dropdown-menu {
+                display: flex !important;
             }
 
             .dropdown-menu a {
@@ -276,18 +280,18 @@
             }
 
             /* Disable hover effects on mobile */
-            .dropdown:hover .dropdown-menu {
-                display: none;
+            details.dropdown:hover .dropdown-menu {
+                display: none !important;
             }
             
-            .dropdown.active .dropdown-menu {
-                display: flex;
+            details.dropdown[open] .dropdown-menu {
+                display: flex !important;
             }
         }
 
         /* For very large screens */
         @media (min-width: 1400px) {
-            .nav-container a, .dropbtn {
+            .nav-container a, details.dropdown > summary {
                 font-size: 16px;
                 padding: 12px 10px;
             }
@@ -318,11 +322,11 @@
             <a href="pages/indexing.html">Indexing</a>
 
             <!-- GUIDELINES DROPDOWN -->
-            <div class="dropdown" id="guidelines-dropdown">
-                <button class="dropbtn">
+            <details class="dropdown">
+                <summary class="dropbtn">
                     Guidelines
                     <span class="arrow">▼</span>
-                </button>
+                </summary>
                 <div class="dropdown-menu">
                     <a href="pages/author-guidelines.html">Author Guidelines</a>
                     <a href="pages/peer-review.html">Peer Review Policy</a>
@@ -332,19 +336,19 @@
                     <a href="pages/open-access-policy.html">Open Access Policy</a>
                     <a href="pages/copyright.html">Copyright & Licensing</a>
                 </div>
-            </div>
+            </details>
 
             <!-- ARTICLES DROPDOWN -->
-            <div class="dropdown" id="articles-dropdown">
-                <button class="dropbtn">
+            <details class="dropdown">
+                <summary class="dropbtn">
                     Articles
                     <span class="arrow">▼</span>
-                </button>
+                </summary>
                 <div class="dropdown-menu">
                     <a href="pages/current-issue.html">Current Issue</a>
                     <a href="pages/previous-volume.html">Previous Volumes</a>
                 </div>
-            </div>
+            </details>
 
             <a href="pages/publication-fee.html">Fee</a>
             <a href="pages/contact.html">Contact</a>
@@ -355,7 +359,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.getElementById('nav-menu');
-            const dropdowns = document.querySelectorAll('.dropdown');
+            const dropdowns = document.querySelectorAll('details.dropdown');
             
             // Function to check if mobile
             function isMobile() {
@@ -372,80 +376,43 @@
                     // Close all dropdowns when closing menu
                     if (!navMenu.classList.contains('active')) {
                         dropdowns.forEach(drop => {
-                            drop.classList.remove('active');
+                            drop.removeAttribute('open');
                         });
                     }
                 });
             }
 
-            // Handle dropdowns based on device
-            function setupDropdowns() {
-                if (isMobile()) {
-                    // Mobile: click to toggle
-                    dropdowns.forEach(dropdown => {
-                        const btn = dropdown.querySelector('.dropbtn');
-                        
-                        // Remove existing listeners to prevent duplicates
-                        btn.removeEventListener('click', mobileClickHandler);
-                        btn.addEventListener('click', mobileClickHandler);
-                    });
-
-                    // Close dropdowns when clicking outside
-                    document.removeEventListener('click', outsideClickHandler);
-                    document.addEventListener('click', outsideClickHandler);
-                } else {
-                    // Desktop: remove mobile-specific handlers
-                    dropdowns.forEach(dropdown => {
-                        const btn = dropdown.querySelector('.dropbtn');
-                        btn.removeEventListener('click', mobileClickHandler);
-                        dropdown.classList.remove('active'); // Reset any open dropdowns
-                    });
-                    
-                    document.removeEventListener('click', outsideClickHandler);
-                }
-            }
-
-            // Mobile click handler for dropdowns
-            function mobileClickHandler(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const dropdown = this.closest('.dropdown');
-                const wasActive = dropdown.classList.contains('active');
-                
-                // Close all other dropdowns
-                dropdowns.forEach(other => {
-                    if (other !== dropdown) {
-                        other.classList.remove('active');
+            // Close mobile menu when clicking a link
+            const navLinks = document.querySelectorAll('.nav-container a:not(.dropbtn)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (isMobile()) {
+                        navMenu.classList.remove('active');
+                        dropdowns.forEach(drop => {
+                            drop.removeAttribute('open');
+                        });
                     }
                 });
-                
-                // Toggle current dropdown
-                if (wasActive) {
-                    dropdown.classList.remove('active');
-                } else {
-                    dropdown.classList.add('active');
-                }
-            }
+            });
 
-            // Handle clicks outside dropdowns on mobile
-            function outsideClickHandler(e) {
-                if (!isMobile()) return;
-                
-                const isClickInside = e.target.closest('.dropdown') || e.target.closest('.menu-toggle');
-                
-                if (!isClickInside) {
-                    dropdowns.forEach(drop => {
-                        drop.classList.remove('active');
-                    });
+            // Handle clicks outside to close mobile menu
+            document.addEventListener('click', function(e) {
+                if (isMobile() && navMenu.classList.contains('active')) {
+                    const isClickInside = e.target.closest('.nav-container') || e.target.closest('.menu-toggle');
+                    if (!isClickInside) {
+                        navMenu.classList.remove('active');
+                        dropdowns.forEach(drop => {
+                            drop.removeAttribute('open');
+                        });
+                    }
                 }
-            }
+            });
 
             // Prevent dropdown from closing when clicking inside menu on mobile
             if (navMenu) {
                 navMenu.addEventListener('click', function(e) {
                     if (isMobile() && e.target.closest('.dropdown-menu')) {
-                        e.stopPropagation(); // Allow link clicks to work
+                        e.stopPropagation();
                     }
                 });
             }
@@ -455,8 +422,6 @@
             window.addEventListener('resize', function() {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function() {
-                    setupDropdowns();
-                    
                     // Close mobile menu if switching to desktop
                     if (!isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
@@ -464,22 +429,9 @@
                     
                     // Reset dropdowns on resize
                     dropdowns.forEach(drop => {
-                        drop.classList.remove('active');
+                        drop.removeAttribute('open');
                     });
                 }, 250);
-            });
-
-            // Initial setup
-            setupDropdowns();
-
-            // Close mobile menu when clicking a link (optional)
-            const navLinks = document.querySelectorAll('.nav-container a:not(.dropbtn)');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (isMobile()) {
-                        navMenu.classList.remove('active');
-                    }
-                });
             });
         });
     </script>
