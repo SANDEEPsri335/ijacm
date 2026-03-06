@@ -1,119 +1,124 @@
 <style>
-    /* ================= NAVBAR (Inline Box Style) ================= */
+    /* ================= OPTIMIZED NAVBAR WITH AUTO-FONT ================= */
 
     .navbar {
         background: linear-gradient(180deg, #0b2b4a, #061d33);
         height: 72px;
-        /* BIGGER */
         display: flex;
         align-items: center;
         justify-content: center;
-        /* Center content on desktop */
         position: relative;
         z-index: 1000;
         padding: 0 20px;
+        width: 100%;
     }
 
-    /* NAV CONTAINER */
-
     .nav-container {
-        max-width: 1200px;
+        max-width: 1400px; /* Increased from 1200px */
         width: 100%;
         margin: auto;
         display: flex;
         align-items: center;
-        gap: 28px;
+        gap: clamp(8px, 1.5vw, 20px); /* Responsive gap */
         justify-content: center;
-        /* Center links */
+        flex-wrap: nowrap;
     }
 
-    /* NAV LINKS */
-
-    .nav-container a {
+    /* DYNAMIC FONT SIZING */
+    .nav-container a, 
+    .dropdown > summary {
         color: #ffffff;
-        font-size: 16px;
-        /* IMPROVED SIZE */
+        font-size: clamp(13px, 1.2vw, 16px); /* Auto-adjusts between 13-16px */
         font-weight: 500;
-        padding: 12px 6px;
+        padding: 12px clamp(4px, 0.8vw, 8px); /* Responsive padding */
         text-decoration: none;
         transition: color 0.3s ease;
-    }
-
-    .nav-container a:hover {
-        color: #00c6ff;
+        white-space: nowrap;
     }
 
     /* HOME ICON */
-
     .nav-home {
-        font-size: 18px;
+        font-size: clamp(14px, 1.3vw, 18px);
     }
 
     /* DROPDOWN WRAPPER */
-
     .dropdown {
         position: relative;
     }
 
-    /* DROPDOWN PANEL (BOX STYLE) */
+    details.dropdown {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
 
+    details.dropdown > summary {
+        list-style: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    details.dropdown > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details.dropdown > summary::after {
+        content: '▾';
+        font-size: 0.9em;
+        margin-left: 4px;
+        opacity: 0.8;
+    }
+
+    .nav-container a:hover,
+    details.dropdown > summary:hover {
+        color: #00c6ff;
+    }
+
+    /* DROPDOWN PANEL */
     .dropdown-menu {
         position: absolute;
-        top: 120%;
-        /* PUSH DOWN */
+        top: 100%;
         left: 0;
-        width: 320px;
-        /* INCREASE WIDTH */
+        min-width: 280px;
         background: #0b2b4a;
-        padding: 14px;
+        padding: 12px;
         border-radius: 12px;
-        display: flex;
+        display: none;
         flex-direction: column;
-        gap: 10px;
-        /* SPACE BETWEEN BOXES */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(12px);
-        transition: all 0.3s ease;
+        gap: 8px;
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
         z-index: 9999;
+        margin-top: 8px;
     }
 
-    /* SHOW DROPDOWN */
-
-    .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+    /* Show dropdown on hover for desktop */
+    @media (min-width: 1001px) {
+        .dropdown:hover .dropdown-menu,
+        details.dropdown[open] .dropdown-menu {
+            display: flex;
+        }
     }
-
-    /* INDIVIDUAL BOX ITEMS */
 
     .dropdown-menu a {
         background: #103a63;
         color: #ffffff;
-        padding: 14px 18px;
-        /* BIGGER BOX */
-        font-size: 15px;
+        padding: 12px 16px;
+        font-size: 14px;
         font-weight: 500;
         border-radius: 8px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        transition: all 0.25s ease;
+        white-space: nowrap;
     }
-
-    /* BOX HOVER EFFECT */
 
     .dropdown-menu a:hover {
         background: #145a8d;
-        transform: translateX(6px);
-        color: #ffffff;
-        /* Ensure text stays white */
+        transform: translateX(4px);
     }
 
-    /* MENU TOGGLE (HAMBURGER) - DEFAULT HIDDEN */
-
+    /* MENU TOGGLE */
     .menu-toggle {
         display: none;
         font-size: 24px;
@@ -125,23 +130,49 @@
         transform: translateY(-50%);
     }
 
-    /* RESPONSIVE DROPDOWN (Mobile Tap) & MOBILE MENU */
+    /* MEDIA QUERIES - Progressive adjustment */
+    @media (max-width: 1300px) {
+        .nav-container a, 
+        .dropdown > summary {
+            font-size: 14px;
+            padding: 12px 4px;
+        }
+        
+        .nav-container {
+            gap: 12px;
+        }
+    }
+
+    @media (max-width: 1150px) {
+        .nav-container a, 
+        .dropdown > summary {
+            font-size: 13px;
+            padding: 12px 3px;
+        }
+        
+        .nav-container {
+            gap: 8px;
+        }
+        
+        /* Hide less important items if needed */
+        .nav-container a[href*="indexing"],
+        .nav-container a[href*="publication-fee"] {
+            display: none; /* Hides on smaller screens */
+        }
+    }
 
     @media (max-width: 1000px) {
         .navbar {
             justify-content: space-between;
-            /* Space out logo/content */
         }
 
         .menu-toggle {
             display: block;
-            /* Show hamburger */
         }
 
         .nav-container {
             position: absolute;
             top: 72px;
-            /* Height of navbar */
             left: 0;
             width: 100%;
             background: #061d33;
@@ -150,188 +181,96 @@
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            /* Hide by default */
             transition: max-height 0.4s ease-out;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
             align-items: flex-start;
-            /* Left align items in mobile menu */
+            z-index: 1000;
         }
 
         .nav-container.active {
             max-height: 100vh;
-            /* Allow enough height when opened */
             overflow-y: auto;
-            /* Scroll if too tall */
             padding-bottom: 20px;
         }
 
-        .nav-container>a,
+        /* Reset mobile styles */
+        .nav-container a, 
+        .dropdown > summary,
+        .nav-container a[href*="indexing"],
+        .nav-container a[href*="publication-fee"] {
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            white-space: normal;
+        }
+
         .dropdown {
             width: 100%;
-            padding: 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-container>a {
-            padding: 15px 25px;
-            display: block;
-        }
-
-        .dropdown>a.dropbtn {
-            display: block;
-            padding: 15px 25px;
+        details.dropdown > summary {
             width: 100%;
-            display: flex;
             justify-content: space-between;
         }
 
-        /* Mobile Dropdown styles */
+        details.dropdown > summary::after {
+            content: '▾';
+        }
+
         .dropdown-menu {
             position: static;
             width: 100%;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
             box-shadow: none;
             background: #041424;
-            /* Slightly darker */
-            display: none;
-            /* Hidden by default in mobile, toggled via JS */
-            padding: 0;
             border-radius: 0;
-        }
-
-        .dropdown.active .dropdown-menu {
-            display: flex;
-            /* Show when active */
+            padding: 0;
+            margin-top: 0;
         }
 
         .dropdown-menu a {
             background: transparent;
             padding-left: 40px;
-            /* Indent */
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 0;
+            transform: none;
         }
 
-        .dropdown:hover .dropdown-menu {
-            /* Disable hover effect on mobile, rely on click */
-            display: none;
-        }
-
-        .dropdown.active:hover .dropdown-menu {
-            display: flex;
+        .dropdown-menu a:hover {
+            background: #103a63;
+            transform: none;
         }
     }
 
-    /* ===== MATCH SUMMARY WITH NAV LINK STYLES ===== */
-
-    details.dropdown {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    /* summary = nav link */
-
-    details.dropdown>summary {
-        list-style: none;
-        cursor: pointer;
-        /* SAME AS .nav-container a */
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: 500;
-        padding: 12px 6px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        transition: color 0.3s ease;
-    }
-
-    /* remove default arrow */
-
-    details.dropdown>summary::-webkit-details-marker {
-        display: none;
-    }
-
-    /* hover color SAME AS NAV LINKS */
-
-    details.dropdown>summary:hover {
-        color: #00c6ff;
-    }
-
-    /* active/open state SAME AS HOVER */
-
-    details.dropdown[open]>summary {
-        color: #00c6ff;
-    }
-
-    /* dropdown visibility */
-
-    details.dropdown .dropdown-menu {
-        display: none;
-    }
-
-    /* desktop hover */
-
-    @media (min-width: 1001px) {
-        details.dropdown:hover .dropdown-menu {
-            display: flex;
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-    }
-
-    /* mobile open */
-
-    details.dropdown[open] .dropdown-menu {
-        display: flex;
-    }
-
-    @media (max-width: 1000px) {
-
-        /* Make dropdown behave like normal menu item in mobile */
-        details.dropdown {
-            display: block;
-            width: 100%;
-        }
-
-        details.dropdown>summary {
-            width: 100%;
-            padding: 15px 25px;
-            /* SAME as mobile nav links */
-            justify-content: space-between;
-        }
-
-        /* Ensure dropdown menu aligns correctly */
-        details.dropdown .dropdown-menu {
-            width: 100%;
+    /* For very large screens, show all items */
+    @media (min-width: 1400px) {
+        .nav-container a, 
+        .dropdown > summary {
+            font-size: 16px;
+            padding: 12px 10px;
         }
     }
 </style>
+
 <nav class="navbar">
-    <!-- Hamburger Icon -->
     <div class="menu-toggle">
         <i class="fas fa-bars"></i>
     </div>
 
     <div class="nav-container" id="nav-menu">
-
         <a href="index.html" class="nav-home">
             <i class="fas fa-home"></i> Home
         </a>
 
-        <a href="pages/about.html">About the Publication</a>
+        <a href="pages/about.html">About</a> <!-- Shortened -->
         <a href="pages/aims-scope.html">Aims & Scope</a>
         <a href="pages/editorial-board.html">Editorial Board</a>
         <a href="pages/indexing.html">Indexing</a>
 
-        <!-- GUIDELINES -->
+        <!-- GUIDELINES DROPDOWN -->
         <details class="dropdown">
-            <summary class="dropbtn">Guidelines ▾</summary>
+            <summary>Guidelines</summary>
             <div class="dropdown-menu">
-                <a href="pages/author-guidelines.html">Author</a>
+                <a href="pages/author-guidelines.html">Author Guidelines</a>
                 <a href="pages/peer-review.html">Peer Review Policy</a>
                 <a href="pages/reviewer-guidelines.html">Reviewer Guidelines</a>
                 <a href="pages/publication-ethics.html">Publication Ethics</a>
@@ -341,22 +280,40 @@
             </div>
         </details>
 
+        <!-- ARTICLES DROPDOWN -->
         <details class="dropdown">
-            <summary class="dropbtn">Articles ▾</summary>
+            <summary>Articles</summary>
             <div class="dropdown-menu">
                 <a href="pages/current-issue.html">Current Issue</a>
                 <a href="pages/previous-volume.html">Previous Volumes</a>
             </div>
         </details>
 
-
-        <!-- ARTICLES -->
-
-
-        <!-- ARTICLES -->
-
-        <a href="pages/publication-fee.html">Publication Fee</a>
+        <a href="pages/publication-fee.html">Fee</a> <!-- Shortened -->
         <a href="pages/contact.html">Contact</a>
-
     </div>
 </nav>
+
+<script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Handle dropdowns on mobile
+        if (window.innerWidth <= 1000) {
+            const dropdowns = document.querySelectorAll('details.dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('toggle', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        }
+    });
+</script>
