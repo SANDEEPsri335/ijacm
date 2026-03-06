@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>International Journal of Advanced Computingand Mechanical Systems | IJACM</title>
+    <meta name="description" content="Read International Journal of Advanced Computingand Mechanical Systems in International Journal of Advanced Computing and Mechanical Systems. Open access engineering research.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https:/ijacm.com/pages/article-detail.html">
+    
+    
+    
+    
+    <meta charset="UTF-8">
+    
+    
+    
+    <!-- This script gets the article ID from URL -->
+    <script>
+        // Get article ID from URL like: article-detail.html?id=IJACM-BEBB7D71
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+        
+        // If no ID found, redirect to current issue page
+        if (!articleId) {
+            window.location.href = 'current-issue.html';
+        }
+        
+        // Make article ID available to other scripts
+        window.currentArticleId = articleId;
+        console.log("Loading article ID:", articleId);
+    </script>
+    
+    <!-- GOOGLE SCHOLAR META TAGS (Will be filled by JavaScript) -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS Styles -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0d1b2a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            height: 130px;
+            display: flex;
+            padding: 10px 40px;
+            align-items: center;
+            background: #1a2639;
+            justify-content: space-between;
+        }
+        
+        .logo img {
+            height: 110px;
+            width: auto;
+        }
+        
+        .title {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .title h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .submit-btn a {
+            background: #00b0ff;
+            color: #0d1b2a;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        main {
+            min-height: calc(100vh - 130px);
+            padding: 40px 20px;
+        }
+        
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(26, 38, 57, 0.8);
+            border-radius: 15px;
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 50px;
+            color: #ff6b6b;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #00b0ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00b0ff;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+            }
+            
+            .title {
+                margin: 15px 0;
+            }
+            
+            .article-container {
+                padding: 25px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../assets/logo.png" alt="IJACM Logo">
+        </div>
+        <div class="title">
+            <h1>International Journal of Advanced Computing<br>and Mechanical Systems</h1>
+        </div>
+        <div class="submit-btn">
+            <a href="submit.html">Submit Paper</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="article-container" id="article-container">
+            <!-- Loading message - will be replaced -->
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading article...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div style="text-align: center; padding: 20px; background: #1a2639; margin-top: 40px;">
+        <p>&copy; 2025 International Journal of Advanced Computing and Mechanical Systems</p>
+        <p><a href="../index.html" style="color: #00b0ff;">Home</a> | <a href="current-issue.html" style="color: #00b0ff;">Current Issue</a></p>
+    </div>
+
+    <!-- LOAD JAVASCRIPT -->
+    <script src="../js/article-detail.js"></script>
+</body>
+</html>
