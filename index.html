@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>International Journal of Advanced Computing and Mechanical Systems (IJACM) </title>
-    <meta name="description"
-        content="IJACM is an international peer-reviewed open access research journal publishing quality papers in computer science, mechanical engineering, management and applied sciences.">
+    <title>International Journal of Advanced Computing and Mechanical Systems (IJACM)</title>
+    <meta name="description" content="International Journal of Advanced Computing and Mechanical Systems (IJACM) is an international peer-reviewed open access research journal publishing quality papers in computer science, mechanical engineering, management and applied sciences.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://ijacm.com/">
-
-
-
-
     <meta charset="UTF-8">
-
-
-    <meta name="keywords"
-        content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
-
+    <meta name="keywords" content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ================= GLOBAL STYLES ================= */
-
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
         :root {
@@ -122,14 +111,12 @@
             .journal-wrapper {
                 flex-direction: column;
             }
-
             .journal-content p {
                 text-align: left;
             }
         }
 
         /* SCROLLER */
-
         .scroll-container {
             width: 100%;
             overflow: hidden;
@@ -149,60 +136,29 @@
             padding-left: 100%;
         }
 
-        /* Pause animation on hover */
-
         .scroll-container:hover .scroll-text {
             animation-play-state: paused;
         }
 
         @keyframes scroll-right-left {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
-        .scroll-call,
-        .icon-call {
-            color: #d32f2f !important;
-        }
-
-        .scroll-frequency,
-        .icon-frequency {
-            color: #0b5ed7 !important;
-        }
-
-        .scroll-template,
-        .icon-template {
-            color: #2e7d32 !important;
-        }
+        .scroll-call, .icon-call { color: #d32f2f !important; }
+        .scroll-frequency, .icon-frequency { color: #0b5ed7 !important; }
+        .scroll-template, .icon-template { color: #2e7d32 !important; }
 
         /* BLINK ANIMATION */
-
         .blink-icon {
             font-size: 18px;
             margin: 0 6px;
             animation: blinkBoom 1.1s infinite;
         }
-
         @keyframes blinkBoom {
-            0% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.4);
-            }
-
-            100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.4); }
+            100% { opacity: 0.3; transform: scale(1); }
         }
 
         /* SUBMIT BUTTON - REDUCED SIZE */
@@ -210,26 +166,21 @@
             margin-top: 15px;
             text-align: center;
         }
-
         .submit-btn a {
             display: inline-block;
             padding: 8px 18px;
-            /* Reduced from 12px 25px */
             background-color: #0b5ed7;
             color: #fff;
             font-weight: 600;
             font-size: 14px;
-            /* Added font size control */
             border-radius: 6px;
             transition: background 0.3s ease;
         }
-
         .submit-btn a:hover {
             background-color: #084298;
         }
 
         /* LATEST ARTICLES */
-
         .section-title-center {
             text-align: center;
             font-size: 28px;
@@ -255,12 +206,10 @@
             border-left: 6px solid #f2b705;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-
         .article-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
-
         .article-title {
             font-size: 16.5px;
             font-weight: 700;
@@ -268,7 +217,6 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
-
         .article-authors {
             font-size: 14.5px;
             color: #555;
@@ -276,7 +224,6 @@
         }
 
         /* ================= LATEST ARTICLES STYLES ================= */
-
         .latest-articles {
             margin: 60px 0;
             padding: 40px 20px;
@@ -287,7 +234,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .latest-articles::before {
             content: '';
             position: absolute;
@@ -299,23 +245,13 @@
             background-size: 200% 100%;
             animation: gradientMove 3s ease infinite;
         }
-
         @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* INFO COLUMNS */
-
         .three-column-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -328,7 +264,6 @@
             padding: 25px;
             border-radius: 8px;
         }
-
         .column-heading {
             background: #ffc107;
             color: #000;
@@ -339,28 +274,46 @@
             border-radius: 6px;
             margin-bottom: 10px;
         }
-
         .column-box ul {
             padding-left: 20px;
             list-style: disc;
         }
-
         .column-box li {
             margin-bottom: 7px;
             color: #000;
         }
 
+        /* JOURNAL PARTICULARS TABLE (new style) */
+        .particulars-table {
+            width: 100%;
+            background: #f8f9fa;
+            border-radius: var(--radius-sm);
+            border-collapse: collapse;
+            margin: 25px 0 10px 0;
+            font-size: 15px;
+            box-shadow: var(--shadow-sm);
+            color: #000;
+        }
+        .particulars-table td {
+            padding: 10px 15px;
+            border: 1px solid #dee2e6;
+        }
+        .particulars-table td:first-child {
+            font-weight: 700;
+            background-color: #e9ecef;
+            width: 30%;
+        }
+        .particulars-table td:last-child {
+            background-color: #ffffff;
+        }
+
         /* RESPONSIVE */
-
         @media (max-width: 900px) {
-
-            /* Journal Hero Section */
             .journal-wrapper {
                 flex-direction: column;
                 align-items: center;
                 gap: 30px;
             }
-
             .journal-image {
                 width: 100%;
                 max-width: 450px;
@@ -368,46 +321,35 @@
                 flex-direction: column;
                 align-items: center;
             }
-
             .journal-content {
                 width: 100%;
             }
-
             .journal-content p {
                 text-align: left;
             }
-
             .journal-title {
                 text-align: center;
                 font-size: 26px;
             }
-
             .submit-btn {
                 margin-top: 20px;
                 margin-bottom: 10px;
             }
-
-            /* Grids and Columns */
             .three-column-section,
             .articles-grid {
                 grid-template-columns: 1fr;
             }
-
             .three-column-section {
                 margin: 30px 0;
             }
         }
 
-        /* Add to your existing CSS */
-
-        /* Article buttons styling */
         .article-buttons {
             margin-top: 15px;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-
         .btn-pdf,
         .btn-view {
             padding: 8px 16px;
@@ -420,32 +362,26 @@
             align-items: center;
             gap: 6px;
         }
-
         .btn-pdf {
             background: #d32f2f;
             color: white;
             border: none;
         }
-
         .btn-pdf:hover {
             background: #b71c1c;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3);
         }
-
         .btn-view {
             background: #6c757d;
             color: white;
             border: none;
         }
-
         .btn-view:hover {
             background: #545b62;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
         }
-
-        /* Article date styling */
         .article-date {
             color: #666;
             font-size: 14px;
@@ -454,22 +390,8 @@
             align-items: center;
             gap: 5px;
         }
-
-        /* Debug panel (remove in production) */
-        .debug-panel {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            z-index: 9999;
-        }
     </style>
 </head>
-
 <body>
     <!-- ================= HEADER ================= -->
     <div id="header-placeholder"></div>
@@ -485,9 +407,7 @@
                 <div class="journal-image">
                     <img src="assets/coverpage.jpeg" alt="IJACM Journal Cover" loading="lazy">
                     <div class="submit-btn">
-                        <a href="pages/submit.html">
-                            Submit Paper
-                        </a>
+                        <a href="pages/submit.html">Submit Paper</a>
                     </div>
                 </div>
 
@@ -496,29 +416,20 @@
                     <div class="scroll-container">
                         <div class="scroll-text">
                             <span class="blink-icon icon-call">📢</span>
-                            <span class="scroll-call">
-                                Call For Papers: Volume 2 Issue 2
-                            </span>
+                            <span class="scroll-call">Call For Papers: Volume 2 Issue 3</span>
                             <span class="blink-icon icon-call">📢</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 
                             <span class="blink-icon icon-frequency">📅</span>
-                            <span class="scroll-frequency">
-                                Publication Frequency: Monthly
-                            </span>
+                            <span class="scroll-frequency">Publication Frequency: Monthly</span>
                             <span class="blink-icon icon-frequency">📅</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 
                             <span class="blink-icon icon-call">👉 🟦🔗</span>
-                            <span class="scroll-call">
-                                Our journal is officially registered with Crossref and assigns DOIs.
-                            </span>
+                            <span class="scroll-call">Our journal is officially registered with Crossref and assigns DOIs.</span>
                             <span class="blink-icon icon-call">👉 🟦🔗</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 
-                            <a href="assets/editors/IJACM_Paper_Template_A4_Word.docx" target="_blank"
-                                style="text-decoration: none;">
+                            <a href="assets/editors/IJACM_Paper_Template_A4_Word.docx" target="_blank" style="text-decoration: none;">
                                 <span class="blink-icon icon-template">📝</span>
-                                <span class="scroll-template">
-                                    Click To Download Word Template
-                                </span>
+                                <span class="scroll-template">Click To Download Word Template</span>
                                 <span class="blink-icon icon-template">📝</span>
                             </a>
                         </div>
@@ -528,11 +439,27 @@
                     <h1 class="journal-title">International Journal of Advanced Computing and Mechanical Systems (IJACM)</h1>
 
                     <p>
-                        IJACM is a peer-reviewed open access research journal that publishes high-quality
+                        International Journal of Advanced Computing and Mechanical Systems (IJACM) is a peer-reviewed open access research journal that publishes high-quality
                         original research papers, review articles and case studies.
                     </p>
 
-                    <h2 style="color: #ffffff; margin-top: 20px; margin-bottom: 10px;">Why Publish with IJACM?</h2>
+                    <!-- ===== NEW TABLE: JOURNAL PARTICULARS ===== -->
+                    <!-- exactly as described in the image, placed right after the description -->
+                    <table class="particulars-table">
+                        <tr><td>Title</td><td>International Journal of Advanced Computing and Mechanical Systems (IJACM)</td></tr>
+                        <tr><td>Frequency</td><td>Monthly (12 issues per year)</td></tr>
+                        <tr><td>E-ISSN</td><td>Noy Yet Assigned</td></tr>
+                        <tr><td>Publisher name</td><td>Scholar Sphere Publications</td></tr>
+                        <tr><td>Publisher address</td><td>Thalupulapalle, Chittoor, Andhra Pradesh - 517 124</td></tr>
+                        <tr><td>Starting Year</td><td>2025</td></tr>
+                        <tr><td>Subject</td><td>Multi-Disciplinary Subjects (Science, Engineering, and Management)</td></tr>
+                        <tr><td>Language</td><td>English Only</td></tr>
+                        <tr><td>Publication Format</td><td>Online Only</td></tr>
+                        <tr><td>Email Id</td><td>editor@ijacm.com, ijacmeditor@gmail.com</td></tr>
+                        <tr><td>Mobile No.</td><td>+91-9030475343</td></tr>
+                    </table>
+
+                    <h2 style="color: #ffffff; margin-top: 20px; margin-bottom: 10px;">Why Publish with International Journal of Advanced Computing and Mechanical Systems (IJACM)?</h2>
                     <ul style="list-style: disc; padding-left: 20px; margin-bottom: 20px; color: #b0bec5;">
                         <li>International peer-reviewed journal</li>
                         <li>Open access publication</li>
@@ -559,19 +486,12 @@
             <div id="latest-articles-container" class="articles-grid">
                 <!-- Dynamic content loaded via latest-articles.js -->
                 <div style="text-align:center; width:100%; grid-column: 1 / -1; color:#fff; padding: 40px;">
-                    <div
-                        style="border: 3px solid rgba(255, 255, 255, 0.1); border-top: 3px solid #00b0ff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px;">
-                    </div>
+                    <div style="border: 3px solid rgba(255, 255, 255, 0.1); border-top: 3px solid #00b0ff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
                     <p style="color: #00b0ff;">Loading latest articles...</p>
                     <style>
                         @keyframes spin {
-                            0% {
-                                transform: rotate(0deg);
-                            }
-
-                            100% {
-                                transform: rotate(360deg);
-                            }
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
                         }
                     </style>
                 </div>
@@ -616,36 +536,27 @@
             </div>
 
             <!-- ================= FAQ SECTION ================= -->
-            <section class="faq-section"
-                style="margin-top: 50px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
+            <section class="faq-section" style="margin-top: 50px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
                 <h2 class="section-title-center" style="margin-bottom: 30px;">Frequently Asked Questions</h2>
 
                 <div class="faq-item" style="margin-bottom: 20px;">
-                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Is IJACM an open access journal?
-                    </h3>
-                    <p style="color: #f5f7ff;">Yes, IJACM is a fully open access international research journal,
-                        ensuring that all published research papers are freely accessible to the global academic
-                        community.</p>
+                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Is International Journal of Advanced Computing and Mechanical Systems (IJACM) an open access journal?</h3>
+                    <p style="color: #f5f7ff;">Yes, International Journal of Advanced Computing and Mechanical Systems (IJACM) is a fully open access international research journal, ensuring that all published research papers are freely accessible to the global academic community.</p>
                 </div>
 
                 <div class="faq-item" style="margin-bottom: 20px;">
-                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">What is the review process
-                        duration?</h3>
-                    <p style="color: #f5f7ff;">We follow a rapid yet rigorous peer review process. </p>
+                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">What is the review process duration?</h3>
+                    <p style="color: #f5f7ff;">We follow a rapid yet rigorous peer review process.</p>
                 </div>
 
                 <div class="faq-item" style="margin-bottom: 20px;">
-                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">How can I submit my research
-                        paper?</h3>
-                    <p style="color: #f5f7ff;">You can submit your manuscript through our <a href="pages/submit.html"
-                            style="color: #00b0ff; text-decoration: underline;">online submission system</a> or by
-                        emailing the editorial office directly.</p>
+                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">How can I submit my research paper?</h3>
+                    <p style="color: #f5f7ff;">You can submit your manuscript through our <a href="pages/submit.html" style="color: #00b0ff; text-decoration: underline;">online submission system</a> or by emailing the editorial office directly.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Does IJACM provide a DOI?</h3>
-                    <p style="color: #f5f7ff;">Yes, all accepted and published papers are assigned a unique Digital
-                        Object Identifier (DOI) via Crossref to ensure permanent citation and indexing.</p>
+                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Does International Journal of Advanced Computing and Mechanical Systems (IJACM) provide a DOI?</h3>
+                    <p style="color: #f5f7ff;">Yes, all accepted and published papers are assigned a unique Digital Object Identifier (DOI) via Crossref to ensure permanent citation and indexing.</p>
                 </div>
             </section>
         </div>
@@ -662,56 +573,35 @@
 
     <!-- INLINE SCRIPT TO ENSURE LATEST ARTICLES WORK -->
     <script>
-        // Fallback script to ensure latest articles load
         document.addEventListener('DOMContentLoaded', function () {
             console.log('DOM fully loaded - checking latest articles...');
-
-            // Check if latest-articles.js loaded properly
             setTimeout(function () {
                 const container = document.getElementById('latest-articles-container');
                 if (container && container.innerHTML.includes('Loading')) {
                     console.log('Loading articles manually...');
-
-                    // Simple fallback data
-                    const articles = [{
-                        title: "Trails",
-                        authors: "Author8",
-                        date: "19 Jun 2027"
-                    }, {
-                        title: "Trails",
-                        authors: "Karan, Vishnu",
-                        date: "24 Dec 2026"
-                    }, {
-                        title: "Trail4",
-                        authors: "Ram, Ravi, Hari",
-                        date: "19 Jun 2026"
-                    }];
-
+                    const articles = [
+                        { title: "Trails", authors: "Author8", date: "19 Jun 2027" },
+                        { title: "Trails", authors: "Karan, Vishnu", date: "24 Dec 2026" },
+                        { title: "Trail4", authors: "Ram, Ravi, Hari", date: "19 Jun 2026" }
+                    ];
                     container.innerHTML = '';
-
                     articles.forEach(article => {
                         const articleHTML = `
-              <div class="article-card">
-                <h3 class="article-title">${article.title}</h3>
-                <p class="article-authors">${article.authors}</p>
-                <p style="color: #666; font-size: 14px; margin-top: 5px;">${article.date}</p>
-                <div style="margin-top: 15px;">
-                  <button style="background: #0b5ed7; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 10px; cursor: pointer;">
-                    PDF
-                  </button>
-                  <button style="background: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
-                    View More
-                  </button>
-                </div>
-              </div>
-            `;
+                            <div class="article-card">
+                                <h3 class="article-title">${article.title}</h3>
+                                <p class="article-authors">${article.authors}</p>
+                                <p style="color: #666; font-size: 14px; margin-top: 5px;">${article.date}</p>
+                                <div style="margin-top: 15px;">
+                                    <button style="background: #0b5ed7; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 10px; cursor: pointer;">PDF</button>
+                                    <button style="background: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">View More</button>
+                                </div>
+                            </div>
+                        `;
                         container.innerHTML += articleHTML;
                     });
                 }
             }, 1000);
         });
     </script>
-
 </body>
-
 </html>
