@@ -1,489 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IJACM - Navbar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        /* ================= FIXED NAVBAR WITH PROPER DROPDOWNS ================= */
+<style>
+    /* ================= FOOTER ================= */
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: #061a2f;
+        color: #e0e6ed;
+        padding: 60px 80px;
+        /* Increased padding */
+        gap: 50px;
+        margin-top: auto;
+        font-family: 'Poppins', sans-serif;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* MAIN TWO-COLUMN AREA */
+    .footer-main {
+        display: grid;
+        grid-template-columns: 2fr 1.2fr;
+        /* Adjusted ratio for better balance */
+        gap: 60px;
+        flex: 1;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #0b2c4d;
-            min-height: 100vh;
-        }
+    /* FOLLOW US */
+    .footer-follow {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 150px;
+    }
 
-        .navbar {
-            background: linear-gradient(180deg, #0b2b4a, #061d33);
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1000;
-            padding: 0 20px;
-            width: 100%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
+    /* HEADINGS */
+    .footer h4 {
+        font-size: 18px;
+        /* Bigger heading */
+        margin-bottom: 25px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        color: #00b0ff;
+        /* Unified Blue */
+    }
 
-        .nav-container {
-            max-width: 1400px;
-            width: 100%;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            gap: clamp(8px, 1.5vw, 20px);
-            justify-content: center;
-            flex-wrap: nowrap;
-        }
+    .footer h4::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 3px;
+        border-radius: 2px;
+        background: #00b0ff;
+        /* Unified Blue */
+    }
 
-        /* Base link styles */
-        .nav-container a, 
-        details.dropdown > summary {
-            color: #ffffff;
-            font-size: clamp(13px, 1.2vw, 16px);
-            font-weight: 500;
-            padding: 12px clamp(4px, 0.8vw, 8px);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            list-style: none;
-        }
+    /* Specific overrides removed for uniform color */
 
-        /* Remove default details marker */
-        details.dropdown > summary::-webkit-details-marker {
-            display: none;
-        }
+    /* TEXT */
+    .footer p {
+        font-size: 15px;
+        /* Bigger text */
+        line-height: 1.8;
+        /* Better spacing */
+        margin: 0;
+        color: #b0bec5;
+    }
 
-        .nav-home {
-            font-size: clamp(14px, 1.3vw, 18px);
-            gap: 5px;
-        }
+    /* ADDRESS SPECIAL STYLING */
+    .address-block {
+        margin-bottom: 8px;
+        /* Reduced spacing */
+    }
 
-        .nav-container a:hover,
-        details.dropdown > summary:hover {
-            color: #00c6ff;
-        }
+    .contact-block {
+        margin-top: 5px;
+        /* Reduced spacing */
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 
-        /* DROPDOWN STYLES */
-        details.dropdown {
-            position: relative;
-            display: inline-block;
-        }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+    }
 
-        details.dropdown > summary {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
+    .contact-item i {
+        color: #00e5ff;
+        width: 20px;
+        text-align: center;
+    }
 
-        .arrow {
-            font-size: 14px;
-            transition: transform 0.3s ease;
-            margin-left: 4px;
-        }
+    /* LINKS */
+    .footer a {
+        color: #e0e6ed;
+        text-decoration: none;
+        transition: 0.3s;
+    }
 
-        details.dropdown[open] > summary .arrow {
-            transform: rotate(180deg);
-        }
+    .footer a:hover {
+        color: #00e5ff;
+        padding-left: 5px;
+        /* Subtle movement */
+    }
 
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            min-width: 280px;
-            background: #0b2b4a;
-            padding: 12px;
-            border-radius: 12px;
-            display: none;
+    /* COPYRIGHT & DESIGNER */
+    .copyright-text {
+        font-size: 13px !important;
+        margin-top: 20px !important;
+        color: #90a4ae !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+    }
+
+    .copyright-text a {
+        color: #00b0ff;
+        /* Blue color */
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .copyright-text a:hover {
+        text-decoration: underline;
+    }
+
+    .designer-text {
+        margin-top: 20px !important;
+        font-size: 13px !important;
+        color: #90a4ae;
+    }
+
+    .designer-text a {
+        color: #00b0ff;
+        /* Blue color */
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .designer-text a:hover {
+        text-decoration: underline;
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-icons a {
+        width: 42px;
+        height: 42px;
+        background: rgba(255, 255, 255, 0.08);
+        /* Glass effect */
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .social-icons a:hover {
+        background: #00e5ff;
+        color: #061a2f;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+        padding-left: 0;
+        /* Reset link padding */
+        border-color: #00e5ff;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 900px) {
+        .footer {
             flex-direction: column;
-            gap: 8px;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
-            z-index: 9999;
-            margin-top: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 50px 30px;
+            gap: 50px;
         }
 
-        .dropdown-menu a {
-            background: #103a63;
-            color: #ffffff;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 8px;
-            white-space: nowrap;
-            display: block;
-            transition: all 0.25s ease;
-            border: none;
+        .footer-main {
+            grid-template-columns: 1fr;
+            gap: 40px;
         }
 
-        .dropdown-menu a:hover {
-            background: #145a8d;
-            transform: translateX(4px);
-            color: #ffffff;
+        .footer-follow {
+            width: 100%;
+            align-items: flex-start;
+            /* Ensure left align on mobile */
         }
+    }
+</style>
 
-        /* MENU TOGGLE */
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
+<footer class="footer">
+    <div class="footer-main">
 
-        /* ========== DESKTOP DROPDOWN HOVER BEHAVIOR - FIXED ========== */
-        @media (min-width: 1001px) {
-            details.dropdown {
-                position: relative;
-                display: inline-block;
-            }
-            
-            details.dropdown > summary {
-                cursor: pointer;
-            }
-            
-            details.dropdown:hover > summary {
-                color: #00c6ff;
-            }
-            
-            .dropdown-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                min-width: 280px;
-                background: #0b2b4a;
-                padding: 12px;
-                border-radius: 12px;
-                display: none;
-                flex-direction: column;
-                gap: 8px;
-                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
-                z-index: 9999;
-                margin-top: 5px; /* Small visible gap */
-                border: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            /* Create an invisible hover bridge that connects button to menu */
-            details.dropdown::after {
-                content: '';
-                position: absolute;
-                height: 15px;
-                width: 100%;
-                bottom: -15px;
-                left: 0;
-                background: transparent;
-                z-index: 10000;
-            }
-            
-            /* Show dropdown when hovering over details */
-            details.dropdown:hover .dropdown-menu {
-                display: flex !important;
-            }
-            
-            /* Keep dropdown visible when hovering over the menu itself */
-            .dropdown-menu:hover {
-                display: flex !important;
-            }
-            
-            /* Also keep it open when hovering over the invisible bridge */
-            details.dropdown:hover::after {
-                display: block;
-            }
-            
-            /* Ensure the dropdown stays visible when moving from button to menu */
-            details.dropdown:has(.dropdown-menu:hover) {
-                display: inline-block;
-            }
-            
-            details.dropdown:has(.dropdown-menu:hover) .dropdown-menu {
-                display: flex !important;
-            }
-        }
-
-        /* MEDIA QUERIES */
-        @media (max-width: 1300px) {
-            .nav-container a, details.dropdown > summary {
-                font-size: 14px;
-                padding: 12px 4px;
-            }
-            .nav-container { gap: 12px; }
-        }
-
-        @media (max-width: 1150px) {
-            .nav-container a, details.dropdown > summary {
-                font-size: 13px;
-                padding: 12px 3px;
-            }
-            .nav-container { gap: 8px; }
-            
-            /* Hide less important items if needed */
-            .nav-container a[href*="indexing"],
-            .nav-container a[href*="publication-fee"] {
-                display: none;
-            }
-        }
-
-        @media (max-width: 1000px) {
-            .navbar {
-                justify-content: space-between;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-container {
-                position: absolute;
-                top: 72px;
-                left: 0;
-                width: 100%;
-                background: #061d33;
-                flex-direction: column;
-                gap: 0;
-                padding: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.4s ease-out;
-                align-items: flex-start;
-                z-index: 1000;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            }
-
-            .nav-container.active {
-                max-height: 100vh;
-                overflow-y: auto;
-                padding-bottom: 20px;
-            }
-
-            /* Reset mobile styles */
-            .nav-container a, 
-            details.dropdown,
-            details.dropdown > summary,
-            .nav-container a[href*="indexing"],
-            .nav-container a[href*="publication-fee"] {
-                display: block;
-                width: 100%;
-                font-size: 16px;
-                padding: 15px 25px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                white-space: normal;
-                text-align: left;
-            }
-
-            details.dropdown {
-                position: static;
-            }
-
-            details.dropdown > summary {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                box-shadow: none;
-                background: #041424;
-                border-radius: 0;
-                padding: 0;
-                margin-top: 0;
-                display: none !important;
-                border: none;
-            }
-
-            /* Show dropdown menu when details is open */
-            details.dropdown[open] .dropdown-menu {
-                display: flex !important;
-            }
-
-            .dropdown-menu a {
-                background: transparent;
-                padding: 12px 25px 12px 40px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-                border-radius: 0;
-                transform: none;
-            }
-
-            .dropdown-menu a:hover {
-                background: #103a63;
-                transform: none;
-            }
-
-            /* Disable hover effects on mobile */
-            details.dropdown:hover .dropdown-menu {
-                display: none !important;
-            }
-            
-            details.dropdown[open] .dropdown-menu {
-                display: flex !important;
-            }
-        }
-
-        /* For very large screens */
-        @media (min-width: 1400px) {
-            .nav-container a, details.dropdown > summary {
-                font-size: 16px;
-                padding: 12px 10px;
-            }
-        }
-
-        /* Small screen adjustments */
-        @media (max-width: 600px) {
-            .nav-home span {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+        <!-- COLUMN 1: ABOUT -->
+        <div class="footer-about">
+            <h4>About International Journal of Advanced Computing and Mechanical Systems (IJACM)</h4>
+            <p>
+                International Journal of Advanced Computing and Mechanical Systems (IJACM) 
+                is an international, peer-reviewed, open-access journal focusing on
+                advanced computing and mechanical systems research. The journal supports
+                ethical publishing and high-quality interdisciplinary scholarship.
+                All articles are freely accessible globally.
+            </p>
+            <p class="copyright-text">
+                &copy; 2025 <a href="#"
+                    onclick="window.location.href = window.location.pathname.includes('/pages/') ? '../index.html' : 'index.html'; return false;">
+                    IJACM</a>. All rights reserved.
+            </p>
         </div>
 
-        <div class="nav-container" id="nav-menu">
-            <a href="index.html" class="nav-home">
-                <i class="fas fa-home"></i> <span>Home</span>
-            </a>
-
-            <a href="pages/about.html">About the Publication</a>
-            <a href="pages/aims-scope.html">Aims & Scope</a>
-            <a href="pages/editorial-board.html">Editorial Board</a>
-            <a href="pages/indexing.html">Indexing</a>
-
-            <!-- GUIDELINES DROPDOWN -->
-            <details class="dropdown">
-                <summary class="dropbtn">
-                    Guidelines
-                    <span class="arrow">▼</span>
-                </summary>
-                <div class="dropdown-menu">
-                    <a href="pages/author-guidelines.html">Author Guidelines</a>
-                    <a href="pages/peer-review.html">Peer Review Policy</a>
-                    <a href="pages/reviewer-guidelines.html">Reviewer Guidelines</a>
-                    <a href="pages/publication-ethics.html">Publication Ethics</a>
-                    <a href="pages/plagiarism-policy.html">Plagiarism Policy</a>
-                    <a href="pages/open-access-policy.html">Open Access Policy</a>
-                    <a href="pages/copyright.html">Copyright & Licensing</a>
+        <!-- COLUMN 2: ADDRESS -->
+        <div class="footer-address">
+            <h4>Contact Info</h4>
+            <div class="address-block">
+                <p>
+                    <strong>Head Office:</strong><br>
+                    Thalupulapalle, <br>
+                    Chittoor, Andhra Pradesh, <br>
+                    India - 517 124
+                </p>
+            </div>
+            <div class="contact-block">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:editor@ijacm.org">editor@ijacm.com, ijacmeditor@gmail.com</a>
                 </div>
-            </details>
-
-            <!-- ARTICLES DROPDOWN -->
-            <details class="dropdown">
-                <summary class="dropbtn">
-                    Articles
-                    <span class="arrow">▼</span>
-                </summary>
-                <div class="dropdown-menu">
-                    <a href="pages/current-issue.html">Current Issue</a>
-                    <a href="pages/previous-volume.html">Previous Volumes</a>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91-9030475343</span>
                 </div>
-            </details>
-
-            <a href="pages/publication-fee.html">Fee</a>
-            <a href="pages/contact.html">Contact</a>
+            </div>
         </div>
-    </nav>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.getElementById('nav-menu');
-            const dropdowns = document.querySelectorAll('details.dropdown');
-            
-            // Function to check if mobile
-            function isMobile() {
-                return window.innerWidth <= 1000;
-            }
+    </div>
 
-            // Mobile menu toggle
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    navMenu.classList.toggle('active');
-                    
-                    // Close all dropdowns when closing menu
-                    if (!navMenu.classList.contains('active')) {
-                        dropdowns.forEach(drop => {
-                            drop.removeAttribute('open');
-                        });
-                    }
-                });
-            }
-
-            // Close mobile menu when clicking a link
-            const navLinks = document.querySelectorAll('.nav-container a:not(.dropbtn)');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (isMobile()) {
-                        navMenu.classList.remove('active');
-                        dropdowns.forEach(drop => {
-                            drop.removeAttribute('open');
-                        });
-                    }
-                });
-            });
-
-            // Handle clicks outside to close mobile menu
-            document.addEventListener('click', function(e) {
-                if (isMobile() && navMenu.classList.contains('active')) {
-                    const isClickInside = e.target.closest('.nav-container') || e.target.closest('.menu-toggle');
-                    if (!isClickInside) {
-                        navMenu.classList.remove('active');
-                        dropdowns.forEach(drop => {
-                            drop.removeAttribute('open');
-                        });
-                    }
-                }
-            });
-
-            // Prevent dropdown from closing when clicking inside menu on mobile
-            if (navMenu) {
-                navMenu.addEventListener('click', function(e) {
-                    if (isMobile() && e.target.closest('.dropdown-menu')) {
-                        e.stopPropagation();
-                    }
-                });
-            }
-
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    // Close mobile menu if switching to desktop
-                    if (!isMobile() && navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                    }
-                    
-                    // Reset dropdowns on resize
-                    dropdowns.forEach(drop => {
-                        drop.removeAttribute('open');
-                    });
-                }, 250);
-            });
-        });
-    </script>
-</body>
-</html>
+    <!-- FOLLOW US 
+    <div class="footer-follow">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    -->
+           </div>
+</footer>
