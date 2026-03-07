@@ -77,6 +77,19 @@
     <loc>https://ijacm.com/articles/IJACM-880D528A.html</loc>
     <lastmod>2026-02-07</lastmod>
 </url>
+  <url>
+    <loc>https://ijacm.com/articles/IJACM-BCFA9427.html</loc>
+    <lastmod>2026-02-16</lastmod>
+</url>
+    <url>
+    <loc>https://ijacm.com/articles/IJACM-B1B01EA2.html</loc>
+    <lastmod>2026-02-25</lastmod>
+</url>
+  </url>
+    <url>
+    <loc>https://ijacm.com/articles/IJACM-2A90BEA6.html</loc>
+    <lastmod>2026-02-27</lastmod>
+</url>
   <!-- =========================
        ARTICLE PDF FILES
        (CRITICAL FOR SCHOLAR)
@@ -132,5 +145,18 @@
     <url>
     <loc>https://ijacm.com/paper/IJACM-880D528A.pdf</loc>
     <lastmod>2026-02-07</lastmod>
+  </url>
+      <url>
+    <loc>https://ijacm.com/paper/IJACM-2A90BEA6.pdf</loc>
+    <lastmod>2026-02-27</lastmod>
+  </url>
+    </url>
+      <url>
+    <loc>https://ijacm.com/paper/IJACM-B1B01EA2.pdf</loc>
+    <lastmod>2026-02-25</lastmod>
+  </url>
+        <url>
+    <loc>https://ijacm.com/paper/IJACM-BCFA9427.pdf</loc>
+    <lastmod>2026-02-16</lastmod>
   </url>
 </urlset>
