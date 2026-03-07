@@ -181,6 +181,38 @@
       "pdf": "IJACM-880D528A.pdf",  
       "abstract": "This research presents a predictive framework for estimating the Length of Stay (LOS) of patients in clinical settings using machine learning integrated with Explainable AI (XAI). Traditional methods for estimating LOS rely heavily on clinical experience, which often results in subjective, slow, and occasionally inaccurate forecasts. By systematically analyzing multidimensional patient data, including demographic profiles, medical histories, pathological test results, and symptom severity, the proposed model delivers precise, data-driven predictions. A core contribution of this project is the application of Explainable AI, which illuminates the underlying decision-making process by quantifying the influence of specific features such as age, comorbidities, and diagnostic indicators. This transparency bridges the gap between complex algorithms and clinical intuition, fostering trust among healthcare professionals. Beyond individualized patient care, the system serves as a strategic tool for hospital administration, enabling optimized bed management, efficient staffing allocation, and streamlined treatment protocols. Ultimately, the framework supports a transition toward proactive hospital planning, reducing operational bottlenecks and enhancing the overall quality of patient care through intelligent, interpretable analytics.",
       "keywords": ["Length of Stay", "Machine Learning", "Explainable AI", "Hospital Management", "Clinical Decision Support"]
+    }    ,
+     {
+      "id": "IJACM-BCFA9427",
+      "title": "Microcontroller-Based Intelligent Transformer Tap Control System for Automatic Voltage Regulation",
+      "authors": ["Reddi Khasim Shaik"],
+      "date": "2026/02/16",
+      "pages": "21-26",
+      "doi": "10.65883/ijacm.2026v2i2.03",
+      "pdf": "IJACM-BCFA9427.pdf",  
+      "abstract": "Transformers play a crucial role in electrical power transmission and distribution systems because they help regulate voltage levels between generation and consumption points. In modern power networks, maintaining a stable output voltage is essential since load variations can cause voltage fluctuations that affect system performance. To address this issue, tap-changing transformers are widely used to adjust the transformation ratio and regulate the output voltage. This project presents the design and implementation of an automatic tap changer for a transformer using an ATmega328 microcontroller. The proposed system uses a current sensor to monitor load conditions and automatically adjusts the transformer tap position using a servo mechanism. The system also displays electrical parameters such as voltage, current, and power on an LCD screen. The proposed approach improves operational efficiency, reduces manual intervention, and provides better voltage regulation in comparison with conventional tap-changing techniques.",
+      "keywords": [" Tap changer", "Transformer voltage regulation", "ATmega328", "Arduino", "Current sensor "]
+    },
+     {
+      "id": "IJACM-B1B01EA2",
+      "title": "Design and Performance Evaluation of Lightweight Voided Slab Using Recycled HDPE Spheres",
+      "authors": ["Rama Krishna B", "Narasimha Rao"],
+      "date": "2026/02/25",
+      "pages": "27-32",
+      "doi": "10.65883/ijacm.2026v2i2.04",
+      "pdf": "IJACM-B1B01EA2.pdf",  
+      "abstract": "In modern construction practice, reducing structural weight without compromising strength has become an important research area. Voided slab systems have emerged as an efficient solution by eliminating unnecessary concrete from the neutral axis of reinforced concrete slabs. One such innovative technology is the bubble deck slab system, which incorporates hollow plastic spheres inside the slab to reduce weight while maintaining structural performance. The present study investigates the structural behavior of a bubble deck slab constructed with high-density polyethylene (HDPE) balls and compares it with a conventional reinforced concrete slab. Both slabs were fabricated using M35 grade concrete and tested under three-point loading conditions. The experimental analysis focused on evaluating load carrying capacity, deflection characteristics, and concrete quality using ultrasonic pulse velocity testing. The results demonstrated that the voided slab achieved significant weight reduction while maintaining satisfactory structural performance. The bubble deck slab utilized approximately 22% less concrete compared to the conventional slab and exhibited comparable load carrying capacity with slightly higher but acceptable deflection values. These findings indicate that bubble deck technology can contribute to sustainable and economical construction by reducing material consumption and structural dead load.",
+      "keywords": ["Bubble deck slab", "Voided slab", "HDPE balls", "Lightweight concrete slabs", "Structural performance"] },
+     {
+      "id": "IJACM-2A90BEA6",
+      "title": "Comparative Analysis of Machine Learning Algorithms for Predicting Concrete Compressive Strength",
+      "authors": ["Rama Krishna B", "K Praveen Kumar"],
+      "date": "2026/02/27",
+      "pages": "33-40",
+      "doi": "10.65883/ijacm.2026v2i2.05",
+      "pdf": "IJACM-2A90BEA6.pdf",  
+      "abstract": "Concrete compressive strength is a critical property that determines the structural performance and durability of construction materials. Traditionally, compressive strength is measured through laboratory testing procedures that require curing periods of several days or weeks. These tests are time consuming and expensive, especially when large numbers of samples are required. Machine learning techniques provide an efficient alternative for predicting compressive strength based on concrete mixture proportions. This study investigates the effectiveness of five machine learning models for predicting the compressive strength of concrete using a synthetic dataset representing common mix design parameters. The models used in this study include Linear Regression, Decision Tree Regression, Random Forest Regression, Support Vector Regression, and Artificial Neural Networks. The dataset contains variables such as cement content, blast furnace slag, fly ash, and water, and superplasticizer, coarse aggregate, fine aggregate, and curing age. The models were trained and evaluated using a standard training and testing approach. Experimental results demonstrate that ensemble learning models such as Random Forest achieve higher predictive accuracy compared to traditional regression techniques. The study highlights the potential of machine learning techniques for improving efficiency in concrete strength prediction and assisting engineers in optimizing mix designs. ",
+      "keywords": ["Concrete compressive strength", "Machine learning", "Prediction models", "Random forest"]
     }
   ]
 }
