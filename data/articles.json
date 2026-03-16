@@ -213,6 +213,28 @@
       "pdf": "IJACM-2A90BEA6.pdf",  
       "abstract": "Concrete compressive strength is a critical property that determines the structural performance and durability of construction materials. Traditionally, compressive strength is measured through laboratory testing procedures that require curing periods of several days or weeks. These tests are time consuming and expensive, especially when large numbers of samples are required. Machine learning techniques provide an efficient alternative for predicting compressive strength based on concrete mixture proportions. This study investigates the effectiveness of five machine learning models for predicting the compressive strength of concrete using a synthetic dataset representing common mix design parameters. The models used in this study include Linear Regression, Decision Tree Regression, Random Forest Regression, Support Vector Regression, and Artificial Neural Networks. The dataset contains variables such as cement content, blast furnace slag, fly ash, and water, and superplasticizer, coarse aggregate, fine aggregate, and curing age. The models were trained and evaluated using a standard training and testing approach. Experimental results demonstrate that ensemble learning models such as Random Forest achieve higher predictive accuracy compared to traditional regression techniques. The study highlights the potential of machine learning techniques for improving efficiency in concrete strength prediction and assisting engineers in optimizing mix designs. ",
       "keywords": ["Concrete compressive strength", "Machine learning", "Prediction models", "Random forest"]
+    },
+     {
+      "id": "IJACM-1DCD8656",
+      "title": "Detection and Classification of Diabetic Retinopathy Using Deep Learning",
+      "authors": ["R Sandeep", "Pattubala Nandhini", "Yaradala Tejasree", "Budaraju Yaswanth", "Kundam Lokesh", "Pallem Dharmateja"],
+      "date": "2026/03/16",
+      "pages": "01-10",
+      "doi": "10.65883/ijacm.2026v2i3.01",
+      "pdf": "IJACM-1DCD8656.pdf",  
+      "abstract": "Detection and Classification of Diabetic Retinopathy Using Deep Learning present an automated diagnostic framework designed to combat one of the primary causes of global preventable blindness. Diabetic Retinopathy (DR) requires early intervention to prevent irreversible vision loss; however, manual screening remains labor-intensive and subject to inter-observer variability. This project addresses these challenges by developing a high-performance Convolutional Neural Network (CNN) architecture capable of classifying retinal fundus images into five distinct severity levels: No DR, Mild, Moderate, Severe, and Proliferative DR. Utilizing the APTOS dataset, the proposed system integrates advanced image preprocessing such as CLAHE (Contrast Limited Adaptive Histogram Equalization) and Gaussian blurring to standardize variations in lighting and image quality. The deep learning model is specifically engineered to identify and extract discriminative pathological features, including microaneurysms, hemorrhages, exudates, and neovascularization. To enhance generalization and mitigate overfitting, rigorous data augmentation strategies are employed during the training phase. The framework offers a scalable, objective, and efficient tool for clinical decision support. By automating the detection of subtle retinal abnormalities, the system significantly reduces the diagnostic burden on ophthalmologists and enables rapid screening in underserved regions. Ultimately, this AI-driven approach provides a robust solution for early DR diagnosis, facilitating timely treatment and improving long-term patient outcomes in the management of diabetic eye disease",
+      "keywords": ["Deep Learning", "Diabetic Retinopathy", "CNN", "Retinal Image Analysis", "APTOS Dataset"]
+    },
+     {
+      "id": "IJACM-835A711A6",
+      "title": "Predicting Credit Card Fraud Detection Using Machine Learning",
+      "authors": ["S Shilpa", "Asgar Ali", "D Niranjan", "Saurabh Suman", "Wagh Apeksha", "A Yakshitha"],
+      "date": "2026/03/16",
+      "pages": "11-19",
+      "doi": "10.65883/ijacm.2026v2i3.02",
+      "pdf": "IJACM-835A711A.pdf",  
+      "abstract": "In the face of a financial security point of view fraud detection systems emerge as key element in as far as the threats of losing money as a cost are concerned. The act of resistance against impersonation in the financial transactions arena has become very important in terms of preserving privacy. This study involves discussion of application of Machine Learning algorithms which includes Decision Tree, Random Forest and XGBoost for the process of detection of fraudulent credit card transactions. These models were selected because they can handle large and complicated data sets and derive hidden patterns that represent fraudulent activity. By making use of such features as transaction history and user behavior, the proposed system was able to show off its exceptional accuracy in differentiating normal or fraudulent transactions. The result for Random Forest model is 99.96% accuracy, the result for Decision tree model is 99.92% and XG boost model result accuracy is 99.95%. These results validate machine learning to continuously detect fraud in financial services. Moreover, continuous retraining of models is important to adapt to changing fraud tactics to make the system effective and scalable in the long term",
+      "keywords": ["Financial transactions", "Decision Tree", "Random Forest", "XGBoost", "Machine Learning", "Fraud detection"]
     }
   ]
 }
