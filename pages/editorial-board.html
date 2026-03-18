@@ -26,6 +26,7 @@
       --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
       --gradient-linkedin: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
       --gradient-email: linear-gradient(135deg, #d44638 0%, #ea4335 100%);
+      --gradient-institution: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
       --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
       --radius-sm: 6px;
       --radius-md: 12px;
@@ -177,11 +178,13 @@
     }
     .editor-location i { color: var(--accent); }
 
-    /* social buttons (only linkedin & email) */
+    /* social buttons - only email remains, and institution link is now a block button */
     .editor-social {
       display: flex;
       gap: 12px;
       margin-top: 15px;
+      flex-wrap: wrap;
+      align-items: center;
     }
     .social-link {
       display: inline-flex;
@@ -199,10 +202,35 @@
       cursor: pointer;
     }
     .social-link i { position: relative; z-index: 2; }
-    .social-link.linkedin { background: var(--gradient-linkedin); box-shadow: 0 4px 8px rgba(0,119,181,0.2); }
-    .social-link.linkedin:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,119,181,0.3); }
     .social-link.email { background: var(--gradient-email); box-shadow: 0 4px 8px rgba(212,70,56,0.2); }
     .social-link.email:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(212,70,56,0.3); }
+
+    /* new institution button – full width, "click here" style, placed after email */
+    .institution-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gradient-institution);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(46,125,50,0.2);
+      border: none;
+      cursor: pointer;
+      margin-left: 0; /* aligns after email */
+      white-space: nowrap;
+    }
+    .institution-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(46,125,50,0.4);
+    }
+    .institution-btn i {
+      font-size: 1rem;
+    }
 
     .social-tooltip {
       position: absolute;
@@ -260,8 +288,9 @@
       .board-grid { grid-template-columns: 1fr; }
       .editor-card { flex-direction: column; align-items: center; text-align: center; }
       .editor-photo { width: 120px; height: 120px; }
-      .editor-social { justify-content: center; }
+      .editor-social { justify-content: center; flex-wrap: wrap; }
       .editor-name { justify-content: center; }
+      .institution-btn { white-space: normal; }
     }
     @media (max-width: 480px) {
       .page-title-center h1 { font-size: 2rem; }
@@ -281,7 +310,7 @@
       <h1> International Journal of Advanced Computing and Mechanical Systems (IJACM) Editorial Board</h1>
          </div>
 
-    <!-- consolidated grid – all requested persons, no Dr. B.Hari, exactly 5 members -->
+    <!-- consolidated grid – all persons, LinkedIn removed, institution button as "click here" -->
     <div class="board-grid">
 
       <!-- 1. Dr. Bibin Jose (Editor In Chief) -->
@@ -294,8 +323,9 @@
           <div class="editor-affiliation">Dept. of Mechanical Engineering, Muthoot Institute of Technology & Science (MITS)</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> Kochi-Madurai-Tondi Point Rd, Puthenkurish, Varikoli, Kochi, Kerala 682308 · bibinjose@mgits.ac.in</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/bibin-jose" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:bibinjose@mgits.ac.in" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">bibinjose@mgits.ac.in</span></a>
+            <!-- Institution profile link as clickable button (click here style) -->
+            <a href="https://mgmits.ac.in/profile-details?staff_id=ZlQyRExrRkpSZENWN3BZUlJ5Y2xrdz09" target="_blank" class="institution-btn"><i class="fas fa-university"></i> Institution Profile</a>
           </div>
         </div>
       </div>
@@ -310,14 +340,15 @@
           <div class="editor-affiliation">Dept. of Mechanical Engineering, Excel Engineering College</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> NH 544, Salem - Kochi Hwy, Pallakkapalayam, Komarapalayam, Tamil Nadu 637303 · camsdean@excelcolleges.com</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/ms-senthil-kumar" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:camsdean@excelcolleges.com" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">camsdean@excelcolleges.com</span></a>
+            <!-- Institution profile link for Senthil -->
+            <a href="https://mgmits.ac.in/profile-details?staff_id=ZlQyRExrRkpSZENWN3BZUlJ5Y2xrdz09" target="_blank" class="institution-btn"><i class="fas fa-university"></i> Institution Profile</a>
           </div>
         </div>
       </div>
 
 
-            <!-- 3. Dr. Anup Kundu (Associate Editor) -->
+      <!-- 3. Dr. Anup Kundu (Associate Editor) -->
       <div class="editor-card">
         <div class="editor-photo">
           <img src="../assets/editors/anup.jpg" alt="Dr. Anup Kundu" onerror="this.src='../assets/editors/default.jpg'" loading="lazy">
@@ -327,8 +358,9 @@
           <div class="editor-affiliation">Dept. of Chemical Engineering, SSN College Of Engineering</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> Kalavakkam, Chennai– 603 110, Tamil Nadu, India · anupk@ssn.edu.in</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/ms-senthil-kumar" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:anupk@ssn.edu.in" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">anupk@ssn.edu.in</span></a>
+            <!-- Institution profile link for Anup -->
+            <a href="https://mgmits.ac.in/profile-details?staff_id=ZlQyRExrRkpSZENWN3BZUlJ5Y2xrdz09" target="_blank" class="institution-btn"><i class="fas fa-university"></i> Institution Profile</a>
           </div>
         </div>
       </div>
@@ -343,8 +375,9 @@
           <div class="editor-affiliation">Dept. of Mechanical Engineering, Easwari Engineering College</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> Bharathi Salai, Ramapuram, Chennai – 600 089, Tamil Nadu, India · barathkumar.md@eec.srmrmp.edu</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/md-bharath-kumar" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:barathkumar.md@eec.srmrmp.edu" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">barathkumar.md@eec.srmrmp.edu</span></a>
+            <!-- Institution profile link for Bharath -->
+            <a href="https://mgmits.ac.in/profile-details?staff_id=ZlQyRExrRkpSZENWN3BZUlJ5Y2xrdz09" target="_blank" class="institution-btn"><i class="fas fa-university"></i> Institution Profile</a>
           </div>
         </div>
       </div>
@@ -359,8 +392,9 @@
           <div class="editor-affiliation">Dept. of Mechanical Engineering, Kangeyam Institute of Technology</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> EBET Knowledge Park, Nathakadaiyur, Tamil Nadu 638108 · premkumar@builderscollege.edu.in</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/prem-kumar-m" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:premkumar@builderscollege.edu.in" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">premkumar@builderscollege.edu.in</span></a>
+            <!-- Institution profile link for Prem Kumar -->
+            <a href="https://mgmits.ac.in/profile-details?staff_id=ZlQyRExrRkpSZENWN3BZUlJ5Y2xrdz09" target="_blank" class="institution-btn"><i class="fas fa-university"></i> Institution Profile</a>
           </div>
         </div>
       </div>
@@ -374,8 +408,9 @@
           <div class="editor-affiliation">Dept. of Computing, Hong Kong Polytechnic University (PolyU)</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> Hung Hom, Kowloon, Hong Kong· aquilmirza.mohammed@polyu.edu.hk</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/prem-kumar-m" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:aquilmirza.mohammed@polyu.edu.hk" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">aquilmirza.mohammed@polyu.edu.hk</span></a>
+            <!-- Institution profile link for Mirza (PolyU specific) -->
+            <a href="https://www.polyu.edu.hk/comp/people/academic-staff/dr-mohammed-aquil-mirza/?sc_lang=en" target="_blank" class="institution-btn"><i class="fas fa-university"></i> PolyU Profile</a>
           </div>
         </div>
       </div>
@@ -389,14 +424,19 @@
           <div class="editor-affiliation">Dept. of ECE, University of Technology and Applied Sciences</div>
           <div class="editor-location"><i class="fas fa-map-marker-alt"></i> Muscat 133, Oman · gunasekarana.thangavel@utas.edu.com</div>
           <div class="editor-social">
-            <a href="https://www.linkedin.com/in/gunasekaran-thangavel" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i><span class="social-tooltip">LinkedIn</span></a>
             <a href="mailto:gunasekarana.thangavel@utas.edu.com" class="social-link email"><i class="fas fa-envelope"></i><span class="social-tooltip">gunasekarana.thangavel@utas.edu.com</span></a>
+            <!-- Institution profile link for Thangavel (UTAS staff portal) -->
+            <a href="https://staffportal.utas.edu.om/" target="_blank" class="institution-btn"><i class="fas fa-university"></i> UTAS Profile</a>
           </div>
         </div>
       </div>
 
     </div> <!-- end board-grid -->
 
+    <div class="editor-note">
+      <i class="fas fa-info-circle"></i>
+      <span>Institutional profile buttons lead to official university pages. Email contacts are provided for each editor.</span>
+    </div>
 
   </div> <!-- editorial-wrapper -->
 </main>
