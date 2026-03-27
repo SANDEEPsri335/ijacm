@@ -236,5 +236,17 @@
       "abstract": "In the face of a financial security point of view fraud detection systems emerge as key element in as far as the threats of losing money as a cost are concerned. The act of resistance against impersonation in the financial transactions arena has become very important in terms of preserving privacy. This study involves discussion of application of Machine Learning algorithms which includes Decision Tree, Random Forest and XGBoost for the process of detection of fraudulent credit card transactions. These models were selected because they can handle large and complicated data sets and derive hidden patterns that represent fraudulent activity. By making use of such features as transaction history and user behavior, the proposed system was able to show off its exceptional accuracy in differentiating normal or fraudulent transactions. The result for Random Forest model is 99.96% accuracy, the result for Decision tree model is 99.92% and XG boost model result accuracy is 99.95%. These results validate machine learning to continuously detect fraud in financial services. Moreover, continuous retraining of models is important to adapt to changing fraud tactics to make the system effective and scalable in the long term",
       "keywords": ["Financial transactions", "Decision Tree", "Random Forest", "XGBoost", "Machine Learning", "Fraud detection"]
     }
+    ,
+     {
+      "id": "IJACM-B2F848F5",
+      "title": "SMARTCURE - Smart Hospital Queue, Bed and Admission Management System with City-Wide Integration ",
+      "authors": ["K Soniya", "J Pavani", "K Prashanthi", "Aakash Kumar", "Rishi Gosh"],
+      "date": "2026/03/27",
+      "pages": "20-32",
+      "doi": "10.65883/ijacm.2026v2i3.03",
+      "pdf": "IJACM-B2F848F5.pdf",  
+      "abstract": "Millions of patients face long OPD queues, uncertainty in real-time bed availability, delayed admissions, and limited transparency over hospital services. SmartCure is a unified web-based hospital management platform designed to address these gaps by integrating OPD queuing, live bed tracking, and digital admission workflows into a single city-wide ecosystem using Next.js and Neon PostgreSQL. The platform enables patients to check live OPD token progress, view available beds with timestamped updates, and apply for OPD tokens online through a user-friendly portal. Hospital administrators can efficiently manage online and offline OPD bookings, update bed occupancy, and maintain structured admission records through a secure dashboard. Newly enhanced features include detailed Hospital Service Feedback & Rating system and a Hospital Service Cost module to bring financial transparency to medical services. SmartCure improves patient decision-making and hospital operational efficiency while ensuring a scalable foundation for future expansion toward state and national healthcare networks.",
+      "keywords": ["Online OPD Token Booking", "Live OPD Token Tracking", "Bed Tracking System", "Feedback & Rating", "Hospital Service Cost Transparency", "Next.js"]
+    }
   ]
 }
