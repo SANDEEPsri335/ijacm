@@ -118,6 +118,10 @@
     <loc>https://ijacm.com/articles/IJACM-39DFF163.html</loc>
     <lastmod>2026-04-01</lastmod>
 </url>
+    <url>
+    <loc>https://ijacm.com/articles/IJACM-C5B42ECE.html</loc>
+    <lastmod>2026-04-01</lastmod>
+</url>
   <!-- =========================
        ARTICLE PDF FILES
        (CRITICAL FOR SCHOLAR)
@@ -217,6 +221,10 @@
   </url>
     <url>
     <loc>https://ijacm.com/paper/IJACM-39DFF163.pdf</loc>
+    <lastmod>2026-04-01</lastmod>
+  </url>
+      <url>
+    <loc>https://ijacm.com/paper/IJACM-C5B42ECE.pdf</loc>
     <lastmod>2026-04-01</lastmod>
   </url>
 </urlset>
