@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Air Quality Prediction By using Synthetic Minority Oversampling Algorithm Applied to Historical Air Pollution Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+
+<!-- GOOGLE SCHOLAR METADATA -->
+<meta name="citation_title" content="Air Quality Prediction By using Synthetic Minority Oversampling Algorithm Applied to Historical Air Pollution Data">
+<meta name="citation_author" content="M Thanigavel">
+<meta name="citation_author" content="A Janapriya">
+<meta name="citation_author" content="B Narendra Kumar Reddy">
+<meta name="citation_author" content="G Jaya Kishore">
+<meta name="citation_author" content="A Naveen">
+
+<meta name="citation_journal_title" content="International Journal of Advanced Computing and Mechanical Systems">
+<meta name="citation_journal_abbrev" content="IJACM">
+<meta name="citation_publisher" content="IJACM">
+<meta name="citation_volume" content="2">
+<meta name="citation_issue" content="3">
+<meta name="citation_firstpage" content="43">
+<meta name="citation_lastpage" content="52">
+<meta name="citation_publication_date" content="2026/03/31">
+<meta name="citation_online_date" content="2026/03/31">
+<meta name="citation_year" content="2026">
+<meta name="citation_language" content="en">
+<meta name="citation_doi" content="10.65883/ijacm.2026v2i3.05">
+<meta name="citation_pdf_url" content="https://ijacm.com/paper/IJACM-0F87AFEA.pdf">
+<meta name="citation_fulltext_html_url" content="https://ijacm.com/articles/IJACM-0F87AFEA.html">
+<meta name="citation_keywords" content="Air Quality Prediction, Machine Learning, SVMSMOTE, Class Imbalance, XGBoost, Environmental Monitoring.">
+
+<!-- DUBLIN CORE -->
+<meta name="dc.identifier" content="10.65883/ijacm.2026v2i3.05">
+<meta name="dc.type" content="Text">
+<meta name="dc.title" content="Air Quality Prediction By using Synthetic Minority Oversampling Algorithm Applied to Historical Air Pollution Data">
+<meta name="dc.creator" content="M Thanigavel">
+<meta name="dc.publisher" content="International Journal of Advanced Computing and Mechanical Systems">
+<meta name="dc.date" content="2026/03/31">
+<meta name="dc.language" content="en">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    background: #0d1b2a;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.header {
+    height: 130px;
+    display: flex;
+    padding: 10px 40px;
+    align-items: center;
+    background: #1a2639;
+    justify-content: space-between;
+}
+.logo img { height: 110px; }
+.title { flex: 1; text-align: center; }
+.title h1 { margin: 0; font-size: 24px; color: white; }
+.submit-btn a {
+    background: #00b0ff;
+    color: #0d1b2a;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+}
+main { padding: 40px 20px; }
+.article-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+    background: rgba(26,38,57,0.85);
+    border-radius: 15px;
+}
+.article-title { font-size: 32px; color: white; }
+.authors { color: #00b0ff; font-size: 18px; }
+.article-meta {
+    background: rgba(0,176,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+}
+.meta-item { margin-bottom: 8px; }
+.abstract-section h2,
+.keywords-section h2,
+.citation-section h2 {
+    border-bottom: 2px solid #00b0ff;
+    padding-bottom: 10px;
+}
+.keyword-tag {
+    background: rgba(0,176,255,0.2);
+    color: #00b0ff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 5px;
+    display: inline-block;
+}
+.download-btn {
+    background: #d32f2f;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #1a2639;
+    margin-top: 40px;
+}
+.footer a { color: #00b0ff; text-decoration: none; margin: 0 10px; }
+.back-link { color: #00b0ff; text-decoration: none; font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="title">
+        <h1>International Journal of Advanced Computing<br>and Mechanical Systems (IJACM)</h1>
+    </div>
+    <div class="submit-btn">
+        <a href="../pages/submit.html">Submit Paper</a>
+    </div>
+</div>
+
+<main>
+<div class="article-container">
+
+<a href="../pages/current-issue.html" class="back-link">← Back to Current Issue</a>
+
+<h1 class="article-title">Air Quality Prediction By using Synthetic Minority Oversampling Algorithm Applied to Historical Air Pollution Data</h1>
+
+<div class="authors"><strong>Authors:</strong> M Thanigavel, A Janapriya, B Narendra Kumar Reddy, G Jaya Kishore, A Naveen</div>
+
+<div class="article-meta">
+<div class="meta-item"><strong>Published:</strong> 2026/03/31</div>
+<div class="meta-item"><strong>Pages:</strong> 43-52</div>
+<div class="meta-item"><strong>DOI:</strong> <a href="https://doi.org/10.65883/ijacm.2026v2i3.05" style="color:#00b0ff">10.65883/ijacm.2026v2i3.05</a></div>
+<div class="meta-item"><strong>Article ID:</strong> IJACM-0F87AFEA</div>
+<div class="meta-item"><strong>Journal:</strong> International Journal of Advanced Computing and Mechanical Systems (IJACM)</div>
+<div class="meta-item"><strong>Volume:</strong> 2, <strong>Issue:</strong> 3</div>
+<div class="meta-item"><strong>Article Type:</strong> Research-Article</div>
+</div>
+
+<div class="abstract-section">
+<h2>Abstract</h2>
+<p>Air pollution has emerged as a major environmental and public health concern, particularly in rapidly urbanizing countries such as India. Accurate prediction of air quality levels is essential for timely decision-making and effective pollution control strategies. This paper presents a machine learning–based air quality prediction system that classifies air quality into three categories: Good, Moderate, and Poor using historical air pollution data. The proposed approach utilizes pollutant concentration data collected from multiple Indian cities between 2015 and 2020, including key indicators such as PM2.5, PM10, NO, NO₂, NOx, NH₃, CO, SO₂, O₃, Benzene, and Toluene. To address the inherent class imbalance in air quality datasets, a hybrid resampling strategy combining Synthetic Minority Oversampling Technique based on Support Vector Machines (SVMSMOTE) and random undersampling is employed. Several supervised machine learning models, including Logistic Regression, Decision Tree, Random Forest, Multi- Layer Perceptron, AdaBoost, and XGBoost, are trained and evaluated using standard performance metrics. Experimental results demonstrate that ensemble-based models, particularly XGBoost, achieve superior classification performance, attaining an accuracy of 94.25% with balanced precision and recall across all classes. The proposed system offers an efficient, scalable, and data-driven solution for air quality prediction and can be extended to support real-time environmental monitoring and public health decision-making.  </p>
+</div>
+
+<div class="keywords-section">
+<h2>Keywords</h2>
+<span class='keyword-tag'>Air Quality Prediction</span><span class='keyword-tag'>Machine Learning</span><span class='keyword-tag'>SVMSMOTE</span><span class='keyword-tag'>Class Imbalance</span><span class='keyword-tag'>XGBoost</span><span class='keyword-tag'>Environmental Monitoring.</span>
+</div>
+
+<div class="citation-section">
+<h2><i class="fas fa-quote-right"></i> How to Cite this Article</h2>
+<p>
+M Thanigavel, A Janapriya, B Narendra Kumar Reddy, G Jaya Kishore, A Naveen. "Air Quality Prediction By using Synthetic Minority Oversampling Algorithm Applied to Historical Air Pollution Data". <em>International Journal of Advanced Computing and Mechanical Systems (IJACM)</em>.
+2026;2(3):43-52. doi:10.65883/ijacm.2026v2i3.05
+</p>
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+<a href="../paper/IJACM-0F87AFEA.pdf" class="download-btn">
+<i class="fas fa-download"></i> Download PDF
+</a>
+</div>
+
+</div>
+</main>
+
+<div class="footer">
+<p>&copy; 2026 International Journal of Advanced Computing and Mechanical Systems (IJACM)</p>
+<p>
+<a href="../index.html">Home</a> |
+<a href="../pages/current-issue.html">Current Issue</a>
+</p>
+</div>
+
+</body>
+</html>
