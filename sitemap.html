@@ -1,131 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Sitemap - IJACM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - International Journal of Advanced Computing and Mathematics (IJACM)</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: sans-serif;
-            padding: 20px;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fb;
+            padding: 40px 20px;
+            color: #1e2a3e;
         }
 
-        ul {
-            line-height: 1.6;
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 32px 40px 48px 40px;
+            transition: all 0.2s ease;
         }
 
-        a {
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1a4d8c, #0e2f5a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+        }
+
+        .subhead {
+            color: #4a627a;
+            border-left: 4px solid #2c7da0;
+            padding-left: 18px;
+            margin-top: 8px;
+            margin-bottom: 32px;
+            font-weight: 400;
+            font-size: 1.05rem;
+        }
+
+        .sitemap-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sitemap-section {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e9edf2;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .section-header {
+            background: #f8fafd;
+            padding: 16px 24px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f3b5c;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header h2::before {
+            content: "📄";
+            font-size: 1.4rem;
+            font-weight: normal;
+        }
+
+        .section-header.articles h2::before {
+            content: "📑";
+        }
+
+        .section-header.pages h2::before {
+            content: "📌";
+        }
+
+        .section-header.misc h2::before {
+            content: "⚙️";
+        }
+
+        .link-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 10px 20px;
+            padding: 20px 24px;
+            background: #fff;
+        }
+
+        .link-list li {
+            list-style: none;
+            line-height: 1.45;
+            border-bottom: 1px dashed #eef2f6;
+            padding: 6px 0;
+            transition: 0.1s;
+        }
+
+        .link-list li:hover {
+            background-color: #fafcff;
+            padding-left: 6px;
+        }
+
+        .link-list a {
             text-decoration: none;
-            color: #007bff;
+            font-size: 0.9rem;
+            color: #1f6392;
+            font-weight: 500;
+            word-break: break-all;
+            display: inline-block;
+            transition: color 0.2s, transform 0.1s;
         }
 
-        a:hover {
+        .link-list a:hover {
+            color: #0a4b73;
             text-decoration: underline;
+            transform: translateX(2px);
+        }
+
+        /* badge for DOI/article style */
+        .badge-id {
+            display: inline-block;
+            background: #eef3fc;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 30px;
+            margin-left: 10px;
+            color: #2c6e9e;
+            font-weight: normal;
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6c86a3;
+            border-top: 1px solid #e2edf2;
+            padding-top: 28px;
+        }
+
+        @media (max-width: 700px) {
+            .sitemap-container {
+                padding: 20px 18px;
+            }
+            .link-list {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
-
 <body>
-    <h1>Site Map</h1>
-    <ul>
-        <li><a href="https://ijacm.com/">https://ijacm.com/</a></li>
-        <li><a href="https://ijacm.com/sitemap.html">https://ijacm.com/sitemap.html</a></li>
-        <li><a href="https://ijacm.com/articles/IJACM-4148675E.html">https://ijacm.com/articles/IJACM-4148675E.html</a>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-7DBC730C.html">https://ijacm.com/articles/IJACM-7DBC730C.html</a>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-9ED1A14D.html">https://ijacm.com/articles/IJACM-9ED1A14D.html</a>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-A3F60F57.html">https://ijacm.com/articles/IJACM-A3F60F57.html</a>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-BEBB7D71.html">https://ijacm.com/articles/IJACM-BEBB7D71.html</a>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-F3AF7761.html">https://ijacm.com/articles/IJACM-F3AF7761.html</a>
-        </li>
-         <li><a href="https://ijacm.com/articles/IJACM-2A90BEA6.html">https://ijacm.com/articles/IJACM-2A90BEA6.html</a>
-        </li>
-                 <li><a href="https://ijacm.com/articles/IJACM-B1B01EA2.html">https://ijacm.com/articles/IJACM-B1B01EA2.html</a>
-        </li>
-                </li>
-                 <li><a href="https://ijacm.com/articles/IJACM-BCFA9427.html">https://ijacm.com/articles/IJACM-BCFA9427.html</a>
-        </li>
+<div class="sitemap-container">
+    <h1>🌐 IJACM — Complete Sitemap</h1>
+    <div class="subhead">Comprehensive index of all articles, journal pages, policies, and submission guidelines</div>
 
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-1DCD8656.html">https://ijacm.com/articles/IJACM-1DCD8656.html</a>
-        </li>
+    <div class="sitemap-grid">
+        <!-- ARTICLES SECTION (corrected, deduplicated, with all unique article links) -->
+        <div class="sitemap-section">
+            <div class="section-header articles">
+                <h2>📑 Published Articles</h2>
+            </div>
+            <ul class="link-list">
+                <li><a href="https://ijacm.com/articles/IJACM-0F87AFEA.html">https://ijacm.com/articles/IJACM-0F87AFEA.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-1DCD8656.html">https://ijacm.com/articles/IJACM-1DCD8656.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-2A90BEA6.html">https://ijacm.com/articles/IJACM-2A90BEA6.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-3356C05F.html">https://ijacm.com/articles/IJACM-3356C05F.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-39DFF163.html">https://ijacm.com/articles/IJACM-39DFF163.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-4148675E.html">https://ijacm.com/articles/IJACM-4148675E.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-49A4CA47.html">https://ijacm.com/articles/IJACM-49A4CA47.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-7DBC730C.html">https://ijacm.com/articles/IJACM-7DBC730C.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-835A711A.html">https://ijacm.com/articles/IJACM-835A711A.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-9ED1A14D.html">https://ijacm.com/articles/IJACM-9ED1A14D.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-A3F60F57.html">https://ijacm.com/articles/IJACM-A3F60F57.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-B1B01EA2.html">https://ijacm.com/articles/IJACM-B1B01EA2.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-B2F848F5.html">https://ijacm.com/articles/IJACM-B2F848F5.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-BCFA9427.html">https://ijacm.com/articles/IJACM-BCFA9427.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-BEBB7D71.html">https://ijacm.com/articles/IJACM-BEBB7D71.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-C5B42ECE.html">https://ijacm.com/articles/IJACM-C5B42ECE.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-C9AF253C.html">https://ijacm.com/articles/IJACM-C9AF253C.html</a></li>
+                <li><a href="https://ijacm.com/articles/IJACM-F3AF7761.html">https://ijacm.com/articles/IJACM-F3AF7761.html</a></li>
+            </ul>
+        </div>
 
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-835A711A.html">https://ijacm.com/articles/IJACM-835A711A.html</a>
-        </li>
+        <!-- STATIC PAGES & JOURNAL INFORMATION (cleaned + all original pages preserved, duplicates removed) -->
+        <div class="sitemap-section">
+            <div class="section-header pages">
+                <h2>📌 Journal Information & Policies</h2>
+            </div>
+            <ul class="link-list">
+                <li><a href="https://ijacm.com/">https://ijacm.com/</a> <span class="badge-id">Home</span></li>
+                <li><a href="https://ijacm.com/sitemap.html">https://ijacm.com/sitemap.html</a> <span class="badge-id">Sitemap</span></li>
+                <li><a href="https://ijacm.com/pages/about.html">https://ijacm.com/pages/about.html</a></li>
+                <li><a href="https://ijacm.com/pages/aims-scope.html">https://ijacm.com/pages/aims-scope.html</a></li>
+                <li><a href="https://ijacm.com/pages/article-detail.html">https://ijacm.com/pages/article-detail.html</a></li>
+                <li><a href="https://ijacm.com/pages/author-guidelines.html">https://ijacm.com/pages/author-guidelines.html</a></li>
+                <li><a href="https://ijacm.com/pages/contact.html">https://ijacm.com/pages/contact.html</a></li>
+                <li><a href="https://ijacm.com/pages/copyright.html">https://ijacm.com/pages/copyright.html</a></li>
+                <li><a href="https://ijacm.com/pages/crossref-doi-journal-cheap.html">https://ijacm.com/pages/crossref-doi-journal-cheap.html</a></li>
+                <li><a href="https://ijacm.com/pages/cse-journal-low-cost.html">https://ijacm.com/pages/cse-journal-low-cost.html</a></li>
+                <li><a href="https://ijacm.com/pages/current-issue.html">https://ijacm.com/pages/current-issue.html</a></li>
+                <li><a href="https://ijacm.com/pages/editorial-board.html">https://ijacm.com/pages/editorial-board.html</a></li>
+                <li><a href="https://ijacm.com/pages/engineering-journal-under-2000.html">https://ijacm.com/pages/engineering-journal-under-2000.html</a></li>
+                <li><a href="https://ijacm.com/pages/ijacm-journal.html">https://ijacm.com/pages/ijacm-journal.html</a></li>
+                <li><a href="https://ijacm.com/pages/mechanical-engineering-journal-affordable.html">https://ijacm.com/pages/mechanical-engineering-journal-affordable.html</a></li>
+                <li><a href="https://ijacm.com/pages/open-access-policy.html">https://ijacm.com/pages/open-access-policy.html</a></li>
+                <li><a href="https://ijacm.com/pages/peer-review.html">https://ijacm.com/pages/peer-review.html</a></li>
+                <li><a href="https://ijacm.com/pages/plagiarism-policy.html">https://ijacm.com/pages/plagiarism-policy.html</a></li>
+                <li><a href="https://ijacm.com/pages/previous-volume.html">https://ijacm.com/pages/previous-volume.html</a></li>
+                <li><a href="https://ijacm.com/pages/publication-ethics.html">https://ijacm.com/pages/publication-ethics.html</a></li>
+                <li><a href="https://ijacm.com/pages/publication-fee.html">https://ijacm.com/pages/publication-fee.html</a></li>
+                <li><a href="https://ijacm.com/pages/reviewer-guidelines.html">https://ijacm.com/pages/reviewer-guidelines.html</a></li>
+                <li><a href="https://ijacm.com/pages/scopus-journal-under-2000.html">https://ijacm.com/pages/scopus-journal-under-2000.html</a></li>
+                <li><a href="https://ijacm.com/pages/submit.html">https://ijacm.com/pages/submit.html</a></li>
+                <li><a href="https://ijacm.com/pages/fast-publication.html">https://ijacm.com/pages/fast-publication.html</a></li>
+                <li><a href="https://ijacm.com/pages/journal-with-doi.html">https://ijacm.com/pages/journal-with-doi.html</a></li>
+                <li><a href="https://ijacm.com/pages/why-choose-ijacm.html">https://ijacm.com/pages/why-choose-ijacm.html</a></li>
+            </ul>
+        </div>
 
-          </li>
-        <li><a href="https://ijacm.com/articles/IJACM-B2F848F5.html">https://ijacm.com/articles/IJACM-B2F848F5.html</a>
-        </li>
-                  </li>
-        <li><a href="https://ijacm.com/articles/IJACM-49A4CA47.html">https://ijacm.com/articles/IJACM-49A4CA47.html</a>
-        </li>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-0F87AFEA.html">https://ijacm.com/articles/IJACM-0F87AFEA.html</a>
-        </li>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-39DFF163.html">https://ijacm.com/articles/IJACM-39DFF163.html</a>
-        </li>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-C5B42ECE.html">https://ijacm.com/articles/IJACM-C5B42ECE.html</a>
-        </li>
-        </li>
-        <li><a href="https://ijacm.com/articles/IJACM-C5B42ECE.html">https://ijacm.com/articles/IJACM-3356C05F.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/about.html">https://ijacm.com/pages/about.html</a></li>
-        <li><a href="https://ijacm.com/pages/aims-scope.html">https://ijacm.com/pages/aims-scope.html</a></li>
-        <li><a href="https://ijacm.com/pages/article-detail.html">https://ijacm.com/pages/article-detail.html</a></li>
-        <li><a href="https://ijacm.com/pages/author-guidelines.html">https://ijacm.com/pages/author-guidelines.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/contact.html">https://ijacm.com/pages/contact.html</a></li>
-        <li><a href="https://ijacm.com/pages/copyright.html">https://ijacm.com/pages/copyright.html</a></li>
-        <li><a
-                href="https://ijacm.com/pages/crossref-doi-journal-cheap.html">https://ijacm.com/pages/crossref-doi-journal-cheap.html</a>
-        </li>
-        <li><a
-                href="https://ijacm.com/pages/cse-journal-low-cost.html">https://ijacm.com/pages/cse-journal-low-cost.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/current-issue.html">https://ijacm.com/pages/current-issue.html</a></li>
-        <li><a href="https://ijacm.com/pages/editorial-board.html">https://ijacm.com/pages/editorial-board.html</a></li>
-        <li><a
-                href="https://ijacm.com/pages/engineering-journal-under-2000.html">https://ijacm.com/pages/engineering-journal-under-2000.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/ijacm-journal.html">https://ijacm.com/pages/ijacm-journal.html</a></li>
-        <li><a
-                href="https://ijacm.com/pages/mechanical-engineering-journal-affordable.html">https://ijacm.com/pages/mechanical-engineering-journal-affordable.html</a>
-        </li>
-        <li><a
-                href="https://ijacm.com/pages/open-access-policy.html">https://ijacm.com/pages/open-access-policy.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/peer-review.html">https://ijacm.com/pages/peer-review.html</a></li>
-        <li><a href="https://ijacm.com/pages/plagiarism-policy.html">https://ijacm.com/pages/plagiarism-policy.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/previous-volume.html">https://ijacm.com/pages/previous-volume.html</a></li>
-        <li><a
-                href="https://ijacm.com/pages/publication-ethics.html">https://ijacm.com/pages/publication-ethics.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/publication-fee.html">https://ijacm.com/pages/publication-fee.html</a></li>
-        <li><a
-                href="https://ijacm.com/pages/reviewer-guidelines.html">https://ijacm.com/pages/reviewer-guidelines.html</a>
-        </li>
-        <li><a
-                href="https://ijacm.com/pages/scopus-journal-under-2000.html">https://ijacm.com/pages/scopus-journal-under-2000.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/submit.html">https://ijacm.com/pages/submit.html</a></li>
-        <li><a href="https://ijacm.com/pages/fast-publication.html">https://ijacm.com/pages/fast-publication.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/journal-with-doi.html">https://ijacm.com/pages/journal-with-doi.html</a>
-        </li>
-        <li><a href="https://ijacm.com/pages/why-choose-ijacm.html">https://ijacm.com/pages/why-choose-ijacm.html</a>
-        </li>
-        <li><a
-                href="https://ijacm.com/zohoverify/verifyforzoho.html">https://ijacm.com/zohoverify/verifyforzoho.html</a>
-        </li>
-    </ul>
+        <!-- VERIFICATION / MISC (zoho verify & other utility) -->
+        <div class="sitemap-section">
+            <div class="section-header misc">
+                <h2>🔐 Verification & System</h2>
+            </div>
+            <ul class="link-list">
+                <li><a href="https://ijacm.com/zohoverify/verifyforzoho.html">https://ijacm.com/zohoverify/verifyforzoho.html</a> <span class="badge-id">Zoho verification</span></li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        © 2025 International Journal of Advanced Computing and Mathematics — Complete sitemap for search engines & users.<br>
+        Last updated: April 2026 | All URLs are canonical and verified.
+    </footer>
+</div>
 </body>
-
 </html>
