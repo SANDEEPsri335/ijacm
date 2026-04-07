@@ -348,6 +348,31 @@
     "Monsoon Depreciation",
     "Deep Scoring Network."
   ]
+},
+   {
+  "id": "IJACM-4AF02009",
+  "title": "Enhanced E-health Data Security and sharing using ECC -Based encryption ",
+  "authors": [
+    "R.G. Kumar",
+    "K Ezhilarasi",
+    "Devara Varshini",
+    "Poli Jahnavi",
+    "C John""Poli Jahnavi",
+    "Jambugulam Pavan Adithya"
+  ], 
+  "date": "2026/04/07",
+  "pages": "56-67",
+  "doi": "10.65883/ijacm.2026v2i4.07",
+  "pdf": "IJACM-4AF02009.pdf",
+  "abstract": "The ever-increasing digitalization of healthcare systems improves healthcare service efficiency, but it also introduces serious issues related to data security, privacy, and trustworthy information transfer. Consequently, personal healthcare information in medical records, as well as healthcare data supported by IoT, has become increasingly susceptible to cyberattacks. Therefore, this paper suggests that ECC can be effectively integrated into the AttnAE-ML framework to develop a secure and intelligent E-health information transfer framework. An AttnAE-ML hybrid approach has been developed that encodes healthcare features by creating compact, robust, privacy- preserving representations of medical data, focusing on key features through attention. After that, the extracted features are classified using a simple XGBoost model, thereby ensuring high- quality model performance at minimal computational cost. Additionally, medical data representations have been encrypted using ECC to ensure the confidentiality of healthcare data during storage in healthcare systems and during inter-organizational data transfer. An empirical analysis of healthcare data has revealed that ECC-integrated AttnAE-ML outperforms existing healthcare systems with 98% accuracy.",
+  "keywords": [
+    "E-health Security",
+    "Elliptic Curve Cryptography (ECC)",
+    "Secure Data Sharing",
+    "Attention Autoencoder",
+    "Machine Learning",
+    "XGBoost"
+  ]
 }
   ]
 }
