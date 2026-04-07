@@ -157,6 +157,11 @@
        ARTICLE HTML PAGES (ALL UNIQUE)
        ========================= -->
  <url>
+    <loc>https://ijacm.com/articles/IJACM-4AF02009.html</loc>
+    <lastmod>2026-04-07</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ijacm.com/articles/IJACM-BE9AD14E.html</loc>
     <lastmod>2026-04-05</lastmod>
   </url>
@@ -279,7 +284,12 @@
   <!-- =========================
        ARTICLE PDF FILES
        ========================= -->
- <url>
+  <url>
+    <loc>https://ijacm.com/paper/IJACM-4AF02009.pdf</loc>
+    <lastmod>2026-04-07</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ijacm.com/paper/IJACM-BE9AD14E.pdf</loc>
     <lastmod>2026-04-05</lastmod>
   </url>
