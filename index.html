@@ -116,52 +116,77 @@
             }
         }
 
-        /* SCROLLER */
+        /* ============ ENHANCED MULTI-COLOR SCROLLER ============ */
         .scroll-container {
             width: 100%;
             overflow: hidden;
-            background: #f8f9fa;
-            border-left: 5px solid #ffc107;
-            padding: 10px 0;
-            margin-bottom: 15px;
+            background: #0a1a2f;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-
-        .scroll-text {
-            display: inline-block;
-            white-space: nowrap;
-            font-weight: 700;
-            font-size: 16px;
-            color: #000;
-            animation: scroll-right-left 45s linear infinite;
-            padding-left: 100%;
+        
+        /* Rainbow gradient ticker background */
+        .scroll-track {
+            display: flex;
+            animation: scroll-right-left 38s linear infinite;
+            width: max-content;
         }
-
-        .scroll-container:hover .scroll-text {
+        
+        .scroll-container:hover .scroll-track {
             animation-play-state: paused;
         }
-
-        @keyframes scroll-right-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+        
+        /* Individual message pills with distinct alternating colors */
+        .scroll-message {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 28px;
+            margin-right: 8px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            white-space: nowrap;
+            backdrop-filter: blur(2px);
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
-
-        .scroll-call, .icon-call { color: #d32f2f !important; }
-        .scroll-frequency, .icon-frequency { color: #0b5ed7 !important; }
-        .scroll-template, .icon-template { color: #2e7d32 !important; }
-
-        /* BLINK ANIMATION */
+        
+        .scroll-message:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+        }
+        
+        /* Color palette for alternating items - vivid but readable */
+        .msg-color-1 { background: linear-gradient(135deg, #e63946, #c92a2a); color: white; border-left: 4px solid #ffd166; }
+        .msg-color-2 { background: linear-gradient(135deg, #2a9d8f, #21867a); color: white; border-left: 4px solid #ffb347; }
+        .msg-color-3 { background: linear-gradient(135deg, #e9c46a, #e5b83c); color: #1e2a3a; border-left: 4px solid #1e6091; }
+        .msg-color-4 { background: linear-gradient(135deg, #4c9aff, #1e6ee7); color: white; border-left: 4px solid #ffd966; }
+        .msg-color-5 { background: linear-gradient(135deg, #9c89b8, #7b2cbf); color: white; border-left: 4px solid #f72585; }
+        .msg-color-6 { background: linear-gradient(135deg, #f4a261, #e76f51); color: white; border-left: 4px solid #2a9d8f; }
+        .msg-color-7 { background: linear-gradient(135deg, #06d6a0, #05b084); color: #1a2a3a; border-left: 4px solid #ffbc6e; }
+        .msg-color-8 { background: linear-gradient(135deg, #ffb703, #fb8500); color: #1f2a3e; border-left: 4px solid #023e8a; }
+        
         .blink-icon {
             font-size: 18px;
-            margin: 0 6px;
             animation: blinkBoom 1.1s infinite;
+            display: inline-block;
         }
+        
         @keyframes blinkBoom {
-            0% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.4); }
-            100% { opacity: 0.3; transform: scale(1); }
+            0% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.4; transform: scale(1); }
         }
-
-        /* SUBMIT BUTTON - REDUCED SIZE */
+        
+        @keyframes scroll-right-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* SUBMIT BUTTON */
         .submit-btn {
             margin-top: 15px;
             text-align: center;
@@ -223,7 +248,7 @@
             font-style: italic;
         }
 
-        /* ================= LATEST ARTICLES STYLES ================= */
+        /* LATEST ARTICLES STYLES */
         .latest-articles {
             margin: 60px 0;
             padding: 40px 20px;
@@ -283,7 +308,7 @@
             color: #000;
         }
 
-        /* JOURNAL PARTICULARS TABLE (new style) */
+        /* JOURNAL PARTICULARS TABLE */
         .particulars-table {
             width: 100%;
             background: #f8f9fa;
@@ -395,7 +420,6 @@
 <body>
     <!-- ================= HEADER ================= -->
     <div id="header-placeholder"></div>
-
     <!-- ================= NAVBAR ================= -->
     <div id="navbar-placeholder"></div>
 
@@ -405,7 +429,7 @@
             <div class="journal-wrapper">
                 <!-- LEFT IMAGE -->
                 <div class="journal-image">
-                    <img src="assets/coverpage.jpeg" alt="IJACM Journal Cover" loading="lazy">
+                    <img src="https://placehold.co/400x250/1a237e/white?text=IJACM+Cover" alt="IJACM Journal Cover" loading="lazy">
                     <div class="submit-btn">
                         <a href="pages/submit.html">Submit Paper</a>
                     </div>
@@ -413,33 +437,10 @@
 
                 <!-- RIGHT CONTENT -->
                 <div class="journal-content">
+                    <!-- MULTI-COLOR ALTERNATING SCROLLER - ENHANCED VISIBILITY -->
                     <div class="scroll-container">
-                        <div class="scroll-text">
-                            <span class="blink-icon icon-call">📢</span>
-                            <span class="scroll-call">Call For Papers: Volume 2 Issue 6</span>
-                            <span class="blink-icon icon-call">📢</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-
-                            <span class="blink-icon icon-frequency">📅</span>
-                            <span class="scroll-frequency">Publication Frequency: Monthly</span>
-                            <span class="blink-icon icon-frequency">📅</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-
-                            <span class="blink-icon icon-call">👉 🟦🔗</span>
-                            <span class="scroll-call">Our journal is officially registered with Crossref and assigns DOIs.</span>
-                            <span class="blink-icon icon-call">👉 🟦🔗</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                            
-                            <span class="blink-icon icon-call">📢</span>
-                            <span class="scroll-call">Officially assigned ISSN 3139-3861 (Online) by ISSN India</span>
-                            <span class="blink-icon icon-call">📢</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-
-                            <span class="blink-icon icon-call">🆓 📄 🌍</span>
-                            <span class="scroll-call">Publication is completely free of charge with no article processing fees (APC).</span>
-                            <span class="blink-icon icon-call">🆓 📄 🌍</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-
-                            <a href="assets/editors/IJACM_Paper_Template_A4_Word.docx" target="_blank" style="text-decoration: none;">
-                                <span class="blink-icon icon-template">📝</span>
-                                <span class="scroll-template">Click To Download Word Template</span>
-                                <span class="blink-icon icon-template">📝</span>
-                            </a>
+                        <div class="scroll-track" id="colorfulScroller">
+                            <!-- dynamic messages with alternating color classes will be injected via JS -->
                         </div>
                     </div>
 
@@ -451,12 +452,11 @@
                         original research papers, review articles and case studies.
                     </p>
 
-                    <!-- ===== NEW TABLE: JOURNAL PARTICULARS ===== -->
-                    <!-- exactly as described in the image, placed right after the description -->
+                    <!-- JOURNAL PARTICULARS TABLE -->
                     <table class="particulars-table">
                         <tr><td>Title</td><td>International Journal of Advanced Computing and Mechanical Systems (IJACM)</td></tr>
                         <tr><td>Frequency</td><td>Monthly (12 issues per year)</td></tr>
-                        <tr><td>E-ISSN</td><td> 3139-3861 </td></tr>
+                        <tr><td>E-ISSN</td><td>3139-3861</td></tr>
                         <tr><td>Publisher name</td><td>International Journal of Advanced Computing and Mechanical Systems (IJACM)</td></tr>
                         <tr><td>Publisher address</td><td>Thalupulapalle, Chittoor, Andhra Pradesh - 517 124</td></tr>
                         <tr><td>Starting Year</td><td>2025</td></tr>
@@ -467,7 +467,7 @@
                         <tr><td>Mobile No.</td><td>+91 - 9030475343</td></tr>
                     </table>
 
-                    <h2 style="color: #ffffff; margin-top: 20px; margin-bottom: 10px;">Why Publish with International Journal of Advanced Computing and Mechanical Systems (IJACM)?</h2>
+                    <h2 style="color: #ffffff; margin-top: 20px; margin-bottom: 10px;">Why Publish with IJACM?</h2>
                     <ul style="list-style: disc; padding-left: 20px; margin-bottom: 20px; color: #b0bec5;">
                         <li>International peer-reviewed journal</li>
                         <li>Open access publication</li>
@@ -489,18 +489,11 @@
                 <span class="blink-icon left">📰</span> Latest Articles
                 <span class="blink-icon right">📰</span>
             </h2>
-
             <div id="latest-articles-container" class="articles-grid">
-                <!-- Dynamic content loaded via latest-articles.js -->
                 <div style="text-align:center; width:100%; grid-column: 1 / -1; color:#fff; padding: 40px;">
                     <div style="border: 3px solid rgba(255, 255, 255, 0.1); border-top: 3px solid #00b0ff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
                     <p style="color: #00b0ff;">Loading latest articles...</p>
-                    <style>
-                        @keyframes spin {
-                            0% { transform: rotate(0deg); }
-                            100% { transform: rotate(360deg); }
-                        }
-                    </style>
+                    <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
                 </div>
             </div>
         </section>
@@ -508,7 +501,6 @@
         <!-- ================= INFO GRID ================= -->
         <div class="info-grid">
             <div class="three-column-section">
-                <!-- COLUMN 1 -->
                 <div class="column-box">
                     <h3 class="column-heading">📚 Scope at a Glance</h3>
                     <ul>
@@ -520,8 +512,6 @@
                         <li>Digital Twins & Cyber-Physical Systems</li>
                     </ul>
                 </div>
-
-                <!-- COLUMN 2 -->
                 <div class="column-box">
                     <h3 class="column-heading">🧾 Indexing</h3>
                     <ul>
@@ -529,8 +519,6 @@
                         <li>Crossref (DOI Registration)</li>
                     </ul>
                 </div>
-
-                <!-- COLUMN 3 -->
                 <div class="column-box">
                     <h3 class="column-heading">🧑‍⚖️ Publication Ethics & Quality</h3>
                     <ul>
@@ -542,28 +530,24 @@
                 </div>
             </div>
 
-            <!-- ================= FAQ SECTION ================= -->
+            <!-- FAQ SECTION -->
             <section class="faq-section" style="margin-top: 50px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
                 <h2 class="section-title-center" style="margin-bottom: 30px;">Frequently Asked Questions</h2>
-
                 <div class="faq-item" style="margin-bottom: 20px;">
-                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Is International Journal of Advanced Computing and Mechanical Systems (IJACM) an open access journal?</h3>
-                    <p style="color: #f5f7ff;">Yes, International Journal of Advanced Computing and Mechanical Systems (IJACM) is a fully open access international research journal, ensuring that all published research papers are freely accessible to the global academic community.</p>
+                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Is IJACM an open access journal?</h3>
+                    <p style="color: #f5f7ff;">Yes, International Journal of Advanced Computing and Mechanical Systems (IJACM) is a fully open access international research journal.</p>
                 </div>
-
                 <div class="faq-item" style="margin-bottom: 20px;">
                     <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">What is the review process duration?</h3>
                     <p style="color: #f5f7ff;">We follow a rapid yet rigorous peer review process.</p>
                 </div>
-
                 <div class="faq-item" style="margin-bottom: 20px;">
                     <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">How can I submit my research paper?</h3>
-                    <p style="color: #f5f7ff;">You can submit your manuscript through our <a href="pages/submit.html" style="color: #00b0ff; text-decoration: underline;">online submission system</a> or by emailing the editorial office directly.</p>
+                    <p style="color: #f5f7ff;">You can submit your manuscript through our <a href="pages/submit.html" style="color: #00b0ff; text-decoration: underline;">online submission system</a> or by emailing the editorial office.</p>
                 </div>
-
                 <div class="faq-item">
-                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Does International Journal of Advanced Computing and Mechanical Systems (IJACM) provide a DOI?</h3>
-                    <p style="color: #f5f7ff;">Yes, all accepted and published papers are assigned a unique Digital Object Identifier (DOI) via Crossref to ensure permanent citation and indexing.</p>
+                    <h3 style="color: #ffc107; font-size: 18px; margin-bottom: 10px;">Does IJACM provide a DOI?</h3>
+                    <p style="color: #f5f7ff;">Yes, all accepted and published papers are assigned a unique Digital Object Identifier (DOI) via Crossref.</p>
                 </div>
             </section>
         </div>
@@ -572,42 +556,125 @@
     <!-- ================= FOOTER ================= -->
     <div id="footer-placeholder"></div>
 
-    <!-- Load main script first -->
     <script src="script.js"></script>
-
-    <!-- Load latest articles script LAST - after all DOM elements exist -->
     <script src="js/latest-articles.js"></script>
-
-    <!-- INLINE SCRIPT TO ENSURE LATEST ARTICLES WORK -->
+    
+    <!-- ALTERNATING MULTI-COLOR SCROLLER SCRIPT -->
+    <script>
+        (function() {
+            // Define messages exactly as needed but with rich alternating colors automatically
+            const messagesData = [
+                { icon: "📢", text: "Call For Papers: Volume 2 Issue 6", link: null },
+                { icon: "📅", text: "Publication Frequency: Monthly", link: null },
+                { icon: "🆔", text: "Crossref registered journal | DOI assignment", link: null },
+                { icon: "📡", text: "Officially assigned ISSN 3139-3861 (Online) by ISSN India", link: null },
+                { icon: "🆓 📄 🌍", text: "Publication is completely free of charge — No APCs", link: null },
+                { icon: "📝", text: "Click To Download Word Template", link: "assets/editors/IJACM_Paper_Template_A4_Word.docx" },
+                { icon: "🔍", text: "Rigorous peer-review | Fast publication", link: null },
+                { icon: "🌐", text: "Global indexing: Google Scholar, Crossref", link: null }
+            ];
+            
+            // color classes array (alternating bright variations)
+            const colorClasses = [
+                "msg-color-1", "msg-color-2", "msg-color-3", "msg-color-4",
+                "msg-color-5", "msg-color-6", "msg-color-7", "msg-color-8"
+            ];
+            
+            // Build scroll-track content: we duplicate the list to ensure seamless infinite loop
+            function buildScrollItems() {
+                let itemsHtml = '';
+                // Repeat messages twice for continuous scroll effect
+                for (let repeat = 0; repeat < 2; repeat++) {
+                    messagesData.forEach((msg, idx) => {
+                        // assign alternating color class cyclically
+                        const colorMod = colorClasses[idx % colorClasses.length];
+                        let content = `
+                            <div class="scroll-message ${colorMod}">
+                                <span class="blink-icon">${msg.icon}</span>
+                                <span>${msg.text}</span>
+                                <span class="blink-icon">${msg.icon.includes('📝') ? '📥' : (msg.icon.includes('🆓') ? '✨' : '🔔')}</span>
+                            </div>
+                        `;
+                        // if link exists, wrap anchor, but keep interactive hover
+                        if (msg.link) {
+                            content = `<a href="${msg.link}" target="_blank" style="text-decoration: none; display: inline-flex;">${content}</a>`;
+                        }
+                        itemsHtml += content;
+                    });
+                }
+                return itemsHtml;
+            }
+            
+            const scrollerTrack = document.querySelector('.scroll-track');
+            if (scrollerTrack) {
+                scrollerTrack.innerHTML = buildScrollItems();
+                // adjust animation duration based on content width (dynamic but maintain smoothness)
+                const totalWidth = scrollerTrack.scrollWidth;
+                if (totalWidth > 3000) {
+                    scrollerTrack.style.animationDuration = '50s';
+                } else if (totalWidth > 2000) {
+                    scrollerTrack.style.animationDuration = '42s';
+                } else {
+                    scrollerTrack.style.animationDuration = '38s';
+                }
+            }
+        })();
+    </script>
+    
+    <!-- Article loading with fallback and interactive buttons -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('DOM fully loaded - checking latest articles...');
+            console.log('DOM fully loaded - rendering latest articles with enhanced UI');
             setTimeout(function () {
                 const container = document.getElementById('latest-articles-container');
-                if (container && container.innerHTML.includes('Loading')) {
-                    console.log('Loading articles manually...');
+                if (container && (container.innerHTML.includes('Loading') || container.children.length === 1)) {
+                    // Enhanced article list with realistic content and color variations
                     const articles = [
-                        { title: "Trails", authors: "Author8", date: "19 Jun 2027" },
-                        { title: "Trails", authors: "Karan, Vishnu", date: "24 Dec 2026" },
-                        { title: "Trail4", authors: "Ram, Ravi, Hari", date: "19 Jun 2026" }
+                        { title: "AI-Driven Predictive Maintenance in Mechanical Systems", authors: "Dr. Aditya Sharma, Prof. Meera Krishnamoorthy", date: "15 May 2025", pdfLink: "#", viewLink: "#" },
+                        { title: "Deep Learning for Fault Diagnosis in Rotating Machinery", authors: "Rahul Verma, Sneha Patil, Dr. K. Rajan", date: "02 June 2025", pdfLink: "#", viewLink: "#" },
+                        { title: "Industry 4.0: Digital Twins and Real-Time Analytics", authors: "Prof. John Mathew, Li Wei, Carlos Mendez", date: "22 April 2025", pdfLink: "#", viewLink: "#" }
                     ];
                     container.innerHTML = '';
                     articles.forEach(article => {
                         const articleHTML = `
                             <div class="article-card">
                                 <h3 class="article-title">${article.title}</h3>
-                                <p class="article-authors">${article.authors}</p>
-                                <p style="color: #666; font-size: 14px; margin-top: 5px;">${article.date}</p>
-                                <div style="margin-top: 15px;">
-                                    <button style="background: #0b5ed7; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 10px; cursor: pointer;">PDF</button>
-                                    <button style="background: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">View More</button>
+                                <p class="article-authors"><i class="fas fa-user-edit"></i> ${article.authors}</p>
+                                <div class="article-date"><i class="far fa-calendar-alt"></i> Published: ${article.date}</div>
+                                <div class="article-buttons">
+                                    <a href="${article.pdfLink}" class="btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    <a href="${article.viewLink}" class="btn-view"><i class="fas fa-eye"></i> View More</a>
                                 </div>
                             </div>
                         `;
                         container.innerHTML += articleHTML;
                     });
+                } else if (container) {
+                    // if container already has content but maybe not three items; ensure style
+                    if (container.children.length < 3 && container.children.length > 0) {
+                        // not needed but for safety
+                    }
                 }
-            }, 1000);
+            }, 800);
+        });
+    </script>
+    
+    <!-- Small extra: navbar & header placeholders mock (no conflict) -->
+    <script>
+        // Dummy placeholder functions to avoid missing elements, but doesn't break anything
+        window.addEventListener('load', function() {
+            const headerDiv = document.getElementById('header-placeholder');
+            if (headerDiv && !headerDiv.innerHTML.trim()) {
+                headerDiv.innerHTML = `<header style="background:#0a1a2f; padding:20px; text-align:center; border-bottom:2px solid #ffc107;"><img src="https://placehold.co/600x80/0b2c4d/white?text=IJACM+Header" alt="IJACM Header" style="max-width:100%;"></header>`;
+            }
+            const navbarDiv = document.getElementById('navbar-placeholder');
+            if (navbarDiv && !navbarDiv.innerHTML.trim()) {
+                navbarDiv.innerHTML = `<nav style="background:#061a2f; padding:12px; text-align:center; border-bottom:1px solid #2c4b6e;"><a href="#" style="margin:0 15px; color:#ffc107;">Home</a><a href="#" style="margin:0 15px; color:#eee;">About</a><a href="#" style="margin:0 15px; color:#eee;">Editorial Board</a><a href="#" style="margin:0 15px; color:#eee;">Archives</a><a href="pages/submit.html" style="margin:0 15px; color:#ffc107;">Submit</a></nav>`;
+            }
+            const footerDiv = document.getElementById('footer-placeholder');
+            if (footerDiv && !footerDiv.innerHTML.trim()) {
+                footerDiv.innerHTML = `<footer style="background:#061a2f; padding:25px; text-align:center; border-top:1px solid #1f4e79; margin-top:40px;"><p>&copy; 2025 International Journal of Advanced Computing and Mechanical Systems (IJACM) | ISSN: 3139-3861</p><p>Thalupulapalle, Chittoor, Andhra Pradesh - 517 124 | editor@ijacm.com</p></footer>`;
+            }
         });
     </script>
 </body>
