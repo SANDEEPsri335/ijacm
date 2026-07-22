@@ -66,7 +66,7 @@
             color: #00c6ff;
         }
 
-        /* ===== DROPDOWN - PURE CSS HOVER ===== */
+        /* ===== DROPDOWN ===== */
         .dropdown-wrapper {
             position: relative;
             display: inline-block;
@@ -115,16 +115,16 @@
             z-index: 9999;
             margin-top: 8px;
             border: 1px solid rgba(255,255,255,0.08);
-            
-            /* Hide by default */
             display: none;
             flex-direction: column;
             gap: 5px;
         }
 
-        /* Show on hover */
-        .dropdown-wrapper:hover .dropdown-menu {
-            display: flex;
+        /* Desktop: Show on hover */
+        @media (min-width: 851px) {
+            .dropdown-wrapper:hover .dropdown-menu {
+                display: flex;
+            }
         }
 
         .dropdown-menu a {
@@ -189,7 +189,7 @@
             }
         }
 
-        /* Mobile */
+        /* MOBILE */
         @media (max-width: 850px) {
             .navbar {
                 height: 50px;
@@ -206,8 +206,13 @@
                 display: none !important;
             }
 
+            /* Show on active class */
             .dropdown-wrapper.active .dropdown-menu {
                 display: flex !important;
+            }
+
+            .dropdown-wrapper.active .arrow {
+                transform: rotate(180deg);
             }
 
             .nav-container {
@@ -368,8 +373,8 @@
             <a href="pages/indexing.html">Indexing</a>
 
             <!-- GUIDELINES DROPDOWN -->
-            <div class="dropdown-wrapper">
-                <button class="dropdown-btn">
+            <div class="dropdown-wrapper" id="guidelinesWrapper">
+                <button class="dropdown-btn" onclick="toggleDropdown('guidelinesWrapper')">
                     Guidelines
                     <span class="arrow">▼</span>
                 </button>
@@ -385,8 +390,8 @@
             </div>
 
             <!-- ARTICLES DROPDOWN -->
-            <div class="dropdown-wrapper">
-                <button class="dropdown-btn">
+            <div class="dropdown-wrapper" id="articlesWrapper">
+                <button class="dropdown-btn" onclick="toggleDropdown('articlesWrapper')">
                     Articles
                     <span class="arrow">▼</span>
                 </button>
@@ -403,60 +408,54 @@
     </nav>
 
     <script>
+        // ===== TOGGLE DROPDOWN FUNCTION =====
+        function toggleDropdown(id) {
+            var wrapper = document.getElementById(id);
+            if (!wrapper) return;
+            
+            // Check if mobile
+            var isMobile = window.innerWidth <= 850;
+            if (!isMobile) return;
+            
+            // Close all other dropdowns
+            var allWrappers = document.querySelectorAll('.dropdown-wrapper');
+            allWrappers.forEach(function(w) {
+                if (w.id !== id) {
+                    w.classList.remove('active');
+                }
+            });
+            
+            // Toggle this dropdown
+            wrapper.classList.toggle('active');
+        }
+
+        // ===== MOBILE MENU TOGGLE =====
         document.addEventListener('DOMContentLoaded', function() {
             var menuToggle = document.getElementById('menuToggle');
             var navMenu = document.getElementById('navMenu');
-            var dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
-            
-            // Mobile: Click to toggle dropdowns
-            function isMobile() {
-                return window.innerWidth <= 850;
-            }
 
-            // Mobile menu toggle
             if (menuToggle) {
                 menuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
                     
+                    // Close dropdowns when closing menu
                     if (!navMenu.classList.contains('active')) {
-                        dropdownWrappers.forEach(function(w) {
+                        var allWrappers = document.querySelectorAll('.dropdown-wrapper');
+                        allWrappers.forEach(function(w) {
                             w.classList.remove('active');
                         });
                     }
                 });
             }
 
-            // Mobile dropdown toggle
-            dropdownWrappers.forEach(function(wrapper) {
-                var btn = wrapper.querySelector('.dropdown-btn');
-                
-                if (btn) {
-                    btn.addEventListener('click', function(e) {
-                        if (isMobile()) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            // Close other dropdowns
-                            dropdownWrappers.forEach(function(other) {
-                                if (other !== wrapper) {
-                                    other.classList.remove('active');
-                                }
-                            });
-                            
-                            // Toggle this dropdown
-                            wrapper.classList.toggle('active');
-                        }
-                    });
-                }
-            });
-
             // Close dropdowns when clicking a link inside
             var dropdownLinks = document.querySelectorAll('.dropdown-menu a');
             dropdownLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
-                    if (isMobile()) {
+                    var isMobile = window.innerWidth <= 850;
+                    if (isMobile) {
                         var parent = this.closest('.dropdown-wrapper');
                         if (parent) {
                             parent.classList.remove('active');
@@ -466,30 +465,47 @@
                 });
             });
 
-            // Close all when clicking outside
+            // Close dropdowns when clicking outside
             document.addEventListener('click', function(e) {
                 var isInside = e.target.closest('.nav-container');
                 var isToggle = e.target.closest('.menu-toggle');
+                var isDropdownBtn = e.target.closest('.dropdown-btn');
                 
                 if (!isInside && !isToggle) {
-                    dropdownWrappers.forEach(function(w) {
+                    var allWrappers = document.querySelectorAll('.dropdown-wrapper');
+                    allWrappers.forEach(function(w) {
                         w.classList.remove('active');
                     });
-                    if (isMobile() && navMenu.classList.contains('active')) {
+                    if (window.innerWidth <= 850 && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                     }
                 }
             });
 
-            // Handle resize
+            // Close mobile menu when clicking a nav link
+            var navLinks = document.querySelectorAll('.nav-container > a');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 850) {
+                        navMenu.classList.remove('active');
+                        var allWrappers = document.querySelectorAll('.dropdown-wrapper');
+                        allWrappers.forEach(function(w) {
+                            w.classList.remove('active');
+                        });
+                    }
+                });
+            });
+
+            // Handle window resize
             var resizeTimer;
             window.addEventListener('resize', function() {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function() {
-                    if (!isMobile() && navMenu.classList.contains('active')) {
+                    if (window.innerWidth > 850 && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                     }
-                    dropdownWrappers.forEach(function(w) {
+                    var allWrappers = document.querySelectorAll('.dropdown-wrapper');
+                    allWrappers.forEach(function(w) {
                         w.classList.remove('active');
                     });
                 }, 300);
