@@ -46,7 +46,7 @@
             width: 100%;
         }
 
-        /* Base link styles - Larger font sizes */
+        /* Base link styles */
         .nav-container a, 
         details.dropdown > summary {
             color: #ffffff;
@@ -67,7 +67,6 @@
             flex-shrink: 0;
         }
 
-        /* Remove default details marker */
         details.dropdown > summary::-webkit-details-marker {
             display: none;
         }
@@ -119,7 +118,7 @@
             background: #0b2b4a;
             padding: 10px;
             border-radius: 12px;
-            display: flex;
+            display: none;
             flex-direction: column;
             gap: 5px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
@@ -129,23 +128,9 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Desktop dropdown behavior - Only one open at a time */
-        @media (min-width: 851px) {
-            details.dropdown:hover .dropdown-menu {
-                display: flex;
-            }
-            
-            details.dropdown:not(:hover) .dropdown-menu {
-                display: none;
-            }
-            
-            details.dropdown[open] .dropdown-menu {
-                display: flex;
-            }
-            
-            details.dropdown[open]:not(:hover) .dropdown-menu {
-                display: flex;
-            }
+        /* Show dropdown only when open */
+        details.dropdown[open] .dropdown-menu {
+            display: flex;
         }
 
         .dropdown-menu a {
@@ -168,7 +153,7 @@
             color: #ffffff;
         }
 
-        /* MENU TOGGLE - Hidden on desktop */
+        /* MENU TOGGLE */
         .menu-toggle {
             display: none;
             font-size: 24px;
@@ -216,7 +201,7 @@
             }
         }
 
-        /* Mobile: Full menu */
+        /* Mobile */
         @media (max-width: 850px) {
             .navbar {
                 height: 50px;
@@ -382,12 +367,10 @@
 </head>
 <body>
     <nav class="navbar">
-        <!-- MOBILE TOGGLE -->
         <button class="menu-toggle" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- CENTER: NAV LINKS -->
         <div class="nav-container" id="nav-menu">
             <a href="index.html" class="nav-home">
                 <i class="fas fa-home"></i> <span>Home</span>
@@ -398,7 +381,6 @@
             <a href="pages/editorial-board.html">Editorial Board</a>
             <a href="pages/indexing.html">Indexing</a>
 
-            <!-- GUIDELINES DROPDOWN -->
             <details class="dropdown" id="guidelines-dropdown">
                 <summary class="dropbtn">
                     Guidelines
@@ -415,7 +397,6 @@
                 </div>
             </details>
 
-            <!-- ARTICLES DROPDOWN -->
             <details class="dropdown" id="articles-dropdown">
                 <summary class="dropbtn">
                     Articles
@@ -460,44 +441,33 @@
                 });
             }
 
-            // Handle dropdown toggle - CLOSE OTHER DROPDOWNS
+            // Handle dropdown clicks
             dropdowns.forEach(drop => {
                 const summary = drop.querySelector('summary');
                 const menu = drop.querySelector('.dropdown-menu');
                 
                 if (summary) {
                     summary.addEventListener('click', function(e) {
-                        // Close all other dropdowns first
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close ALL other dropdowns
                         dropdowns.forEach(otherDrop => {
-                            if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
+                            if (otherDrop !== drop) {
                                 otherDrop.removeAttribute('open');
                             }
                         });
                         
-                        // Toggle current dropdown on mobile
-                        if (isMobile()) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            if (drop.hasAttribute('open')) {
-                                drop.removeAttribute('open');
-                            } else {
-                                drop.setAttribute('open', '');
-                            }
-                        }
-                        // On desktop, we just close others and let the default behavior handle current
-                        else {
-                            // If current is already open, close it; otherwise open it
-                            if (drop.hasAttribute('open')) {
-                                drop.removeAttribute('open');
-                            } else {
-                                drop.setAttribute('open', '');
-                            }
+                        // Toggle the clicked dropdown
+                        if (drop.hasAttribute('open')) {
+                            drop.removeAttribute('open');
+                        } else {
+                            drop.setAttribute('open', '');
                         }
                     });
                 }
 
-                // Prevent closing when clicking inside dropdown menu
+                // Clicking inside dropdown menu - keep it open
                 if (menu) {
                     menu.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -511,19 +481,23 @@
                                 navMenu.classList.remove('active');
                                 isMobileMenuOpen = false;
                             } else {
+                                // Close dropdown after clicking a link
                                 setTimeout(() => {
                                     drop.removeAttribute('open');
-                                }, 200);
+                                }, 300);
                             }
                         });
                     });
                 }
             });
 
-            // Close all dropdowns when clicking outside
+            // Close all dropdowns when clicking anywhere outside
             document.addEventListener('click', function(e) {
-                const isClickInside = e.target.closest('.nav-container');
-                if (!isClickInside && !e.target.closest('.menu-toggle')) {
+                // Check if click is outside nav-container
+                const isClickInsideNav = e.target.closest('.nav-container');
+                const isClickToggle = e.target.closest('.menu-toggle');
+                
+                if (!isClickInsideNav && !isClickToggle) {
                     dropdowns.forEach(drop => {
                         drop.removeAttribute('open');
                     });
