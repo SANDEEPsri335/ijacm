@@ -91,6 +91,7 @@
             transform: rotate(180deg);
         }
 
+        /* FIXED: Removed gap between button and menu */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -105,7 +106,8 @@
             gap: 5px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             z-index: 9999;
-            margin-top: 8px;
+            margin-top: 0px;
+            /* Removed gap - was 8px */
             border: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -199,7 +201,6 @@
                 display: block;
             }
 
-            /* Disable hover on mobile */
             details.dropdown:hover .dropdown-menu {
                 display: none !important;
             }
@@ -378,13 +379,13 @@
                 </div>
             </details>
 
-            <!-- ARTICLES DROPDOWN - FIXED: Added min-width and padding to prevent hiding fast -->
+            <!-- ARTICLES DROPDOWN -->
             <details class="dropdown">
                 <summary>
                     Articles
                     <span class="arrow">▼</span>
                 </summary>
-                <div class="dropdown-menu" style="min-width: 200px; padding: 10px;">
+                <div class="dropdown-menu">
                     <a href="pages/current-issue.html">Current Issue</a>
                     <a href="pages/cover-page.html">Cover Page</a>
                     <a href="pages/previous-volume.html">Previous Volumes</a>
@@ -419,14 +420,12 @@
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        // Close other dropdowns
                         dropdowns.forEach(function(other) {
                             if (other !== drop) {
                                 other.removeAttribute('open');
                             }
                         });
                         
-                        // Toggle this dropdown
                         if (drop.hasAttribute('open')) {
                             drop.removeAttribute('open');
                         } else {
