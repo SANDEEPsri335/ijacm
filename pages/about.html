@@ -108,16 +108,16 @@
     .about-main-container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 20px 20px 20px;
       position: relative;
       z-index: 1;
     }
 
-    /* Hero Section */
+    /* Hero Section - Reduced padding */
     .hero-section {
       text-align: center;
-      padding: 60px 30px;
-      margin: 40px auto;
+      padding: 30px 25px;
+      margin: 20px auto 25px auto;
       border-radius: var(--radius);
       background: rgba(13, 27, 42, 0.8);
       backdrop-filter: blur(10px);
@@ -129,8 +129,8 @@
     .hero-title {
       font-family: 'Roboto Slab', serif;
       color: #fff;
-      font-size: 2.8rem;
-      margin-bottom: 20px;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
       animation: fadeInScale 1s ease-out;
       line-height: 1.2;
     }
@@ -149,28 +149,28 @@
 
     .hero-subtitle {
       color: var(--text-light);
-      font-size: 1.1rem;
+      font-size: 1rem;
       max-width: 800px;
-      margin: 0 auto 30px auto;
-      line-height: 1.8;
+      margin: 0 auto 15px auto;
+      line-height: 1.7;
       text-align: justify;
       padding: 0 10px;
     }
 
-    /* JOURNAL PARTICULARS TABLE (new style for about page) */
+    /* JOURNAL PARTICULARS TABLE */
     .particulars-table {
       width: 100%;
       background: #f8f9fa;
       border-radius: var(--radius-sm);
       border-collapse: collapse;
-      margin: 20px auto 0 auto;
-      font-size: 15px;
+      margin: 15px auto 0 auto;
+      font-size: 14px;
       box-shadow: var(--shadow-sm);
       color: #000;
       text-align: left;
     }
     .particulars-table td {
-      padding: 12px 15px;
+      padding: 8px 12px;
       border: 1px solid #dee2e6;
     }
     .particulars-table td:first-child {
@@ -182,13 +182,13 @@
       background-color: #ffffff;
     }
 
-    /* Content Sections */
+    /* Content Sections - Reduced padding and margin */
     .content-section {
       background: rgba(13, 27, 42, 0.8);
       backdrop-filter: blur(10px);
       border-radius: var(--radius);
-      padding: 30px;
-      margin: 30px auto;
+      padding: 20px 25px;
+      margin: 15px auto;
       box-shadow: var(--shadow);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transform: translateY(30px);
@@ -216,10 +216,10 @@
     .section-title {
       font-family: 'Roboto Slab', serif;
       color: #fff;
-      font-size: 1.8rem;
-      margin-bottom: 25px;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -230,25 +230,25 @@
     }
 
     .section-content p {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
+      line-height: 1.7;
       color: var(--text-light);
-      margin: 0 0 15px 0;
+      margin: 0 0 10px 0;
       text-align: justify;
     }
 
-    /* Cards */
+    /* Cards - Reduced padding */
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin: 25px 0;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 15px 0 5px 0;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.05);
       border-radius: var(--radius);
-      padding: 30px 20px;
+      padding: 20px 15px;
       transition: var(--transition);
       border: 1px solid rgba(255, 255, 255, 0.1);
       text-align: center;
@@ -266,39 +266,46 @@
     }
 
     .card-icon {
-      width: 70px;
-      height: 70px;
+      width: 55px;
+      height: 55px;
       background: var(--gradient2);
-      border-radius: 15px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 12px;
       color: white;
-      font-size: 28px;
+      font-size: 22px;
     }
 
     .card h3 {
       color: #fff;
-      font-size: 1.3rem;
-      margin-bottom: 15px;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
       font-weight: 600;
     }
 
-    /* Feature List */
+    .card p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Feature List - Reduced spacing */
     .feature-list {
       list-style: none;
       padding: 0;
-      margin: 20px 0 0 0;
+      margin: 10px 0 0 0;
     }
 
     .feature-list li {
-      padding: 15px 0 15px 45px;
+      padding: 10px 0 10px 40px;
       position: relative;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       color: var(--text-light);
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     .feature-list li::before {
@@ -306,10 +313,10 @@
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
-      left: 15px;
-      top: 15px;
+      left: 12px;
+      top: 10px;
       color: #00e5ff;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .feature-list strong {
@@ -317,12 +324,16 @@
       font-weight: 600;
     }
 
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
     .back-to-top {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       background: var(--gradient2);
       color: white;
       border-radius: 50%;
@@ -345,11 +356,67 @@
 
     @media (max-width: 768px) {
       .hero-title {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
       }
 
       .hero-subtitle {
         text-align: left;
+        font-size: 0.95rem;
+      }
+
+      .hero-section {
+        padding: 20px 15px;
+        margin: 10px auto 15px auto;
+      }
+
+      .content-section {
+        padding: 15px 18px;
+        margin: 10px auto;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .card {
+        padding: 15px 12px;
+      }
+
+      .particulars-table {
+        font-size: 12px;
+      }
+      .particulars-table td {
+        padding: 6px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .about-main-container {
+        padding: 0 10px 10px 10px;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+      .feature-list li {
+        font-size: 0.85rem;
+        padding: 8px 0 8px 35px;
+      }
+
+      .feature-list li::before {
+        left: 10px;
+        top: 8px;
+        font-size: 12px;
       }
     }
   </style>
@@ -377,7 +444,6 @@
           research work in engineering.
         </p>
 
-        <!-- ===== JOURNAL PARTICULARS TABLE (exactly from image) ===== -->
         <table class="particulars-table">
           <tr><td>Title</td><td>International Journal of Advanced Computing and Mechanical Systems (IJACM)</td></tr>
           <tr><td>Frequency</td><td>Monthly (12 issues per year)</td></tr>
