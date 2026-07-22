@@ -1,25 +1,13 @@
-## Contact
-For queries, please contact: [tenspickofficial@gmail.com](mailto:tenspickofficial@gmail.com)
-# IJAMC - International Journal of Advanced Computing & Mechanical Systems
+# International Journal of Advanced Computing and Mechanical Systems (IJACM)
 
 ## 🌐 Website Information
 
-This is the official website for the **International Journal of Advanced Computing and Mechanical Systems (IJAMC)**, a peer-reviewed academic journal dedicated to publishing high-quality research in the fields of advanced computing technologies and mechanical systems engineering.
-
-## 👨‍💻 Development Team
-
-### Core Developers
-- **Narapureddy Mano Teja Reddy**
-- **M. Narayan Naidu**
-- **Hemanth Musirana**
-
-## Developed with ❤️ By
-**Tenspick** - code for a better tommorow
+This is the official website for the **International Journal of Advanced Computing and Mechanical Systems (IJACM)**, a peer-reviewed academic journal dedicated to publishing high-quality research in the fields of advanced computing technologies and mechanical systems engineering.
 
 ## 📋 Project Details
 
 ### About the Journal
-IJAMC is an open-access, peer-reviewed journal that bridges the gap between advanced computing methodologies and mechanical engineering applications. The journal publishes original research articles, review papers, case studies, and technical notes.
+IJACM is an open-access, peer-reviewed journal that bridges the gap between advanced computing methodologies and mechanical engineering applications. The journal publishes original research articles, review papers, case studies, and technical notes.
 
 ### Website Features
 - **Responsive Design**: Optimized for all devices (mobile, tablet, desktop)
@@ -72,26 +60,6 @@ ijamc-website/
 │
 └── README.md                     # This documentation
 ```
-
-## 🚀 Getting Started
-
-### Local Development
-1. Clone the repository:
-```bash
-git clone https://github.com/Narapu-Reddy-Mano-Teja-Reddy/ijamc.git
-```
-
-2. Navigate to project directory:
-```bash
-cd ijamc
-```
-
-3. Open in your preferred code editor:
-```bash
-code .  # For VS Code
-```
-
-4. Launch with a local server (Live Server extension recommended)
 
 ### File Structure Notes
 - All HTML files are self-contained with inline CSS for simplicity
@@ -254,13 +222,6 @@ We welcome contributions from the community:
 - Add comments for complex logic
 - Update documentation as needed
 - Ensure responsive compatibility
-
-## 📞 Support & Contact
-
-### Technical Support
-For technical issues or questions about the website code:
-- **Email**: [tenspickofficial@gmail.com](mailto:tenspickofficial@gmail.com)
-- **GitHub Issues**: Report bugs or request features via repository issues
 
 ### Journal Inquiries
 For questions about the journal, submissions, or editorial matters, please use the contact form on the website.
