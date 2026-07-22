@@ -10,6 +10,7 @@
         justify-content: space-between;
         gap: 15px;
         flex-wrap: nowrap;
+        min-width: 0;
     }
     
     /* LOGO STYLES */
@@ -26,13 +27,13 @@
     }
     
     .logo img {
-        max-height: 60px;
+        max-height: 55px;
         width: auto;
         display: block;
         object-fit: contain;
     }
     
-    /* TITLE STYLES - Auto-aligns based on screen size */
+    /* TITLE STYLES - Auto-fits all screen sizes */
     .title {
         flex: 1;
         text-align: center;
@@ -40,28 +41,228 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
     }
     
     .title h1 {
         margin: 0;
-        font-size: clamp(16px, 2.2vw, 24px);
         font-weight: 700;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
         color: white;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        text-align: center;
+        line-height: 1.2;
+        transition: font-size 0.2s ease;
         max-width: 100%;
-        transition: font-size 0.3s ease;
     }
     
-    .title h1 .journal-name {
+    /* Desktop - Full title */
+    .title h1 .full-title {
         display: inline;
+    }
+    
+    .title h1 .short-title {
+        display: none;
     }
     
     .title h1 .abbr {
         color: var(--secondary);
         display: inline;
+    }
+    
+    /* ===== RESPONSIVE TITLE SIZING ===== */
+    
+    /* Extra Large Screens (1600px+) */
+    @media (min-width: 1600px) {
+        .title h1 {
+            font-size: 28px;
+            white-space: nowrap;
+        }
+    }
+    
+    /* Large Screens (1200-1599px) */
+    @media (max-width: 1599px) and (min-width: 1200px) {
+        .title h1 {
+            font-size: 24px;
+            white-space: nowrap;
+        }
+    }
+    
+    /* Medium-Large (992-1199px) */
+    @media (max-width: 1199px) and (min-width: 992px) {
+        .title h1 {
+            font-size: 20px;
+            white-space: nowrap;
+        }
+    }
+    
+    /* Medium (768-991px) - Title starts wrapping */
+    @media (max-width: 991px) and (min-width: 768px) {
+        .header {
+            padding: 5px 12px;
+            gap: 10px;
+            height: auto;
+            min-height: 70px;
+        }
+        
+        .logo img {
+            max-height: 45px;
+        }
+        
+        .title h1 {
+            font-size: 16px;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.2;
+        }
+        
+        .submit-btn a {
+            padding: 8px 14px;
+            font-size: 13px;
+        }
+    }
+    
+    /* Tablet/Small (576-767px) */
+    @media (max-width: 767px) and (min-width: 576px) {
+        .header {
+            flex-wrap: wrap;
+            height: auto;
+            min-height: 65px;
+            padding: 8px 12px;
+            gap: 6px;
+            justify-content: center;
+        }
+        
+        .logo {
+            flex: 0 0 100%;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 2px;
+        }
+        
+        .logo img {
+            max-height: 38px;
+        }
+        
+        .title {
+            flex: 1 1 55%;
+            text-align: center;
+        }
+        
+        .title h1 {
+            font-size: 14px;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.2;
+        }
+        
+        .submit-btn {
+            flex: 0 1 auto;
+        }
+        
+        .submit-btn a {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+    }
+    
+    /* Mobile (400-575px) - Show shorter version */
+    @media (max-width: 575px) and (min-width: 400px) {
+        .header {
+            flex-wrap: wrap;
+            height: auto;
+            min-height: 60px;
+            padding: 6px 10px;
+            gap: 4px;
+            justify-content: center;
+        }
+        
+        .logo {
+            flex: 0 0 100%;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            max-height: 32px;
+        }
+        
+        .title {
+            flex: 1 1 50%;
+            text-align: center;
+        }
+        
+        /* Hide full title, show short version */
+        .title h1 .full-title {
+            display: none;
+        }
+        
+        .title h1 .short-title {
+            display: inline;
+        }
+        
+        .title h1 {
+            font-size: 13px;
+            white-space: normal;
+            line-height: 1.2;
+        }
+        
+        .submit-btn a {
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+    }
+    
+    /* Very Small Mobile (<400px) - Show only abbreviation */
+    @media (max-width: 399px) {
+        .header {
+            flex-wrap: wrap;
+            height: auto;
+            min-height: 55px;
+            padding: 4px 6px;
+            gap: 3px;
+            justify-content: center;
+        }
+        
+        .logo {
+            flex: 0 0 100%;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            max-height: 28px;
+        }
+        
+        .title {
+            flex: 1 1 45%;
+            text-align: center;
+        }
+        
+        /* Hide everything except abbreviation */
+        .title h1 .full-title,
+        .title h1 .short-title {
+            display: none;
+        }
+        
+        .title h1 .abbr {
+            display: inline;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .title h1 .abbr span {
+            color: var(--secondary);
+        }
+        
+        .title h1 {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .submit-btn a {
+            padding: 4px 8px;
+            font-size: 9px;
+        }
     }
     
     /* SUBMIT BUTTON IN HEADER */
@@ -79,131 +280,12 @@
         box-shadow: var(--shadow-glow);
         white-space: nowrap;
         display: inline-block;
-        font-size: clamp(12px, 1vw, 16px);
+        font-size: clamp(11px, 1vw, 16px);
         transition: background 0.3s ease;
     }
     
     .submit-btn a:hover {
         background: #40c4ff;
-    }
-    
-    /* ================= RESPONSIVE HEADER ================= */
-    
-    /* Large screens - Full title visible */
-    @media (min-width: 1200px) {
-        .title h1 {
-            font-size: 24px;
-            white-space: nowrap;
-        }
-    }
-    
-    /* Medium screens - Title shrinks but stays on one line */
-    @media (max-width: 1199px) and (min-width: 993px) {
-        .title h1 {
-            font-size: 18px;
-            white-space: nowrap;
-        }
-    }
-    
-    /* Tablets - Title wraps and shows abbreviation */
-    @media (max-width: 992px) and (min-width: 769px) {
-        .header {
-            padding: 5px 15px;
-            gap: 10px;
-        }
-        
-        .logo img {
-            max-height: 50px;
-        }
-        
-        .title h1 {
-            font-size: clamp(13px, 1.8vw, 16px);
-            white-space: normal;
-            word-wrap: break-word;
-            line-height: 1.3;
-            text-align: center;
-        }
-    }
-    
-    /* Mobile - Title wraps and auto-aligns */
-    @media (max-width: 768px) {
-        .header {
-            flex-wrap: wrap;
-            height: auto;
-            min-height: 70px;
-            padding: 10px 15px;
-            gap: 8px;
-            justify-content: center;
-        }
-        
-        .logo {
-            flex: 0 0 100%;
-            text-align: center;
-            justify-content: center;
-            margin-bottom: 2px;
-        }
-        
-        .logo img {
-            max-height: 40px;
-        }
-        
-        .title {
-            flex: 1 1 60%;
-            text-align: center;
-            justify-content: center;
-        }
-        
-        .title h1 {
-            font-size: clamp(11px, 2.5vw, 15px);
-            white-space: normal;
-            word-wrap: break-word;
-            line-height: 1.3;
-            text-align: center;
-            display: block;
-        }
-    }
-    
-    /* Very small phones - Show only abbreviation */
-    @media (max-width: 480px) {
-        .header {
-            padding: 6px 8px;
-            gap: 4px;
-        }
-        
-        .logo img {
-            max-height: 32px;
-        }
-        
-        .title h1 {
-            font-size: clamp(9px, 2.2vw, 12px);
-            line-height: 1.2;
-        }
-        
-        .submit-btn a {
-            padding: 5px 8px;
-            font-size: clamp(8px, 1.8vw, 10px);
-        }
-    }
-    
-    /* Extra small screens - Hide long name, show only abbreviation */
-    @media (max-width: 360px) {
-        .title h1 .journal-name {
-            display: none;
-        }
-        
-        .title h1 .abbr {
-            display: inline;
-            font-size: clamp(12px, 3vw, 16px);
-            color: white;
-        }
-        
-        .title h1 .abbr span {
-            color: var(--secondary);
-        }
-        
-        .title h1 {
-            white-space: nowrap;
-        }
     }
 </style>
 
@@ -218,7 +300,11 @@
 
     <div class="title">
         <h1>
-            <span class="journal-name">International Journal of Advanced Computing and Mechanical Systems </span>
+            <!-- Full title - shows on large screens -->
+            <span class="full-title">International Journal of Advanced Computing and Mechanical Systems </span>
+            <!-- Short title - shows on medium-small screens -->
+            <span class="short-title">Int. J. Adv. Comput. Mech. Syst. </span>
+            <!-- Abbreviation - always shows -->
             <span class="abbr">(<span>IJACM</span>)</span>
         </h1>
     </div>
