@@ -417,6 +417,13 @@
             var dropdowns = document.querySelectorAll('details.dropdown');
             var isMobileMenuOpen = false;
             
+            // Function to close all dropdowns
+            function closeAllDropdowns() {
+                dropdowns.forEach(function(drop) {
+                    drop.removeAttribute('open');
+                });
+            }
+            
             function isMobile() {
                 return window.innerWidth <= 850;
             }
@@ -430,14 +437,25 @@
                     isMobileMenuOpen = navMenu.classList.contains('active');
                     
                     if (!isMobileMenuOpen) {
-                        dropdowns.forEach(function(drop) {
-                            drop.removeAttribute('open');
-                        });
+                        closeAllDropdowns();
                     }
                 });
             }
 
-            // CLOSE ALL DROPDOWNS EXCEPT THE ONE BEING OPENED
+            // CLOSE ALL DROPDOWNS when clicking on ANY navbar item (including dropdowns)
+            // 1. Click on regular nav links (About, Aims & Scope, etc.)
+            var navLinks = document.querySelectorAll('.nav-container > a');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    closeAllDropdowns();
+                    if (isMobile()) {
+                        navMenu.classList.remove('active');
+                        isMobileMenuOpen = false;
+                    }
+                });
+            });
+
+            // 2. Click on dropdown summary (Guidelines, Articles)
             dropdowns.forEach(function(drop) {
                 var summary = drop.querySelector('summary');
                 
@@ -461,41 +479,30 @@
                                 drop.setAttribute('open', '');
                             }
                         }
-                        // On desktop, the default behavior works, but we already closed others
+                        // On desktop, the default behavior works
                     });
                 }
             });
 
-            // Close dropdowns when clicking a link inside
+            // 3. Click on dropdown menu items (Author Guidelines, Current Issue, etc.)
             var dropdownLinks = document.querySelectorAll('.dropdown-menu a');
             dropdownLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
+                    closeAllDropdowns();
                     if (isMobile()) {
-                        var parentDrop = this.closest('details.dropdown');
-                        if (parentDrop) {
-                            parentDrop.removeAttribute('open');
-                        }
                         navMenu.classList.remove('active');
                         isMobileMenuOpen = false;
-                    } else {
-                        setTimeout(function() {
-                            dropdowns.forEach(function(drop) {
-                                drop.removeAttribute('open');
-                            });
-                        }, 200);
                     }
                 });
             });
 
-            // Close dropdowns when clicking outside
+            // 4. Close dropdowns when clicking outside
             document.addEventListener('click', function(e) {
                 var isInsideNav = e.target.closest('.nav-container');
                 var isToggle = e.target.closest('.menu-toggle');
                 
                 if (!isInsideNav && !isToggle) {
-                    dropdowns.forEach(function(drop) {
-                        drop.removeAttribute('open');
-                    });
+                    closeAllDropdowns();
                     
                     if (isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
@@ -513,9 +520,7 @@
                         navMenu.classList.remove('active');
                         isMobileMenuOpen = false;
                     }
-                    dropdowns.forEach(function(drop) {
-                        drop.removeAttribute('open');
-                    });
+                    closeAllDropdowns();
                 }, 300);
             });
         });
