@@ -11,9 +11,10 @@
         gap: 15px;
         flex-wrap: nowrap;
         min-width: 0;
+        width: 100%;
     }
     
-    /* LOGO STYLES */
+    /* LOGO STYLES - Fixed Left */
     .logo {
         flex-shrink: 0;
         display: flex;
@@ -33,7 +34,7 @@
         object-fit: contain;
     }
     
-    /* TITLE STYLES - Auto-fits all screen sizes */
+    /* TITLE STYLES - Centered Between Logo and Button */
     .title {
         flex: 1;
         text-align: center;
@@ -42,6 +43,7 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        padding: 0 10px;
     }
     
     .title h1 {
@@ -53,20 +55,22 @@
         line-height: 1.2;
         transition: font-size 0.2s ease;
         max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0 4px;
     }
     
-    /* Desktop - Full title */
-    .title h1 .full-title {
+    .title h1 .journal-name {
         display: inline;
-    }
-    
-    .title h1 .short-title {
-        display: none;
+        white-space: nowrap;
     }
     
     .title h1 .abbr {
         color: var(--secondary);
         display: inline;
+        white-space: nowrap;
     }
     
     /* ===== RESPONSIVE TITLE SIZING ===== */
@@ -95,7 +99,7 @@
         }
     }
     
-    /* Medium (768-991px) - Title starts wrapping */
+    /* Medium (768-991px) - Title wraps */
     @media (max-width: 991px) and (min-width: 768px) {
         .header {
             padding: 5px 12px;
@@ -113,6 +117,11 @@
             white-space: normal;
             word-wrap: break-word;
             line-height: 1.2;
+            justify-content: center;
+        }
+        
+        .title h1 .journal-name {
+            white-space: normal;
         }
         
         .submit-btn a {
@@ -136,7 +145,6 @@
             flex: 0 0 100%;
             text-align: center;
             justify-content: center;
-            margin-bottom: 2px;
         }
         
         .logo img {
@@ -146,6 +154,7 @@
         .title {
             flex: 1 1 55%;
             text-align: center;
+            padding: 0 5px;
         }
         
         .title h1 {
@@ -153,6 +162,11 @@
             white-space: normal;
             word-wrap: break-word;
             line-height: 1.2;
+            justify-content: center;
+        }
+        
+        .title h1 .journal-name {
+            white-space: normal;
         }
         
         .submit-btn {
@@ -165,7 +179,7 @@
         }
     }
     
-    /* Mobile (400-575px) - Show shorter version */
+    /* Mobile (400-575px) */
     @media (max-width: 575px) and (min-width: 400px) {
         .header {
             flex-wrap: wrap;
@@ -189,21 +203,18 @@
         .title {
             flex: 1 1 50%;
             text-align: center;
-        }
-        
-        /* Hide full title, show short version */
-        .title h1 .full-title {
-            display: none;
-        }
-        
-        .title h1 .short-title {
-            display: inline;
+            padding: 0 3px;
         }
         
         .title h1 {
-            font-size: 13px;
+            font-size: 12px;
             white-space: normal;
             line-height: 1.2;
+            justify-content: center;
+        }
+        
+        .title h1 .journal-name {
+            white-space: normal;
         }
         
         .submit-btn a {
@@ -212,7 +223,7 @@
         }
     }
     
-    /* Very Small Mobile (<400px) - Show only abbreviation */
+    /* Very Small Mobile (<400px) - Show abbreviation only */
     @media (max-width: 399px) {
         .header {
             flex-wrap: wrap;
@@ -236,11 +247,11 @@
         .title {
             flex: 1 1 45%;
             text-align: center;
+            padding: 0 2px;
         }
         
-        /* Hide everything except abbreviation */
-        .title h1 .full-title,
-        .title h1 .short-title {
+        /* Hide full title, show only abbreviation */
+        .title h1 .journal-name {
             display: none;
         }
         
@@ -265,9 +276,11 @@
         }
     }
     
-    /* SUBMIT BUTTON IN HEADER */
+    /* SUBMIT BUTTON - Fixed Right */
     .submit-btn {
         flex-shrink: 0;
+        display: flex;
+        align-items: center;
     }
     
     .submit-btn a {
@@ -292,23 +305,22 @@
 <header class="header">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- LOGO - Fixed Left -->
     <div class="logo">
         <a href="index.html">
             <img src="assets/editors/logo.png" alt="Scholar Sphere Publications Logo">
         </a> 
     </div>
 
+    <!-- TITLE - Centered Between -->
     <div class="title">
         <h1>
-            <!-- Full title - shows on large screens -->
-            <span class="full-title">International Journal of Advanced Computing and Mechanical Systems </span>
-            <!-- Short title - shows on medium-small screens -->
-            <span class="short-title">Int. J. Adv. Comput. Mech. Syst. </span>
-            <!-- Abbreviation - always shows -->
+            <span class="journal-name">International Journal of Advanced Computing and Mechanical Systems </span>
             <span class="abbr">(<span>IJACM</span>)</span>
         </h1>
     </div>
 
+    <!-- SUBMIT BUTTON - Fixed Right -->
     <div class="submit-btn">
         <a href="pages/submit.html">
             Submit Paper
