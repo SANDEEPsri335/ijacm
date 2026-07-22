@@ -4,59 +4,164 @@
     .header {
         height: 80px;
         display: flex;
-        padding: 5px 15px;
+        padding: 5px 20px;
         align-items: center;
         background: var(--bg-dark);
         justify-content: space-between;
+        gap: 15px;
+        flex-wrap: nowrap;
     }
- 
+    
+    /* LOGO STYLES */
+    .logo {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+    .logo img {
+        max-height: 60px;
+        width: auto;
+        display: block;
+        object-fit: contain;
+    }
+    
+    /* TITLE STYLES */
     .title {
         flex: 1;
         text-align: center;
+        min-width: 0;
+        /* Prevents overflow */
     }
     
     .title h1 {
         margin: 0;
-        font-size: 24px;
+        font-size: clamp(14px, 2vw, 24px);
         font-weight: 700;
         letter-spacing: 0.5px;
         color: white;
-        /* Ensure text is visible */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .title span {
         color: var(--secondary);
     }
+    
     /* SUBMIT BUTTON IN HEADER */
+    .submit-btn {
+        flex-shrink: 0;
+    }
     
     .submit-btn a {
         background: var(--secondary);
         color: var(--bg-darker);
-        padding: 12px 18px;
+        padding: 10px 18px;
         border-radius: 6px;
         font-weight: bold;
         text-decoration: none;
         box-shadow: var(--shadow-glow);
         white-space: nowrap;
+        display: inline-block;
+        font-size: clamp(12px, 1vw, 16px);
+        transition: background 0.3s ease;
     }
     
     .submit-btn a:hover {
         background: #40c4ff;
     }
-    /* Responsive Header */
     
-    @media (max-width: 900px) {
+    /* ================= RESPONSIVE HEADER ================= */
+    
+    /* Tablets and smaller screens */
+    @media (max-width: 1024px) {
         .header {
-            flex-direction: column;
-            height: 150px;
-            padding: 20px;
+            padding: 5px 15px;
+            gap: 10px;
+        }
+        
+        .logo img {
+            max-height: 50px;
+        }
+        
+        .title h1 {
+            font-size: clamp(12px, 1.5vw, 18px);
+        }
+    }
+    
+    /* Mobile screens */
+    @media (max-width: 768px) {
+        .header {
+            flex-wrap: wrap;
+            height: auto;
+            min-height: 70px;
+            padding: 10px 15px;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .logo {
+            flex: 0 0 100%;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .logo img {
+            max-height: 45px;
+        }
+        
+        .title {
+            flex: 1 1 60%;
             text-align: center;
         }
-        .title {
-            margin: 15px 0;
+        
+        .title h1 {
+            font-size: clamp(11px, 2.5vw, 16px);
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.3;
+        }
+        
+        .submit-btn {
+            flex: 0 1 auto;
+        }
+        
+        .submit-btn a {
+            padding: 8px 14px;
+            font-size: clamp(10px, 2vw, 13px);
+        }
+    }
+    
+    /* Very small phones */
+    @media (max-width: 480px) {
+        .header {
+            padding: 8px 10px;
+            gap: 5px;
+        }
+        
+        .logo img {
+            max-height: 35px;
+        }
+        
+        .title h1 {
+            font-size: clamp(10px, 2vw, 13px);
+        }
+        
+        .submit-btn a {
+            padding: 6px 10px;
+            font-size: clamp(9px, 1.8vw, 11px);
         }
     }
 </style>
+
 <header class="header">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
