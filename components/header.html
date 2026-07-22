@@ -37,7 +37,6 @@
         flex: 1;
         text-align: center;
         min-width: 0;
-        /* Prevents overflow */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -56,8 +55,13 @@
         transition: font-size 0.3s ease;
     }
     
-    .title span {
+    .title h1 .journal-name {
+        display: inline;
+    }
+    
+    .title h1 .abbr {
         color: var(--secondary);
+        display: inline;
     }
     
     /* SUBMIT BUTTON IN HEADER */
@@ -101,7 +105,7 @@
         }
     }
     
-    /* Tablets - Title starts wrapping if needed */
+    /* Tablets - Title wraps and shows abbreviation */
     @media (max-width: 992px) and (min-width: 769px) {
         .header {
             padding: 5px 15px;
@@ -157,18 +161,9 @@
             text-align: center;
             display: block;
         }
-        
-        .submit-btn {
-            flex: 0 1 auto;
-        }
-        
-        .submit-btn a {
-            padding: 8px 14px;
-            font-size: clamp(10px, 2vw, 13px);
-        }
     }
     
-    /* Very small phones */
+    /* Very small phones - Show only abbreviation */
     @media (max-width: 480px) {
         .header {
             padding: 6px 8px;
@@ -189,6 +184,27 @@
             font-size: clamp(8px, 1.8vw, 10px);
         }
     }
+    
+    /* Extra small screens - Hide long name, show only abbreviation */
+    @media (max-width: 360px) {
+        .title h1 .journal-name {
+            display: none;
+        }
+        
+        .title h1 .abbr {
+            display: inline;
+            font-size: clamp(12px, 3vw, 16px);
+            color: white;
+        }
+        
+        .title h1 .abbr span {
+            color: var(--secondary);
+        }
+        
+        .title h1 {
+            white-space: nowrap;
+        }
+    }
 </style>
 
 <header class="header">
@@ -202,8 +218,8 @@
 
     <div class="title">
         <h1>
-            International Journal of Advanced Computing and Mechanical Systems
-            <span>(IJACM)</span>
+            <span class="journal-name">International Journal of Advanced Computing and Mechanical Systems </span>
+            <span class="abbr">(<span>IJACM</span>)</span>
         </h1>
     </div>
 
