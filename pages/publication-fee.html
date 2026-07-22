@@ -12,7 +12,6 @@
     content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM, no APC, free publication">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* ================= GLOBAL STYLES ================= */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
     :root {
@@ -65,29 +64,27 @@
     }
 
     main {
-      padding: 20px;
+      padding: 15px 20px 25px 20px;
       min-height: 420px;
     }
 
-    /* ================= PAGE SPECIFIC STYLES ================= */
     .fee-wrapper {
       max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 15px auto;
+      padding: 0 15px;
       display: flex;
       flex-direction: column;
-      gap: 50px;
+      gap: 20px;
       align-items: center;
     }
 
-    /* Hero Banner - No APC Announcement */
     .no-apc-hero {
       text-align: center;
       max-width: 900px;
-      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(0, 176, 255, 0.08) 100%);
-      padding: 40px 30px;
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.12) 0%, rgba(0, 176, 255, 0.06) 100%);
+      padding: 25px 25px;
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(46, 204, 113, 0.3);
+      border: 1px solid rgba(46, 204, 113, 0.25);
       position: relative;
       overflow: hidden;
     }
@@ -98,7 +95,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, #2ecc71, #00b0ff, #2ecc71);
       background-size: 200% 100%;
       animation: gradientMove 3s ease infinite;
@@ -113,47 +110,51 @@
     .no-apc-badge {
       display: inline-block;
       background: var(--gradient-green);
-      padding: 8px 24px;
+      padding: 5px 18px;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
       text-transform: uppercase;
       box-shadow: var(--shadow-glow);
     }
 
     .no-apc-hero h1 {
-      font-size: 2.8rem;
+      font-size: 2rem;
       color: var(--white);
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .no-apc-hero h1 i {
       color: #2ecc71;
-      margin-right: 10px;
+      margin-right: 8px;
     }
 
     .no-apc-hero .highlight-zero {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       font-weight: 800;
       color: #2ecc71;
       display: inline-block;
-      margin: 10px 0;
-      text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+      margin: 6px 0;
+      text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
     }
 
     .no-apc-hero p {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
     }
 
-    /* Zero Fee Announcement Cards */
+    .no-apc-hero p:last-of-type {
+      margin-top: 8px;
+    }
+
     .zero-fee-showcase {
       width: 100%;
       display: flex;
-      gap: 30px;
+      gap: 18px;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -161,205 +162,242 @@
     .zero-card {
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
       backdrop-filter: blur(2px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-lg);
-      padding: 35px 30px;
+      padding: 22px 22px;
       flex: 1;
-      min-width: 280px;
+      min-width: 250px;
       text-align: center;
       transition: transform 0.3s ease, border-color 0.3s;
     }
 
     .zero-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       border-color: #2ecc71;
-      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .zero-icon {
-      width: 80px;
-      height: 80px;
-      background: rgba(46, 204, 113, 0.15);
+      width: 60px;
+      height: 60px;
+      background: rgba(46, 204, 113, 0.12);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 25px;
-      font-size: 2.5rem;
+      margin: 0 auto 14px;
+      font-size: 1.8rem;
       color: #2ecc71;
     }
 
     .zero-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
       color: var(--white);
     }
 
     .zero-card .price-free {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: #2ecc71;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
     }
 
     .zero-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
+      margin: 0;
     }
 
-    /* Comparison Table - Old vs New */
+    .zero-card ul {
+      margin-top: 10px;
+      text-align: left;
+      padding-left: 18px;
+    }
+
+    .zero-card ul li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .zero-card ul li i {
+      color: #2ecc71;
+      margin-right: 6px;
+      width: 16px;
+    }
+
     .policy-comparison {
       width: 100%;
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.2);
       border-radius: var(--radius-lg);
-      padding: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .policy-comparison h3 {
       text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 25px;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
       color: var(--white);
     }
 
     .comparison-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 14px;
     }
 
     .comp-item {
       text-align: center;
-      padding: 20px;
+      padding: 14px;
       background: rgba(255, 255, 255, 0.03);
       border-radius: var(--radius-md);
     }
 
     .comp-item i {
-      font-size: 2rem;
-      margin-bottom: 12px;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
       display: block;
     }
 
     .comp-item .old-label {
       color: #ff6b6b;
       text-decoration: line-through;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
     }
 
     .comp-item .new-label {
       color: #2ecc71;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 800;
     }
 
     .comp-item p {
-      margin-top: 10px;
+      margin-top: 4px;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.82rem;
     }
 
-    /* QA Section Enhanced */
     .fee-qa {
       background: rgba(13, 27, 42, 0.7);
       border-radius: var(--radius-md);
-      padding: 35px;
+      padding: 20px 22px;
       width: 100%;
       max-width: 900px;
-      border: 1px solid rgba(46, 204, 113, 0.2);
+      border: 1px solid rgba(46, 204, 113, 0.15);
     }
 
     .fee-qa h3 {
       color: var(--white);
-      margin-bottom: 25px;
-      border-bottom: 1px solid rgba(46, 204, 113, 0.3);
-      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+      padding-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 10px;
+      font-size: 1.2rem;
     }
 
     .qa-item {
-      margin-bottom: 25px;
+      margin-bottom: 12px;
       background: rgba(255, 255, 255, 0.03);
-      padding: 15px 20px;
+      padding: 10px 14px;
       border-radius: var(--radius-sm);
+    }
+
+    .qa-item:last-child {
+      margin-bottom: 0;
     }
 
     .qa-item h4 {
       color: #2ecc71;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .qa-item p {
       color: var(--text-muted);
-      font-size: 0.98rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 0;
     }
 
     .policy-btn {
       display: inline-block;
-      padding: 12px 28px;
+      padding: 8px 22px;
       background: linear-gradient(135deg, #2ecc71, #27ae60);
       color: white;
       border-radius: var(--radius-sm);
       font-weight: 700;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
       border: none;
-      margin-top: 15px;
+      margin-top: 10px;
     }
 
     .policy-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(46, 204, 113, 0.35);
     }
 
-    /* CTA Section */
     .cta-section {
       text-align: center;
-      margin-top: 20px;
-      padding: 30px;
+      margin-top: 5px;
+      padding: 15px;
     }
 
     .cta-section .submit-now {
       background: var(--gradient-secondary);
-      padding: 14px 40px;
+      padding: 10px 32px;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: transform 0.3s;
       display: inline-block;
     }
 
     .cta-section .submit-now:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 20px rgba(0, 176, 255, 0.4);
+      transform: scale(1.04);
+      box-shadow: 0 4px 18px rgba(0, 176, 255, 0.35);
     }
 
-    /* Responsive */
+    .cta-section p {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
     @media (max-width: 768px) {
-      .no-apc-hero h1 {
-        font-size: 2rem;
-      }
-      .no-apc-hero .highlight-zero {
-        font-size: 2.5rem;
-      }
-      .comparison-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-      .fee-qa {
-        padding: 20px;
-      }
-      .zero-card {
-        min-width: 100%;
-      }
+      .no-apc-hero h1 { font-size: 1.6rem; }
+      .no-apc-hero .highlight-zero { font-size: 2rem; }
+      .no-apc-hero { padding: 18px 16px; }
+      .comparison-grid { grid-template-columns: 1fr; gap: 10px; }
+      .fee-qa { padding: 14px 16px; }
+      .zero-card { min-width: 100%; padding: 18px; }
+      .zero-fee-showcase { gap: 12px; }
+      .fee-wrapper { gap: 14px; padding: 0 10px; margin: 10px auto; }
+      main { padding: 10px 12px 15px 12px; }
+      .policy-comparison { padding: 14px 16px; }
+      .cta-section { padding: 10px; }
+      .cta-section .submit-now { padding: 8px 24px; font-size: 0.9rem; }
+    }
+
+    @media (max-width: 480px) {
+      .no-apc-hero h1 { font-size: 1.3rem; }
+      .no-apc-hero .highlight-zero { font-size: 1.6rem; }
+      .no-apc-hero p { font-size: 0.85rem; }
+      .zero-card h3 { font-size: 1rem; }
+      .zero-card .price-free { font-size: 1.3rem; }
+      .zero-card p { font-size: 0.82rem; }
+      .fee-qa h3 { font-size: 1rem; }
+      .qa-item h4 { font-size: 0.85rem; }
+      .qa-item p { font-size: 0.82rem; }
+      .policy-comparison h3 { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -371,10 +409,9 @@
 
   <main class="fee-wrapper">
 
-    <!-- NEW HERO: NO APC POLICY -->
     <div class="no-apc-hero">
       <div class="no-apc-badge">
-        <i class="fas fa-star-of-life"></i> NEW PUBLISHING POLICY <i class="fas fa-star-of-life"></i>
+        <i class="fas fa-star-of-life"></i> NEW PUBLISHING POLICY
       </div>
       <h1><i class="fas fa-ban"></i> Zero Article Processing Charges</h1>
       <div class="highlight-zero">₹0 / $0</div>
@@ -384,7 +421,7 @@
         There are <strong>NO Article Processing Charges (APC)</strong>, <strong>NO submission fees</strong>, and 
         <strong>NO hidden costs</strong> for any author — whether from India or internationally.
       </p>
-      <p style="margin-top: 15px;">
+      <p>
         <i class="fas fa-check-circle" style="color:#2ecc71;"></i> Full open access &nbsp;&nbsp;|&nbsp;&nbsp;
         <i class="fas fa-check-circle" style="color:#2ecc71;"></i> Peer-reviewed &nbsp;&nbsp;|&nbsp;&nbsp;
         <i class="fas fa-check-circle" style="color:#2ecc71;"></i> DOI by Crossref &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -392,17 +429,16 @@
       </p>
     </div>
 
-    <!-- ZERO FEE SHOWCARDS (Indian & International both FREE) -->
     <div class="zero-fee-showcase">
       <div class="zero-card">
         <div class="zero-icon"><i class="fas fa-rupee-sign"></i></div>
         <h3>Indian Authors</h3>
         <div class="price-free"><i class="fas fa-smile-wink"></i> FREE</div>
-        <p><strong>₹0 publication fee</strong> — No APC, no page charges, no hidden fees. Your research reaches global audience at zero cost.</p>
-        <ul style="margin-top: 15px; text-align: left; padding-left: 20px;">
-          <li><i class="fas fa-check" style="color:#2ecc71;"></i> Rigorous peer review</li>
-          <li><i class="fas fa-check" style="color:#2ecc71;"></i> DOI registration</li>
-          <li><i class="fas fa-check" style="color:#2ecc71;"></i> Author e-certificate</li>
+        <p><strong>₹0 publication fee</strong> — No APC, no page charges, no hidden fees.</p>
+        <ul>
+          <li><i class="fas fa-check"></i> Rigorous peer review</li>
+          <li><i class="fas fa-check"></i> DOI registration</li>
+          <li><i class="fas fa-check"></i> Author e-certificate</li>
         </ul>
       </div>
 
@@ -410,16 +446,15 @@
         <div class="zero-icon"><i class="fas fa-globe-asia"></i></div>
         <h3>International Authors</h3>
         <div class="price-free"><i class="fas fa-gift"></i> $0</div>
-        <p><strong>Zero USD charges</strong> — Completely free open access publishing for researchers worldwide. No financial barriers.</p>
-        <ul style="margin-top: 15px; text-align: left; padding-left: 20px;">
-          <li><i class="fas fa-check" style="color:#2ecc71;"></i> Global indexing readiness</li>
-          <li><i class="fas fa-check" style="color:#2ecc71;"></i> Fast track processing</li>
-          <li><i class="fas fa-check" style="color:#2ecc71;"></i> Digital preservation</li>
+        <p><strong>Zero USD charges</strong> — Completely free open access publishing worldwide.</p>
+        <ul>
+          <li><i class="fas fa-check"></i> Global indexing readiness</li>
+          <li><i class="fas fa-check"></i> Fast track processing</li>
+          <li><i class="fas fa-check"></i> Digital preservation</li>
         </ul>
       </div>
     </div>
 
-    <!-- COMPARISON OLD VS NEW (optional but informative) -->
     <div class="policy-comparison">
       <h3><i class="fas fa-chart-line"></i> Policy Update: Before vs Now</h3>
       <div class="comparison-grid">
@@ -427,66 +462,61 @@
           <i class="fas fa-rupee-sign" style="color:#ff6b6b;"></i>
           <div class="old-label">₹2,000 / $50</div>
           <p>Previous APC (Discontinued)</p>
-          <i class="fas fa-arrow-down" style="color:#2ecc71; margin-top: 8px;"></i>
         </div>
         <div class="comp-item">
-          <i class="fas fa-check-circle" style="color:#2ecc71; font-size: 2rem;"></i>
+          <i class="fas fa-check-circle" style="color:#2ecc71; font-size: 1.5rem;"></i>
           <div class="new-label">₹0 / $0</div>
-          <p><strong>New NO APC Policy</strong> — Effective immediately</p>
+          <p><strong>New NO APC Policy</strong></p>
         </div>
         <div class="comp-item">
           <i class="fas fa-heart" style="color:#2ecc71;"></i>
           <div class="new-label">100% Free</div>
-          <p>No submission fees, no publication charges, no page fees</p>
+          <p>No hidden charges</p>
         </div>
       </div>
     </div>
 
-    <!-- UPDATED FAQ SECTION - reflecting NO APC -->
     <div class="fee-qa">
-      <h3><i class="fas fa-question-circle" style="color:#2ecc71;"></i> Frequently Asked Questions — No APC Policy</h3>
+      <h3><i class="fas fa-question-circle" style="color:#2ecc71;"></i> Frequently Asked Questions</h3>
 
       <div class="qa-item">
         <h4><i class="fas fa-ban"></i> Is there really no publication fee?</h4>
-        <p><strong>Yes, absolutely zero.</strong> As per our new policy, International Journal of Advanced Computing and Mechanical Systems (IJACM) does not charge any Article Processing Charges (APC), submission fees, or any kind of publication fees for authors from any country.</p>
+        <p><strong>Yes, absolutely zero.</strong> IJACM does not charge any Article Processing Charges (APC), submission fees, or any kind of publication fees for authors from any country.</p>
       </div>
 
       <div class="qa-item">
         <h4><i class="fas fa-clock"></i> When would I have to pay?</h4>
-        <p><strong>Never.</strong> There is no payment required at any stage — neither during submission, nor after acceptance, nor for publication. The entire process is completely free of charge.</p>
+        <p><strong>Never.</strong> There is no payment required at any stage — neither during submission, nor after acceptance, nor for publication.</p>
       </div>
 
       <div class="qa-item">
         <h4><i class="fas fa-percent"></i> Are there any hidden costs?</h4>
-        <p>No hidden costs whatsoever. We do not charge for color figures, extra pages, formatting, or processing. Our open access model is funded through institutional partnerships and sponsorships, not author fees.</p>
+        <p>No hidden costs whatsoever. We do not charge for color figures, extra pages, formatting, or processing.</p>
       </div>
 
       <div class="qa-item">
-        <h4><i class="fas fa-medal"></i> Will quality be compromised due to no APC?</h4>
-        <p>Not at all. Our peer-review process remains rigorous and double-blind. Editorial decisions are based solely on scholarly merit. We are committed to maintaining high-quality standards while removing financial barriers.</p>
+        <h4><i class="fas fa-medal"></i> Will quality be compromised?</h4>
+        <p>Not at all. Our peer-review process remains rigorous and double-blind. Editorial decisions are based solely on scholarly merit.</p>
       </div>
 
       <div class="qa-item">
         <h4><i class="fas fa-file-alt"></i> Do I still get a DOI and indexing?</h4>
-        <p>Absolutely. Every accepted paper receives a unique Crossref DOI, and the journal is indexed in Google Scholar and other major databases. Free publication does not affect indexing or discoverability.</p>
+        <p>Absolutely. Every accepted paper receives a unique Crossref DOI, and the journal is indexed in Google Scholar and other major databases.</p>
       </div>
 
       <div class="qa-item">
         <h4><i class="fas fa-envelope"></i> How to submit my paper for free?</h4>
-        <p>Simply submit your manuscript through our online submission system or email to editor@ijacm.com. There are no charges at any step. Your work will be reviewed and published open access at zero cost.</p>
+        <p>Simply submit your manuscript through our online submission system or email to editor@ijacm.com. There are no charges at any step.</p>
       </div>
 
-      <div style="text-align: center; margin-top: 25px;">
-        <a href="open-access-policy.html" class="policy-btn"><i class="fas fa-file-contract"></i> Read Full Open Access Policy (No APC)</a>
+      <div style="text-align: center; margin-top: 14px;">
+        <a href="open-access-policy.html" class="policy-btn"><i class="fas fa-file-contract"></i> Read Full Open Access Policy</a>
       </div>
     </div>
 
-    <!-- CALL TO ACTION -->
     <div class="cta-section">
       <a href="submit.html" class="submit-now"><i class="fas fa-paper-plane"></i> Submit Your Manuscript — FREE</a>
-      <p style="margin-top: 18px; font-size: 0.85rem; color: var(--text-muted);">
-        <i class="fas fa-globe"></i> No financial barriers. Global visibility. Open access for all.
-      </p>
+      <p><i class="fas fa-globe"></i> No financial barriers. Global visibility. Open access for all.</p>
     </div>
 
   </main>
@@ -494,20 +524,9 @@
   <div id="footer-placeholder"></div>
   <script src="../script.js"></script>
 
-  <!-- Additional dynamic script to update header/nav if needed (ensures consistency) -->
   <script>
     (function() {
-      // Small improvement: if any old pricing text remnants appear, ensure DOM fully reflects new no-apc style
       console.log("Publication fee page updated with NO APC policy - Zero charges for all authors.");
-      const anyPriceTags = document.querySelectorAll('.price-tag, .old-fee');
-      if (anyPriceTags) {
-        // just assurance that everything is consistent
-      }
-      // Add dynamic year if needed
-      const footer = document.getElementById('footer-placeholder');
-      if (footer && !footer.innerHTML.includes('NO APC')) {
-        // footer normally handled by script.js, but ensure theme sync
-      }
     })();
   </script>
 </body>
