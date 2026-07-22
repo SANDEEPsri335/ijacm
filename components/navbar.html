@@ -358,7 +358,7 @@
 
             <!-- GUIDELINES DROPDOWN -->
             <div class="dropdown-wrapper" id="guidelinesWrapper">
-                <button class="dropdown-btn" onclick="toggleDropdown('guidelinesWrapper')">
+                <button class="dropdown-btn" id="guidelinesBtn">
                     Guidelines
                     <span class="arrow">▼</span>
                 </button>
@@ -375,7 +375,7 @@
 
             <!-- ARTICLES DROPDOWN -->
             <div class="dropdown-wrapper" id="articlesWrapper">
-                <button class="dropdown-btn" onclick="toggleDropdown('articlesWrapper')">
+                <button class="dropdown-btn" id="articlesBtn">
                     Articles
                     <span class="arrow">▼</span>
                 </button>
@@ -392,37 +392,86 @@
     </nav>
 
     <script>
-        // ===== DROPDOWN TOGGLE =====
-        function toggleDropdown(id) {
-            var wrapper = document.getElementById(id);
-            if (!wrapper) return;
-            
-            // Close all other dropdowns
-            var allWrappers = document.querySelectorAll('.dropdown-wrapper');
-            allWrappers.forEach(function(w) {
-                if (w.id !== id) {
-                    w.classList.remove('active');
-                }
-            });
-            
-            // Toggle this dropdown
-            wrapper.classList.toggle('active');
-        }
-
-        // ===== CLOSE ALL DROPDOWNS =====
-        function closeAllDropdowns() {
-            var allWrappers = document.querySelectorAll('.dropdown-wrapper');
-            allWrappers.forEach(function(w) {
-                w.classList.remove('active');
-            });
-        }
-
-        // ===== DOCUMENT READY =====
         document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            var guidelinesBtn = document.getElementById('guidelinesBtn');
+            var guidelinesWrapper = document.getElementById('guidelinesWrapper');
+            var articlesBtn = document.getElementById('articlesBtn');
+            var articlesWrapper = document.getElementById('articlesWrapper');
             var menuToggle = document.getElementById('menuToggle');
             var navMenu = document.getElementById('navMenu');
 
-            // Mobile menu toggle
+            // Function to close all dropdowns
+            function closeAllDropdowns() {
+                guidelinesWrapper.classList.remove('active');
+                articlesWrapper.classList.remove('active');
+            }
+
+            // Function to toggle a dropdown
+            function toggleDropdown(wrapper) {
+                // If this dropdown is already open, close it
+                if (wrapper.classList.contains('active')) {
+                    wrapper.classList.remove('active');
+                } else {
+                    // Close all others first
+                    closeAllDropdowns();
+                    // Open this one
+                    wrapper.classList.add('active');
+                }
+            }
+
+            // ===== GUIDELINES DROPDOWN =====
+            guidelinesBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleDropdown(guidelinesWrapper);
+            });
+
+            // ===== ARTICLES DROPDOWN =====
+            articlesBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleDropdown(articlesWrapper);
+            });
+
+            // ===== DESKTOP HOVER =====
+            // Guidelines hover
+            guidelinesWrapper.addEventListener('mouseenter', function() {
+                if (window.innerWidth > 850) {
+                    closeAllDropdowns();
+                    guidelinesWrapper.classList.add('active');
+                }
+            });
+
+            guidelinesWrapper.addEventListener('mouseleave', function() {
+                if (window.innerWidth > 850) {
+                    setTimeout(function() {
+                        if (!guidelinesWrapper.matches(':hover')) {
+                            guidelinesWrapper.classList.remove('active');
+                        }
+                    }, 200);
+                }
+            });
+
+            // Articles hover
+            articlesWrapper.addEventListener('mouseenter', function() {
+                if (window.innerWidth > 850) {
+                    closeAllDropdowns();
+                    articlesWrapper.classList.add('active');
+                }
+            });
+
+            articlesWrapper.addEventListener('mouseleave', function() {
+                if (window.innerWidth > 850) {
+                    setTimeout(function() {
+                        if (!articlesWrapper.matches(':hover')) {
+                            articlesWrapper.classList.remove('active');
+                        }
+                    }, 200);
+                }
+            });
+
+            // ===== MOBILE MENU TOGGLE =====
             if (menuToggle) {
                 menuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -435,9 +484,9 @@
                 });
             }
 
-            // Close dropdowns when clicking a link inside
-            var dropdownLinks = document.querySelectorAll('.dropdown-menu a');
-            dropdownLinks.forEach(function(link) {
+            // ===== CLOSE DROPDOWNS WHEN CLICKING LINKS =====
+            var allLinks = document.querySelectorAll('.dropdown-menu a, .nav-container > a');
+            allLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
                     closeAllDropdowns();
                     if (window.innerWidth <= 850) {
@@ -446,23 +495,12 @@
                 });
             });
 
-            // Close dropdowns when clicking on nav links (Home, About, etc.)
-            var navLinks = document.querySelectorAll('.nav-container > a');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    closeAllDropdowns();
-                    if (window.innerWidth <= 850) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            });
-
-            // Close dropdowns when clicking outside
+            // ===== CLOSE DROPDOWNS WHEN CLICKING OUTSIDE =====
             document.addEventListener('click', function(e) {
-                var isInside = e.target.closest('.nav-container');
+                var isInsideNav = e.target.closest('.nav-container');
                 var isToggle = e.target.closest('.menu-toggle');
                 
-                if (!isInside && !isToggle) {
+                if (!isInsideNav && !isToggle) {
                     closeAllDropdowns();
                     if (window.innerWidth <= 850 && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
@@ -470,7 +508,15 @@
                 }
             });
 
-            // Handle window resize
+            // ===== PREVENT CLOSING WHEN CLICKING INSIDE DROPDOWN MENU =====
+            var dropdownMenus = document.querySelectorAll('.dropdown-menu');
+            dropdownMenus.forEach(function(menu) {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+
+            // ===== HANDLE WINDOW RESIZE =====
             var resizeTimer;
             window.addEventListener('resize', function() {
                 clearTimeout(resizeTimer);
@@ -478,39 +524,10 @@
                     if (window.innerWidth > 850 && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                     }
-                    closeAllDropdowns();
+                    if (window.innerWidth > 850) {
+                        closeAllDropdowns();
+                    }
                 }, 300);
-            });
-
-            // DESKTOP: Hover to open, but don't close on hover out
-            // This keeps dropdown open when hovering over it
-            var wrappers = document.querySelectorAll('.dropdown-wrapper');
-            wrappers.forEach(function(wrapper) {
-                wrapper.addEventListener('mouseenter', function() {
-                    if (window.innerWidth > 850) {
-                        // Close all other dropdowns
-                        var allWrappers = document.querySelectorAll('.dropdown-wrapper');
-                        allWrappers.forEach(function(w) {
-                            if (w.id !== wrapper.id) {
-                                w.classList.remove('active');
-                            }
-                        });
-                        // Open this one
-                        wrapper.classList.add('active');
-                    }
-                });
-
-                wrapper.addEventListener('mouseleave', function() {
-                    if (window.innerWidth > 850) {
-                        // Don't close immediately, let the user move to the menu
-                        setTimeout(function() {
-                            // Check if mouse is still over the wrapper
-                            if (!wrapper.matches(':hover')) {
-                                wrapper.classList.remove('active');
-                            }
-                        }, 150);
-                    }
-                });
             });
         });
     </script>
