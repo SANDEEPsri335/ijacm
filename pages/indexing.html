@@ -7,14 +7,11 @@
         content="International Journal of Advanced Computing and Mechanical Systems (IJACM) is indexed in major academic databases including Google Scholar, Crossref, Zenodo and Semantic Scholar.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://ijacm.com/pages/indexing.html">
-
     <meta charset="UTF-8">
     <meta name="keywords"
         content="journal indexing, google scholar indexed journal, crossref DOI journal, scopus indexed journal list, engineering journal indexing, zenodo">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /*Reuse global styles*/
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
         :root {
@@ -42,32 +39,46 @@
         }
 
         main {
-            padding: 40px 20px;
+            padding: 20px 20px 30px 20px;
             max-width: 1000px;
             margin: 0 auto;
-            min-height: 500px;
+            min-height: 400px;
         }
 
         .index-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 25px;
         }
 
         .index-header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--white);
-            margin-bottom: 15px;
+            margin-bottom: 8px;
+        }
+
+        .index-header h2 {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        .index-header p {
+            max-width: 700px;
+            margin: 12px auto 0;
+            color: #ccc;
+            font-size: 0.95rem;
         }
 
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
         }
 
         .partner-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
+            padding: 20px 18px;
             border-radius: var(--radius-md);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -75,26 +86,90 @@
         }
 
         .partner-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--secondary);
         }
 
         .partner-icon {
-            font-size: 3rem;
+            font-size: 2.2rem;
             color: var(--secondary);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .partner-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
             color: var(--white);
         }
 
         .partner-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 15px 15px 20px 15px;
+            }
+            .index-header h1 {
+                font-size: 1.6rem;
+            }
+            .index-header h2 {
+                font-size: 1rem;
+            }
+            .index-header {
+                margin-bottom: 18px;
+            }
+            .index-header p {
+                font-size: 0.9rem;
+                margin: 10px auto 0;
+            }
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 14px;
+            }
+            .partner-card {
+                padding: 16px 14px;
+            }
+            .partner-icon {
+                font-size: 1.8rem;
+                margin-bottom: 8px;
+            }
+            .partner-card h3 {
+                font-size: 1rem;
+            }
+            .partner-card p {
+                font-size: 0.82rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 10px 10px 15px 10px;
+            }
+            .index-header h1 {
+                font-size: 1.3rem;
+            }
+            .partners-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .partner-card {
+                padding: 12px 10px;
+            }
+            .partner-icon {
+                font-size: 1.5rem;
+                margin-bottom: 6px;
+            }
+            .partner-card h3 {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            .partner-card p {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -106,9 +181,8 @@
     <main>
         <div class="index-header">
             <h1>Abstracting and Indexing Services</h1>
-            <h2 style="font-size: 1.5rem; color: var(--text-muted); font-weight: normal; margin-top: 10px;">Our Global
-                Indexing Partners</h2>
-            <p style="max-width: 700px; margin: 20px auto 0; color: #ccc;">
+            <h2>Our Global Indexing Partners</h2>
+            <p>
                 International Journal of Advanced Computing and Mechanical Systems (IJACM) ensures that published research is indexed in leading global databases to maximize visibility and
                 citations.
             </p>
