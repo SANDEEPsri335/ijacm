@@ -6,8 +6,6 @@
     <title>IJACM - Navbar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* ================= OPTIMIZED NAVBAR ================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -39,8 +37,6 @@
             align-items: center;
             gap: 8px;
             justify-content: center;
-            min-width: 0;
-            flex-wrap: nowrap;
             max-width: 1200px;
             width: 100%;
         }
@@ -71,29 +67,17 @@
 
         .nav-home {
             font-size: clamp(15px, 1.4vw, 20px);
-            gap: 6px;
             color: #00b0ff;
         }
 
         .nav-home i {
             font-size: clamp(14px, 1.1vw, 18px);
+            margin-right: 4px;
         }
 
         .nav-container a:hover,
         details.dropdown > summary:hover {
             color: #00c6ff;
-        }
-
-        /* DROPDOWN STYLES */
-        details.dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        details.dropdown > summary {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .arrow {
@@ -123,11 +107,22 @@
             z-index: 9999;
             margin-top: 8px;
             border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
         }
 
-        details.dropdown[open] .dropdown-menu {
-            display: flex;
+        /* DESKTOP: Show on hover */
+        @media (min-width: 851px) {
+            details.dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            details.dropdown .dropdown-menu {
+                display: none;
+            }
+
+            details.dropdown:hover .dropdown-menu {
+                display: flex;
+            }
         }
 
         .dropdown-menu a {
@@ -160,8 +155,6 @@
             padding: 5px 15px;
         }
 
-        /* ===== RESPONSIVE ===== */
-        
         @media (max-width: 1200px) {
             .nav-container a, details.dropdown > summary {
                 font-size: clamp(13px, 1.1vw, 16px);
@@ -206,6 +199,11 @@
                 display: block;
             }
 
+            /* Disable hover on mobile */
+            details.dropdown:hover .dropdown-menu {
+                display: none !important;
+            }
+
             .nav-container {
                 position: absolute;
                 top: 50px;
@@ -222,7 +220,6 @@
                 z-index: 1000;
                 box-shadow: 0 15px 30px rgba(0,0,0,0.4);
                 border-top: 1px solid rgba(255,255,255,0.05);
-                max-width: 100%;
             }
 
             .nav-container.active {
@@ -244,7 +241,6 @@
                 white-space: normal;
                 text-align: left;
                 color: #e0e6ed;
-                flex-shrink: 1;
             }
 
             .nav-container a:hover,
@@ -290,7 +286,6 @@
                 border: none;
                 transform: none;
                 min-width: auto;
-                backdrop-filter: none;
             }
 
             details.dropdown[open] .dropdown-menu {
@@ -352,11 +347,11 @@
 </head>
 <body>
     <nav class="navbar">
-        <button class="menu-toggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
 
-        <div class="nav-container" id="nav-menu">
+        <div class="nav-container" id="navMenu">
             <a href="index.html" class="nav-home">
                 <i class="fas fa-home"></i> <span>Home</span>
             </a>
@@ -367,8 +362,8 @@
             <a href="pages/indexing.html">Indexing</a>
 
             <!-- GUIDELINES DROPDOWN -->
-            <details class="dropdown" id="guidelines-dropdown">
-                <summary class="dropbtn">
+            <details class="dropdown">
+                <summary>
                     Guidelines
                     <span class="arrow">▼</span>
                 </summary>
@@ -384,8 +379,8 @@
             </details>
 
             <!-- ARTICLES DROPDOWN -->
-            <details class="dropdown" id="articles-dropdown">
-                <summary class="dropbtn">
+            <details class="dropdown">
+                <summary>
                     Articles
                     <span class="arrow">▼</span>
                 </summary>
@@ -403,151 +398,67 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var menuToggle = document.querySelector('.menu-toggle');
-            var navMenu = document.getElementById('nav-menu');
+            var menuToggle = document.getElementById('menuToggle');
+            var navMenu = document.getElementById('navMenu');
             var dropdowns = document.querySelectorAll('details.dropdown');
-            var closeTimeout = null;
-            
-            function isMobile() {
-                return window.innerWidth <= 850;
-            }
 
-            function closeAllDropdowns() {
-                dropdowns.forEach(function(drop) {
-                    drop.removeAttribute('open');
-                });
-                if (closeTimeout) {
-                    clearTimeout(closeTimeout);
-                    closeTimeout = null;
-                }
-            }
-
-            // ===== MOBILE MENU TOGGLE =====
+            // Mobile menu toggle
             if (menuToggle) {
                 menuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
-                    
-                    if (!navMenu.classList.contains('active')) {
-                        closeAllDropdowns();
-                    }
                 });
             }
 
-            // ===== CLOSE DROPDOWNS WHEN CLICKING NAV LINKS =====
-            var allNavLinks = document.querySelectorAll('.nav-container > a');
-            allNavLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    closeAllDropdowns();
-                    if (isMobile()) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            });
-
-            // ===== CLOSE DROPDOWNS WHEN CLICKING DROPDOWN MENU ITEMS =====
-            var dropdownLinks = document.querySelectorAll('.dropdown-menu a');
-            dropdownLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    closeAllDropdowns();
-                    if (isMobile()) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            });
-
-            // ===== DESKTOP: HOVER BEHAVIOR =====
-            dropdowns.forEach(function(drop) {
-                var summary = drop.querySelector('summary');
-
-                // HOVER: Open dropdown when mouse enters
-                drop.addEventListener('mouseenter', function() {
-                    if (!isMobile()) {
-                        // Clear any pending close timeout
-                        if (closeTimeout) {
-                            clearTimeout(closeTimeout);
-                            closeTimeout = null;
-                        }
-                        // Close all other dropdowns
-                        dropdowns.forEach(function(otherDrop) {
-                            if (otherDrop !== drop) {
-                                otherDrop.removeAttribute('open');
+            // Mobile: Click to toggle dropdowns
+            if (window.innerWidth <= 850) {
+                dropdowns.forEach(function(drop) {
+                    var summary = drop.querySelector('summary');
+                    summary.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close other dropdowns
+                        dropdowns.forEach(function(other) {
+                            if (other !== drop) {
+                                other.removeAttribute('open');
                             }
                         });
-                        // Open this dropdown
-                        drop.setAttribute('open', '');
-                    }
-                });
-
-                // HOVER: Close dropdown when mouse leaves
-                drop.addEventListener('mouseleave', function() {
-                    if (!isMobile()) {
-                        // Clear any existing timeout
-                        if (closeTimeout) {
-                            clearTimeout(closeTimeout);
-                            closeTimeout = null;
-                        }
-                        // Set timeout to close after 200ms
-                        closeTimeout = setTimeout(function() {
-                            // Check if mouse is still over the dropdown
-                            if (!drop.matches(':hover')) {
-                                drop.removeAttribute('open');
-                            }
-                            closeTimeout = null;
-                        }, 200);
-                    }
-                });
-
-                // ===== MOBILE: CLICK TO TOGGLE =====
-                if (summary) {
-                    summary.addEventListener('click', function(e) {
-                        if (isMobile()) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            // Close all other dropdowns
-                            dropdowns.forEach(function(otherDrop) {
-                                if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
-                                    otherDrop.removeAttribute('open');
-                                }
-                            });
-                            
-                            // Toggle this dropdown
-                            if (drop.hasAttribute('open')) {
-                                drop.removeAttribute('open');
-                            } else {
-                                drop.setAttribute('open', '');
-                            }
+                        
+                        // Toggle this dropdown
+                        if (drop.hasAttribute('open')) {
+                            drop.removeAttribute('open');
+                        } else {
+                            drop.setAttribute('open', '');
                         }
                     });
-                }
-            });
+                });
+            }
 
-            // ===== CLOSE DROPDOWNS WHEN CLICKING OUTSIDE =====
+            // Close dropdowns when clicking outside
             document.addEventListener('click', function(e) {
-                var isInsideNav = e.target.closest('.nav-container');
+                var isInside = e.target.closest('.nav-container');
                 var isToggle = e.target.closest('.menu-toggle');
                 
-                if (!isInsideNav && !isToggle) {
-                    closeAllDropdowns();
-                    
-                    if (isMobile() && navMenu.classList.contains('active')) {
+                if (!isInside && !isToggle) {
+                    dropdowns.forEach(function(drop) {
+                        drop.removeAttribute('open');
+                    });
+                    if (window.innerWidth <= 850) {
                         navMenu.classList.remove('active');
                     }
                 }
             });
 
-            // ===== HANDLE WINDOW RESIZE =====
-            var resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    if (!isMobile() && navMenu.classList.contains('active')) {
+            // Close mobile menu when clicking a link
+            var links = document.querySelectorAll('.nav-container a');
+            links.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 850) {
                         navMenu.classList.remove('active');
                     }
-                    closeAllDropdowns();
-                }, 300);
+                });
             });
         });
     </script>
