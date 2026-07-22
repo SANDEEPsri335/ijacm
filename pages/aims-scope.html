@@ -2,24 +2,16 @@
 <html lang="en">
 
 <head>
-  <title>Aim and Scope | International Journal of Advanced Computing and Mechanical Systems (IJACM) International Journal</title>
+  <title>Aim and Scope | International Journal of Advanced Computing and Mechanical Systems (IJACM)</title>
   <meta name="description"
     content="Explore the aim and scope of International Journal of Advanced Computing and Mechanical Systems (IJACM) covering computer science, management, applied sciences and interdisciplinary research domains.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https:/ijacm.com/pages/aims-scope.html">
-
-
-
-
+  <link rel="canonical" href="https://ijacm.com/pages/aims-scope.html">
   <meta charset="UTF-8">
-
-
   <meta name="keywords"
     content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* ================= GLOBAL STYLES ================= */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
     :root {
@@ -69,21 +61,20 @@
     }
 
     main {
-      padding: 20px;
+      padding: 15px 20px 30px 20px;
       min-height: 420px;
     }
 
-    /* ================= PAGE SPECIFIC STYLES ================= */
-    /* Aims & Scope Specifics */
+    /* ================= AIMS & SCOPE SPECIFIC ================= */
     .aims-hero {
       text-align: center;
-      padding: 60px 20px;
-      background: radial-gradient(circle at center, rgba(0, 176, 255, 0.1) 0%, rgba(11, 44, 77, 0) 70%);
+      padding: 30px 20px 20px 20px;
+      background: radial-gradient(circle at center, rgba(0, 176, 255, 0.08) 0%, rgba(11, 44, 77, 0) 70%);
     }
 
     .aims-hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: 10px;
       background: var(--gradient-secondary);
       -webkit-background-clip: text;
       background-clip: text;
@@ -93,21 +84,50 @@
 
     .aims-intro {
       max-width: 800px;
-      margin: 0 auto 60px;
+      margin: 0 auto 30px;
       text-align: center;
       color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
-    /* Objectives List */
+    .aims-intro p {
+      margin-bottom: 15px;
+    }
+
+    .aims-intro h2 {
+      font-size: 1.4rem;
+      margin: 15px 0 12px 0;
+    }
+
+    .aims-intro ul {
+      display: inline-block;
+      text-align: left;
+      padding: 0;
+    }
+
+    .aims-intro ul li {
+      margin-bottom: 6px;
+      padding-left: 25px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .aims-intro ul li i {
+      position: absolute;
+      left: 0;
+      top: 3px;
+      color: var(--secondary);
+    }
+
+    /* Objectives Box - Reduced padding */
     .objectives-box {
       background: rgba(13, 27, 42, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-md);
-      padding: 40px;
+      padding: 25px 30px;
       max-width: 1000px;
-      margin: 0 auto 80px;
+      margin: 0 auto 35px;
       box-shadow: var(--shadow-md);
       position: relative;
       overflow: hidden;
@@ -124,12 +144,12 @@
     }
 
     .objectives-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--white);
-      margin-bottom: 30px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
 
     .objectives-title i {
@@ -138,79 +158,84 @@
 
     .objectives-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
     }
 
     .objective-item {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       align-items: flex-start;
+      font-size: 0.95rem;
     }
 
     .objective-item i {
       color: var(--secondary);
-      margin-top: 5px;
+      margin-top: 3px;
+      font-size: 14px;
     }
 
-    /* Scope Cards */
+    /* Scope Section Title */
+    .scope-section-title {
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+
+    /* Scope Cards - Reduced padding */
     .scope-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
       max-width: 1200px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
+      margin: 0 auto 20px;
+      padding: 0 10px;
     }
 
     .scope-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: var(--radius-md);
-      padding: 30px;
+      padding: 20px 22px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       opacity: 0;
-      /* For animation */
       animation: fadeUp 0.6s ease-out forwards;
     }
 
     .scope-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
       background: rgba(255, 255, 255, 0.08);
       box-shadow: var(--shadow-glow);
       border-color: rgba(0, 176, 255, 0.3);
     }
 
     .scope-icon {
-      width: 60px;
-      height: 60px;
+      width: 48px;
+      height: 48px;
       background: rgba(0, 176, 255, 0.1);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: var(--secondary);
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     .scope-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
       color: var(--white);
     }
 
-    .scope-topics {
-      list-style: none;
-      padding: 0;
-    }
-
     .scope-topics li {
-      margin-bottom: 12px;
-      padding-left: 20px;
+      margin-bottom: 6px;
+      padding-left: 16px;
       position: relative;
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     .scope-topics li::before {
@@ -218,70 +243,97 @@
       color: var(--secondary);
       position: absolute;
       left: 0;
-      font-size: 1.2rem;
-      line-height: 1;
-      top: -2px;
+      font-size: 1rem;
     }
 
-    /* Animation Keyframes */
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    /* Staggered Delay */
-    .scope-card:nth-child(1) {
-      animation-delay: 0.1s;
-    }
+    .scope-card:nth-child(1) { animation-delay: 0.05s; }
+    .scope-card:nth-child(2) { animation-delay: 0.1s; }
+    .scope-card:nth-child(3) { animation-delay: 0.15s; }
+    .scope-card:nth-child(4) { animation-delay: 0.2s; }
+    .scope-card:nth-child(5) { animation-delay: 0.25s; }
+    .scope-card:nth-child(6) { animation-delay: 0.3s; }
 
-    .scope-card:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .scope-card:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
-    .scope-card:nth-child(4) {
-      animation-delay: 0.4s;
-    }
-
-    .scope-card:nth-child(5) {
-      animation-delay: 0.5s;
-    }
-
-    .scope-card:nth-child(6) {
-      animation-delay: 0.6s;
-    }
-
-    /* Responsive Design */
     @media (max-width: 768px) {
       .aims-hero h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
-
+      .aims-hero {
+        padding: 20px 15px 10px 15px;
+      }
+      .aims-intro {
+        margin: 0 auto 20px;
+        font-size: 0.95rem;
+      }
+      .objectives-box {
+        padding: 18px 20px;
+        margin: 0 auto 20px;
+      }
       .objectives-list {
         grid-template-columns: 1fr;
+        gap: 8px;
       }
-
+      .objectives-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+      .scope-section-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
       .scope-grid {
         grid-template-columns: 1fr;
-        padding: 0 15px;
+        padding: 0 5px;
+        gap: 12px;
       }
-
       .scope-card {
-        padding: 20px;
+        padding: 16px 18px;
       }
+      .scope-card h3 {
+        font-size: 1rem;
+      }
+      .scope-topics li {
+        font-size: 0.85rem;
+      }
+      main {
+        padding: 10px 12px 20px 12px;
+      }
+    }
 
-      .main {
-        padding: 20px 10px;
+    @media (max-width: 480px) {
+      .aims-hero h1 {
+        font-size: 1.3rem;
+      }
+      .aims-intro {
+        font-size: 0.9rem;
+      }
+      .aims-intro h2 {
+        font-size: 1.1rem;
+      }
+      .objectives-box {
+        padding: 15px 15px;
+      }
+      .objective-item {
+        font-size: 0.85rem;
+      }
+      .scope-card {
+        padding: 14px 14px;
+      }
+      .scope-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-bottom: 10px;
       }
     }
   </style>
@@ -293,12 +345,10 @@
   <div id="navbar-placeholder"></div>
 
   <main>
-    <!-- Hero Section -->
     <section class="aims-hero">
-      <h1>Aim and Scope of International Journal of Advanced Computing and Mechanical Systems (IJACM)</h1>
+      <h1>Aim and Scope of IJACM</h1>
     </section>
 
-    <!-- Aims Introduction -->
     <section class="aims-intro">
       <p>
         The aim of International Journal of Advanced Computing and Mechanical Systems (IJACM) is to promote high-quality research and provide a global
@@ -306,19 +356,14 @@
         research findings.
       </p>
 
-      <h2 style="color: #ffffff; margin-top: 30px; margin-bottom: 20px;">Scope of the Journal</h2>
-      <ul
-        style="list-style: none; padding: 0; color: #b0bec5; max-width: 600px; margin: 0 auto; text-align: left; display: inline-block;">
-        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;"><i class="fas fa-check"
-            style="color: #00b0ff; position: absolute; left: 0;"></i> Computer Science and Engineering</li>
-         <li style="margin-bottom: 10px; padding-left: 25px; position: relative;"><i class="fas fa-check"
-            style="color: #00b0ff; position: absolute; left: 0;"></i> Mechanical Engineering</li>
-        <li style="margin-bottom: 10px; padding-left: 25px; position: relative;"><i class="fas fa-check"
-            style="color: #00b0ff; position: absolute; left: 0;"></i>Information Technology</li>
+      <h2>Scope of the Journal</h2>
+      <ul>
+        <li><i class="fas fa-check"></i> Computer Science and Engineering</li>
+        <li><i class="fas fa-check"></i> Mechanical Engineering</li>
+        <li><i class="fas fa-check"></i> Information Technology</li>
       </ul>
     </section>
 
-    <!-- Objectives Box -->
     <section class="objectives-box">
       <div class="objectives-title">
         <i class="fas fa-bullseye"></i>
@@ -327,11 +372,11 @@
       <div class="objectives-list">
         <div class="objective-item">
           <i class="fas fa-check-circle"></i>
-          <span>Advance integration of computing & mechanical systems</span>
+          <span>Advance integration of computing &amp; mechanical systems</span>
         </div>
         <div class="objective-item">
           <i class="fas fa-check-circle"></i>
-          <span>Promote intelligent algorithms & computational methods</span>
+          <span>Promote intelligent algorithms &amp; computational methods</span>
         </div>
         <div class="objective-item">
           <i class="fas fa-check-circle"></i>
@@ -344,51 +389,45 @@
       </div>
     </section>
 
-    <!-- Scope Grid -->
-    <h2 style="text-align: center; color: var(--white); margin-bottom: 30px; font-size: 2rem;">Key Research Areas &
-      Domains</h2>
+    <h2 class="scope-section-title">Key Research Areas &amp; Domains</h2>
     <section class="scope-grid">
 
-      <!-- Card 1 -->
       <div class="scope-card">
         <div class="scope-icon"><i class="fas fa-microchip"></i></div>
         <h3>Advanced Computing</h3>
         <ul class="scope-topics">
-          <li>AI & Machine learning in mechanics</li>
-          <li>Data-driven modeling & analytics</li>
-          <li>Digital twins & Cyber-physical systems</li>
+          <li>AI &amp; Machine learning in mechanics</li>
+          <li>Data-driven modeling &amp; analytics</li>
+          <li>Digital twins &amp; Cyber-physical systems</li>
           <li>High-performance computing</li>
-          <li>Cloud & Edge computing applications</li>
+          <li>Cloud &amp; Edge computing applications</li>
         </ul>
       </div>
 
-      <!-- Card 2 -->
       <div class="scope-card">
         <div class="scope-icon"><i class="fas fa-cogs"></i></div>
         <h3>Computational Mechanics</h3>
         <ul class="scope-topics">
-          <li>Solid & Fluid mechanics simulations</li>
-          <li>Multiphysics & multiscale modeling</li>
+          <li>Solid &amp; Fluid mechanics simulations</li>
+          <li>Multiphysics &amp; multiscale modeling</li>
           <li>Finite element analysis (FEA)</li>
           <li>Computational fluid dynamics (CFD)</li>
           <li>Thermal system modeling</li>
         </ul>
       </div>
 
-      <!-- Card 3 -->
       <div class="scope-card">
         <div class="scope-icon"><i class="fas fa-robot"></i></div>
         <h3>Intelligent Systems</h3>
         <ul class="scope-topics">
-          <li>Robotics & Autonomous systems</li>
-          <li>Mechatronics & Embedded control</li>
-          <li>Smart sensors & Actuators</li>
+          <li>Robotics &amp; Autonomous systems</li>
+          <li>Mechatronics &amp; Embedded control</li>
+          <li>Smart sensors &amp; Actuators</li>
           <li>Adaptive learning control</li>
           <li>Intelligent optimization techniques</li>
         </ul>
       </div>
 
-      <!-- Card 4 -->
       <div class="scope-card">
         <div class="scope-icon"><i class="fas fa-industry"></i></div>
         <h3>Industry 4.0</h3>
@@ -401,7 +440,6 @@
         </ul>
       </div>
 
-      <!-- Card 5 -->
       <div class="scope-card">
         <div class="scope-icon"><i class="fas fa-project-diagram"></i></div>
         <h3>Engineering Applications</h3>
@@ -414,7 +452,6 @@
         </ul>
       </div>
 
-      <!-- Card 6 -->
       <div class="scope-card">
         <div class="scope-icon"><i class="fas fa-flask"></i></div>
         <h3>Emerging Research</h3>
