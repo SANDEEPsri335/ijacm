@@ -127,7 +127,6 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* Rainbow gradient ticker background */
         .scroll-track {
             display: flex;
             animation: scroll-right-left 38s linear infinite;
@@ -138,7 +137,6 @@
             animation-play-state: paused;
         }
         
-        /* Individual message pills with distinct alternating colors */
         .scroll-message {
             display: inline-flex;
             align-items: center;
@@ -159,7 +157,6 @@
             box-shadow: 0 6px 14px rgba(0,0,0,0.3);
         }
         
-        /* Color palette for alternating items - vivid but readable */
         .msg-color-1 { background: linear-gradient(135deg, #e63946, #c92a2a); color: white; border-left: 4px solid #ffd166; }
         .msg-color-2 { background: linear-gradient(135deg, #2a9d8f, #21867a); color: white; border-left: 4px solid #ffb347; }
         .msg-color-3 { background: linear-gradient(135deg, #e9c46a, #e5b83c); color: #1e2a3a; border-left: 4px solid #1e6091; }
@@ -186,7 +183,6 @@
             100% { transform: translateX(-50%); }
         }
         
-        /* SUBMIT BUTTON */
         .submit-btn {
             margin-top: 15px;
             text-align: center;
@@ -248,7 +244,6 @@
             font-style: italic;
         }
 
-        /* LATEST ARTICLES STYLES */
         .latest-articles {
             margin: 60px 0;
             padding: 40px 20px;
@@ -276,7 +271,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* INFO COLUMNS */
         .three-column-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -308,7 +302,6 @@
             color: #000;
         }
 
-        /* JOURNAL PARTICULARS TABLE */
         .particulars-table {
             width: 100%;
             background: #f8f9fa;
@@ -332,7 +325,6 @@
             background-color: #ffffff;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .journal-wrapper {
                 flex-direction: column;
@@ -427,9 +419,9 @@
     <main id="content" class="home">
         <section class="journal-card">
             <div class="journal-wrapper">
-                <!-- LEFT IMAGE -->
+                <!-- LEFT IMAGE - FIXED PATH -->
                 <div class="journal-image">
-                    <img src="ijacm/assets/Cover_Page.jpg" alt="Cover Page" loading="lazy">
+                    <img src="assets/Cover_Page.jpg" alt="Cover Page" loading="lazy">
                     <div class="submit-btn">
                         <a href="pages/submit.html">Submit Paper</a>
                     </div>
@@ -437,14 +429,10 @@
 
                 <!-- RIGHT CONTENT -->
                 <div class="journal-content">
-                    <!-- MULTI-COLOR ALTERNATING SCROLLER - ENHANCED VISIBILITY -->
                     <div class="scroll-container">
-                        <div class="scroll-track" id="colorfulScroller">
-                            <!-- dynamic messages with alternating color classes will be injected via JS -->
-                        </div>
+                        <div class="scroll-track" id="colorfulScroller"></div>
                     </div>
 
-                    <!-- TITLE -->
                     <h1 class="journal-title">International Journal of Advanced Computing and Mechanical Systems (IJACM)</h1>
 
                     <p>
@@ -452,7 +440,6 @@
                         original research papers, review articles and case studies.
                     </p>
 
-                    <!-- JOURNAL PARTICULARS TABLE -->
                     <table class="particulars-table">
                         <tr><td>Title</td><td>International Journal of Advanced Computing and Mechanical Systems (IJACM)</td></tr>
                         <tr><td>Frequency</td><td>Monthly (12 issues per year)</td></tr>
@@ -530,7 +517,6 @@
                 </div>
             </div>
 
-            <!-- FAQ SECTION -->
             <section class="faq-section" style="margin-top: 50px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
                 <h2 class="section-title-center" style="margin-bottom: 30px;">Frequently Asked Questions</h2>
                 <div class="faq-item" style="margin-bottom: 20px;">
@@ -559,10 +545,8 @@
     <script src="script.js"></script>
     <script src="js/latest-articles.js"></script>
     
-    <!-- ALTERNATING MULTI-COLOR SCROLLER SCRIPT -->
     <script>
         (function() {
-            // Define messages exactly as needed but with rich alternating colors automatically
             const messagesData = [
                 { icon: "📢", text: "Call For Papers: Volume 2 Issue 6", link: null },
                 { icon: "📅", text: "Publication Frequency: Monthly", link: null },
@@ -572,19 +556,15 @@
                 { icon: "📝", text: "Click To Download Word Template", link: "assets/editors/IJACM_Paper_Template_A4_Word.docx" },
             ];
             
-            // color classes array (alternating bright variations)
             const colorClasses = [
                 "msg-color-1", "msg-color-2", "msg-color-3", "msg-color-4",
                 "msg-color-5", "msg-color-6", "msg-color-7", "msg-color-8"
             ];
             
-            // Build scroll-track content: we duplicate the list to ensure seamless infinite loop
             function buildScrollItems() {
                 let itemsHtml = '';
-                // Repeat messages twice for continuous scroll effect
                 for (let repeat = 0; repeat < 2; repeat++) {
                     messagesData.forEach((msg, idx) => {
-                        // assign alternating color class cyclically
                         const colorMod = colorClasses[idx % colorClasses.length];
                         let content = `
                             <div class="scroll-message ${colorMod}">
@@ -593,7 +573,6 @@
                                 <span class="blink-icon">${msg.icon.includes('📝') ? '📥' : (msg.icon.includes('🆓') ? '✨' : '🔔')}</span>
                             </div>
                         `;
-                        // if link exists, wrap anchor, but keep interactive hover
                         if (msg.link) {
                             content = `<a href="${msg.link}" target="_blank" style="text-decoration: none; display: inline-flex;">${content}</a>`;
                         }
@@ -606,7 +585,6 @@
             const scrollerTrack = document.querySelector('.scroll-track');
             if (scrollerTrack) {
                 scrollerTrack.innerHTML = buildScrollItems();
-                // adjust animation duration based on content width (dynamic but maintain smoothness)
                 const totalWidth = scrollerTrack.scrollWidth;
                 if (totalWidth > 3000) {
                     scrollerTrack.style.animationDuration = '50s';
@@ -619,14 +597,11 @@
         })();
     </script>
     
-    <!-- Article loading with fallback and interactive buttons -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('DOM fully loaded - rendering latest articles with enhanced UI');
             setTimeout(function () {
                 const container = document.getElementById('latest-articles-container');
                 if (container && (container.innerHTML.includes('Loading') || container.children.length === 1)) {
-                    // Enhanced article list with realistic content and color variations
                     const articles = [
                         { title: "AI-Driven Predictive Maintenance in Mechanical Systems", authors: "Dr. Aditya Sharma, Prof. Meera Krishnamoorthy", date: "15 May 2025", pdfLink: "#", viewLink: "#" },
                         { title: "Deep Learning for Fault Diagnosis in Rotating Machinery", authors: "Rahul Verma, Sneha Patil, Dr. K. Rajan", date: "02 June 2025", pdfLink: "#", viewLink: "#" },
@@ -647,19 +622,12 @@
                         `;
                         container.innerHTML += articleHTML;
                     });
-                } else if (container) {
-                    // if container already has content but maybe not three items; ensure style
-                    if (container.children.length < 3 && container.children.length > 0) {
-                        // not needed but for safety
-                    }
                 }
             }, 800);
         });
     </script>
     
-    <!-- Small extra: navbar & header placeholders mock (no conflict) -->
     <script>
-        // Dummy placeholder functions to avoid missing elements, but doesn't break anything
         window.addEventListener('load', function() {
             const headerDiv = document.getElementById('header-placeholder');
             if (headerDiv && !headerDiv.innerHTML.trim()) {
