@@ -6,12 +6,13 @@
         display: flex;
         padding: 5px 20px;
         align-items: center;
-        background: var(--bg-dark);
+        background: #0b2c4d;
         justify-content: space-between;
         gap: 15px;
         flex-wrap: nowrap;
         min-width: 0;
         width: 100%;
+        border-bottom: 2px solid rgba(0, 176, 255, 0.2);
     }
     
     /* LOGO STYLES - Fixed Left */
@@ -60,6 +61,7 @@
         justify-content: center;
         align-items: center;
         gap: 0 4px;
+        font-size: clamp(16px, 2vw, 24px);
     }
     
     .title h1 .journal-name {
@@ -68,36 +70,37 @@
     }
     
     .title h1 .abbr {
-        color: var(--secondary);
+        color: #00b0ff;
         display: inline;
         white-space: nowrap;
     }
     
-    /* ===== RESPONSIVE TITLE SIZING ===== */
-    
-    /* Extra Large Screens (1600px+) */
-    @media (min-width: 1600px) {
-        .title h1 {
-            font-size: 28px;
-            white-space: nowrap;
-        }
+    /* SUBMIT BUTTON - Fixed Right */
+    .submit-btn {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
     }
     
-    /* Large Screens (1200-1599px) */
-    @media (max-width: 1599px) and (min-width: 1200px) {
-        .title h1 {
-            font-size: 24px;
-            white-space: nowrap;
-        }
+    .submit-btn a {
+        background: #00b0ff;
+        color: #061d33;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(0, 176, 255, 0.3);
+        white-space: nowrap;
+        display: inline-block;
+        font-size: clamp(11px, 1vw, 16px);
+        transition: background 0.3s ease;
     }
     
-    /* Medium-Large (992-1199px) */
-    @media (max-width: 1199px) and (min-width: 992px) {
-        .title h1 {
-            font-size: 20px;
-            white-space: nowrap;
-        }
+    .submit-btn a:hover {
+        background: #40c4ff;
     }
+    
+    /* ===== RESPONSIVE HEADER ===== */
     
     /* Medium (768-991px) - Title wraps */
     @media (max-width: 991px) and (min-width: 768px) {
@@ -262,7 +265,7 @@
         }
         
         .title h1 .abbr span {
-            color: var(--secondary);
+            color: #00b0ff;
         }
         
         .title h1 {
@@ -275,31 +278,6 @@
             font-size: 9px;
         }
     }
-    
-    /* SUBMIT BUTTON - Fixed Right */
-    .submit-btn {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-    }
-    
-    .submit-btn a {
-        background: var(--secondary);
-        color: var(--bg-darker);
-        padding: 10px 18px;
-        border-radius: 6px;
-        font-weight: bold;
-        text-decoration: none;
-        box-shadow: var(--shadow-glow);
-        white-space: nowrap;
-        display: inline-block;
-        font-size: clamp(11px, 1vw, 16px);
-        transition: background 0.3s ease;
-    }
-    
-    .submit-btn a:hover {
-        background: #40c4ff;
-    }
 </style>
 
 <header class="header">
@@ -310,7 +288,7 @@
         <a href="index.html">
             <img 
                 src="assets/editors/logo.png" 
-                alt="Scholar Sphere Publications Logo"
+                alt="IJACM Logo"
                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\"color:#00b0ff;font-size:24px;font-weight:700;\">IJACM</span>';"
             >
         </a> 
