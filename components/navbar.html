@@ -22,16 +22,16 @@
 
         .navbar {
             background: linear-gradient(180deg, #0b2b4a, #061d33);
-            height: 56px;
-            /* Reduced from 72px */
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             z-index: 1000;
-            padding: 0 15px;
+            padding: 0 10px;
             width: 100%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .nav-container {
@@ -40,20 +40,18 @@
             margin: auto;
             display: flex;
             align-items: center;
-            gap: clamp(6px, 1vw, 16px);
-            justify-content: center;
+            gap: 2px;
+            justify-content: space-between;
             flex-wrap: nowrap;
         }
 
-        /* Base link styles */
+        /* Base link styles - Auto-fit based on header */
         .nav-container a, 
         details.dropdown > summary {
             color: #ffffff;
-            font-size: clamp(12px, 1vw, 14px);
-            /* Reduced font size */
+            font-size: clamp(10px, 0.9vw, 14px);
             font-weight: 500;
-            padding: 8px clamp(3px, 0.6vw, 10px);
-            /* Reduced padding */
+            padding: 6px clamp(4px, 0.5vw, 10px);
             text-decoration: none;
             transition: all 0.3s ease;
             white-space: nowrap;
@@ -64,6 +62,7 @@
             display: inline-flex;
             align-items: center;
             list-style: none;
+            letter-spacing: 0.2px;
         }
 
         /* Remove default details marker */
@@ -72,12 +71,22 @@
         }
 
         .nav-home {
-            font-size: clamp(13px, 1.1vw, 16px);
+            font-size: clamp(12px, 1vw, 15px);
             gap: 4px;
+            color: #00b0ff;
+        }
+
+        .nav-home i {
+            font-size: clamp(11px, 0.9vw, 14px);
         }
 
         .nav-container a:hover,
         details.dropdown > summary:hover {
+            color: #00c6ff;
+        }
+
+        .nav-container a:active,
+        details.dropdown > summary:active {
             color: #00c6ff;
         }
 
@@ -90,13 +99,14 @@
         details.dropdown > summary {
             display: inline-flex;
             align-items: center;
-            gap: 3px;
+            gap: 2px;
         }
 
         .arrow {
-            font-size: 11px;
+            font-size: 9px;
             transition: transform 0.3s ease;
-            margin-left: 2px;
+            margin-left: 1px;
+            color: #78909c;
         }
 
         details.dropdown[open] > summary .arrow {
@@ -106,54 +116,40 @@
         .dropdown-menu {
             position: absolute;
             top: 100%;
-            left: 0;
-            min-width: 220px;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
             background: #0b2b4a;
-            padding: 8px;
-            /* Reduced padding */
-            border-radius: 10px;
+            padding: 6px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            gap: 3px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
             z-index: 9999;
-            margin-top: 6px;
+            margin-top: 4px;
             border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
         }
 
-        /* Desktop hover behavior - FIXED */
+        /* Desktop dropdown behavior - FIXED */
         @media (min-width: 1001px) {
-            details.dropdown {
-                display: inline-block;
-            }
-            
-            details.dropdown > summary {
-                cursor: pointer;
-            }
-            
-            /* Keep dropdown open when hovering over it */
-            details.dropdown:hover {
-                display: inline-block;
-            }
-            
-            details.dropdown:hover > summary {
-                color: #00c6ff;
-            }
-            
+            /* Keep dropdown open on hover */
             details.dropdown:hover .dropdown-menu {
                 display: flex;
             }
             
-            /* If not hovered, hide */
+            /* Close when not hovered */
             details.dropdown:not(:hover) .dropdown-menu {
                 display: none;
             }
             
-            /* When open via click, keep it open until clicked again */
+            /* But if clicked/open, keep it open until clicked again */
             details.dropdown[open] .dropdown-menu {
                 display: flex;
             }
             
+            /* Override hover close when open */
             details.dropdown[open]:not(:hover) .dropdown-menu {
                 display: flex;
             }
@@ -162,15 +158,15 @@
         .dropdown-menu a {
             background: #103a63;
             color: #ffffff;
-            padding: 10px 14px;
-            /* Reduced padding */
-            font-size: 13px;
-            font-weight: 500;
-            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 400;
+            border-radius: 5px;
             white-space: nowrap;
             display: block;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             border: none;
+            text-align: left;
         }
 
         .dropdown-menu a:hover {
@@ -182,32 +178,34 @@
         /* MENU TOGGLE */
         .menu-toggle {
             display: none;
-            font-size: 22px;
+            font-size: 20px;
             color: #fff;
             cursor: pointer;
             position: absolute;
-            right: 15px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
+            background: none;
+            border: none;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE AUTO-FIT ===== */
         @media (max-width: 1300px) {
             .nav-container a, details.dropdown > summary {
-                font-size: 12px;
-                padding: 8px 3px;
+                font-size: clamp(9px, 0.8vw, 12px);
+                padding: 6px clamp(2px, 0.4vw, 6px);
             }
-            .nav-container { gap: 8px; }
+            .nav-container { gap: 1px; }
         }
 
         @media (max-width: 1150px) {
             .nav-container a, details.dropdown > summary {
-                font-size: 11px;
-                padding: 8px 2px;
+                font-size: clamp(8px, 0.7vw, 11px);
+                padding: 6px clamp(2px, 0.3vw, 4px);
             }
-            .nav-container { gap: 5px; }
             
+            /* Hide less important items on smaller screens */
             .nav-container a[href*="indexing"],
             .nav-container a[href*="publication-fee"] {
                 display: none;
@@ -216,9 +214,9 @@
 
         @media (max-width: 1000px) {
             .navbar {
-                height: 50px;
-                /* Even smaller on mobile */
+                height: 48px;
                 justify-content: space-between;
+                padding: 0 12px;
             }
 
             .menu-toggle {
@@ -227,7 +225,7 @@
 
             .nav-container {
                 position: absolute;
-                top: 50px;
+                top: 48px;
                 left: 0;
                 width: 100%;
                 background: #061d33;
@@ -236,16 +234,17 @@
                 padding: 0;
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height 0.4s ease-out;
+                transition: max-height 0.35s ease-out;
                 align-items: flex-start;
                 z-index: 1000;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+                border-top: 1px solid rgba(255,255,255,0.05);
             }
 
             .nav-container.active {
                 max-height: 100vh;
                 overflow-y: auto;
-                padding-bottom: 15px;
+                padding-bottom: 10px;
             }
 
             .nav-container a, 
@@ -255,11 +254,17 @@
             .nav-container a[href*="publication-fee"] {
                 display: block;
                 width: 100%;
-                font-size: 15px;
-                padding: 12px 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 14px;
+                padding: 10px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
                 white-space: normal;
                 text-align: left;
+                color: #e0e6ed;
+            }
+
+            .nav-container a:hover,
+            details.dropdown > summary:hover {
+                background: rgba(0, 176, 255, 0.08);
             }
 
             details.dropdown {
@@ -271,6 +276,11 @@
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
+                padding: 10px 20px;
+            }
+
+            details.dropdown > summary .arrow {
+                font-size: 12px;
             }
 
             .dropdown-menu {
@@ -283,6 +293,9 @@
                 margin-top: 0;
                 display: none !important;
                 border: none;
+                transform: none;
+                min-width: auto;
+                backdrop-filter: none;
             }
 
             details.dropdown[open] .dropdown-menu {
@@ -291,18 +304,21 @@
 
             .dropdown-menu a {
                 background: transparent;
-                padding: 10px 20px 10px 35px;
+                padding: 8px 20px 8px 35px;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.03);
                 border-radius: 0;
                 transform: none;
-                font-size: 14px;
+                font-size: 13px;
+                color: #b0bec5;
             }
 
             .dropdown-menu a:hover {
-                background: #103a63;
+                background: rgba(0, 176, 255, 0.1);
                 transform: none;
+                color: #ffffff;
             }
 
+            /* Reset desktop hover for mobile */
             details.dropdown:hover .dropdown-menu {
                 display: none !important;
             }
@@ -315,32 +331,37 @@
         @media (min-width: 1400px) {
             .nav-container a, details.dropdown > summary {
                 font-size: 15px;
-                padding: 8px 10px;
+                padding: 6px 12px;
             }
+            .nav-container { gap: 4px; }
         }
 
         @media (max-width: 600px) {
+            .navbar {
+                height: 44px;
+            }
+            
+            .nav-container {
+                top: 44px;
+            }
+            
             .nav-home span {
                 display: none;
             }
             
-            .navbar {
-                height: 46px;
-            }
-            
             .nav-container a, 
             details.dropdown > summary {
-                font-size: 14px;
-                padding: 10px 16px;
+                font-size: 13px;
+                padding: 8px 16px;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="menu-toggle">
+        <button class="menu-toggle" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
-        </div>
+        </button>
 
         <div class="nav-container" id="nav-menu">
             <a href="index.html" class="nav-home">
@@ -348,7 +369,7 @@
             </a>
 
             <a href="pages/about.html">About</a>
-            <a href="pages/aims-scope.html">Aims & Scope</a>
+            <a href="pages/aims-scope.html">Aims &amp; Scope</a>
             <a href="pages/editorial-board.html">Editorial Board</a>
             <a href="pages/indexing.html">Indexing</a>
 
@@ -365,7 +386,7 @@
                     <a href="pages/publication-ethics.html">Publication Ethics</a>
                     <a href="pages/plagiarism-policy.html">Plagiarism Policy</a>
                     <a href="pages/open-access-policy.html">Open Access Policy</a>
-                    <a href="pages/copyright.html">Copyright & Licensing</a>
+                    <a href="pages/copyright.html">Copyright &amp; Licensing</a>
                 </div>
             </details>
 
@@ -377,6 +398,7 @@
                 </summary>
                 <div class="dropdown-menu">
                     <a href="pages/current-issue.html">Current Issue</a>
+                    <a href="pages/cover-page.html">Cover Page</a>
                     <a href="pages/previous-volume.html">Previous Volumes</a>
                 </div>
             </details>
@@ -391,6 +413,7 @@
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.getElementById('nav-menu');
             const dropdowns = document.querySelectorAll('details.dropdown');
+            let isMobileMenuOpen = false;
             
             function isMobile() {
                 return window.innerWidth <= 1000;
@@ -402,8 +425,10 @@
                     e.preventDefault();
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
+                    isMobileMenuOpen = navMenu.classList.contains('active');
                     
-                    if (!navMenu.classList.contains('active')) {
+                    // Close all dropdowns when closing menu
+                    if (!isMobileMenuOpen) {
                         dropdowns.forEach(drop => {
                             drop.removeAttribute('open');
                         });
@@ -411,17 +436,7 @@
                 });
             }
 
-            // Close mobile menu when clicking a link (not dropdown items)
-            const navLinks = document.querySelectorAll('.nav-container > a:not(.dropbtn)');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (isMobile()) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            });
-
-            // Handle dropdown toggle on mobile - prevent closing when clicking inside
+            // Handle dropdown toggle on click for all screens
             dropdowns.forEach(drop => {
                 const summary = drop.querySelector('summary');
                 const menu = drop.querySelector('.dropdown-menu');
@@ -430,6 +445,8 @@
                     summary.addEventListener('click', function(e) {
                         if (isMobile()) {
                             e.preventDefault();
+                            e.stopPropagation();
+                            
                             // Toggle this dropdown, close others
                             dropdowns.forEach(otherDrop => {
                                 if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
@@ -442,36 +459,50 @@
                             } else {
                                 drop.setAttribute('open', '');
                             }
+                        } else {
+                            // Desktop: toggle on click as well (for better UX)
+                            // Don't prevent default on desktop
+                            // Close other dropdowns on desktop too
+                            dropdowns.forEach(otherDrop => {
+                                if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
+                                    otherDrop.removeAttribute('open');
+                                }
+                            });
                         }
                     });
                 }
 
-                // Prevent closing when clicking inside dropdown menu on mobile
+                // Prevent closing when clicking inside dropdown menu
                 if (menu) {
                     menu.addEventListener('click', function(e) {
-                        if (isMobile()) {
-                            e.stopPropagation();
-                        }
+                        e.stopPropagation();
                     });
 
-                    // Close dropdown and mobile menu when clicking a link inside
+                    // Close dropdown when clicking a link inside
                     menu.querySelectorAll('a').forEach(link => {
                         link.addEventListener('click', function() {
                             if (isMobile()) {
                                 drop.removeAttribute('open');
                                 navMenu.classList.remove('active');
+                                isMobileMenuOpen = false;
+                            } else {
+                                // On desktop, close dropdown after clicking link
+                                setTimeout(() => {
+                                    drop.removeAttribute('open');
+                                }, 200);
                             }
                         });
                     });
                 }
             });
 
-            // Close menu when clicking outside
+            // Close menu when clicking outside on mobile
             document.addEventListener('click', function(e) {
                 if (isMobile() && navMenu.classList.contains('active')) {
                     const isClickInside = e.target.closest('.nav-container') || e.target.closest('.menu-toggle');
                     if (!isClickInside) {
                         navMenu.classList.remove('active');
+                        isMobileMenuOpen = false;
                         dropdowns.forEach(drop => {
                             drop.removeAttribute('open');
                         });
@@ -486,11 +517,12 @@
                 resizeTimer = setTimeout(function() {
                     if (!isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
+                        isMobileMenuOpen = false;
                     }
                     dropdowns.forEach(drop => {
                         drop.removeAttribute('open');
                     });
-                }, 250);
+                }, 300);
             });
         });
     </script>
