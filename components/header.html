@@ -33,6 +33,9 @@
         width: auto;
         display: block;
         object-fit: contain;
+        background: transparent;
+        /* Ensure transparent background */
+        mix-blend-mode: normal;
     }
     
     /* TITLE STYLES - Centered Between Logo and Button */
@@ -289,6 +292,7 @@
             <img 
                 src="assets/editors/logo.png" 
                 alt="IJACM Logo"
+                style="background: transparent;"
                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\"color:#00b0ff;font-size:24px;font-weight:700;\">IJACM</span>';"
             >
         </a> 
