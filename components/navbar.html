@@ -48,7 +48,7 @@
 
         /* Base link styles */
         .nav-container a, 
-        details.dropdown > summary {
+        .dropdown-btn {
             color: #ffffff;
             font-size: clamp(14px, 1.3vw, 18px);
             font-weight: 500;
@@ -62,13 +62,8 @@
             font-family: inherit;
             display: inline-flex;
             align-items: center;
-            list-style: none;
             letter-spacing: 0.3px;
             flex-shrink: 0;
-        }
-
-        details.dropdown > summary::-webkit-details-marker {
-            display: none;
         }
 
         .nav-home {
@@ -82,20 +77,34 @@
         }
 
         .nav-container a:hover,
-        details.dropdown > summary:hover {
+        .dropdown-btn:hover {
             color: #00c6ff;
         }
 
-        /* DROPDOWN STYLES */
-        details.dropdown {
+        /* ===== DROPDOWN STYLES ===== */
+        .dropdown-wrapper {
             position: relative;
             display: inline-block;
         }
 
-        details.dropdown > summary {
+        .dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: clamp(14px, 1.3vw, 18px);
+            font-weight: 500;
+            padding: 8px clamp(8px, 1vw, 18px);
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .dropdown-btn:hover {
+            color: #00c6ff;
         }
 
         .arrow {
@@ -105,7 +114,7 @@
             color: #78909c;
         }
 
-        details.dropdown[open] > summary .arrow {
+        .dropdown-btn.active .arrow {
             transform: rotate(180deg);
         }
 
@@ -128,8 +137,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Show dropdown only when open */
-        details.dropdown[open] .dropdown-menu {
+        .dropdown-menu.show {
             display: flex;
         }
 
@@ -145,6 +153,7 @@
             transition: all 0.2s ease;
             border: none;
             text-align: left;
+            text-decoration: none;
         }
 
         .dropdown-menu a:hover {
@@ -167,7 +176,7 @@
         /* ===== RESPONSIVE ===== */
         
         @media (max-width: 1200px) {
-            .nav-container a, details.dropdown > summary {
+            .nav-container a, .dropdown-btn {
                 font-size: clamp(13px, 1.1vw, 16px);
                 padding: 8px clamp(6px, 0.8vw, 14px);
             }
@@ -176,7 +185,7 @@
         }
 
         @media (max-width: 1050px) {
-            .nav-container a, details.dropdown > summary {
+            .nav-container a, .dropdown-btn {
                 font-size: clamp(12px, 1vw, 14px);
                 padding: 8px clamp(5px, 0.6vw, 10px);
             }
@@ -189,7 +198,7 @@
         }
 
         @media (max-width: 950px) {
-            .nav-container a, details.dropdown > summary {
+            .nav-container a, .dropdown-btn {
                 font-size: clamp(11px, 0.9vw, 13px);
                 padding: 8px clamp(4px, 0.5vw, 8px);
             }
@@ -239,8 +248,8 @@
             }
 
             .nav-container a, 
-            details.dropdown,
-            details.dropdown > summary,
+            .dropdown-wrapper,
+            .dropdown-btn,
             .nav-container a[href*="indexing"],
             .nav-container a[href*="publication-fee"] {
                 display: block;
@@ -251,11 +260,10 @@
                 white-space: normal;
                 text-align: left;
                 color: #e0e6ed;
-                flex-shrink: 1;
             }
 
             .nav-container a:hover,
-            details.dropdown > summary:hover {
+            .dropdown-btn:hover {
                 background: rgba(0, 176, 255, 0.08);
             }
 
@@ -268,20 +276,22 @@
                 display: inline !important;
             }
 
-            details.dropdown {
+            .dropdown-wrapper {
                 position: static;
+                padding: 0 !important;
             }
 
-            details.dropdown > summary {
+            .dropdown-btn {
                 display: flex !important;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
                 padding: 14px 25px !important;
                 font-size: 16px !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             }
 
-            details.dropdown > summary .arrow {
+            .dropdown-btn .arrow {
                 font-size: 14px;
             }
 
@@ -300,7 +310,7 @@
                 backdrop-filter: none;
             }
 
-            details.dropdown[open] .dropdown-menu {
+            .dropdown-menu.show {
                 display: flex !important;
             }
 
@@ -319,14 +329,6 @@
                 transform: none;
                 color: #ffffff;
             }
-
-            details.dropdown:hover .dropdown-menu {
-                display: none !important;
-            }
-            
-            details.dropdown[open] .dropdown-menu {
-                display: flex !important;
-            }
         }
 
         @media (max-width: 500px) {
@@ -340,7 +342,7 @@
             }
             
             .nav-container a, 
-            details.dropdown > summary {
+            .dropdown-btn {
                 font-size: 15px !important;
                 padding: 12px 20px !important;
             }
@@ -356,7 +358,7 @@
         }
 
         @media (min-width: 1400px) {
-            .nav-container a, details.dropdown > summary {
+            .nav-container a, .dropdown-btn {
                 font-size: 18px;
                 padding: 8px 20px;
             }
@@ -381,12 +383,13 @@
             <a href="pages/editorial-board.html">Editorial Board</a>
             <a href="pages/indexing.html">Indexing</a>
 
-            <details class="dropdown" id="guidelines-dropdown">
-                <summary class="dropbtn">
+            <!-- GUIDELINES DROPDOWN -->
+            <div class="dropdown-wrapper">
+                <button class="dropdown-btn" data-dropdown="guidelines">
                     Guidelines
                     <span class="arrow">▼</span>
-                </summary>
-                <div class="dropdown-menu">
+                </button>
+                <div class="dropdown-menu" id="guidelines-menu">
                     <a href="pages/author-guidelines.html">Author Guidelines</a>
                     <a href="pages/peer-review.html">Peer Review Policy</a>
                     <a href="pages/reviewer-guidelines.html">Reviewer Guidelines</a>
@@ -395,19 +398,20 @@
                     <a href="pages/open-access-policy.html">Open Access Policy</a>
                     <a href="pages/copyright.html">Copyright &amp; Licensing</a>
                 </div>
-            </details>
+            </div>
 
-            <details class="dropdown" id="articles-dropdown">
-                <summary class="dropbtn">
+            <!-- ARTICLES DROPDOWN -->
+            <div class="dropdown-wrapper">
+                <button class="dropdown-btn" data-dropdown="articles">
                     Articles
                     <span class="arrow">▼</span>
-                </summary>
-                <div class="dropdown-menu">
+                </button>
+                <div class="dropdown-menu" id="articles-menu">
                     <a href="pages/current-issue.html">Current Issue</a>
                     <a href="pages/cover-page.html">Cover Page</a>
                     <a href="pages/previous-volume.html">Previous Volumes</a>
                 </div>
-            </details>
+            </div>
 
             <a href="pages/publication-fee.html">Fee</a>
             <a href="pages/contact.html">Contact</a>
@@ -418,8 +422,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.getElementById('nav-menu');
-            const dropdowns = document.querySelectorAll('details.dropdown');
-            let isMobileMenuOpen = false;
+            const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+            const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+            let activeDropdown = null;
             
             function isMobile() {
                 return window.innerWidth <= 850;
@@ -431,80 +436,82 @@
                     e.preventDefault();
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
-                    isMobileMenuOpen = navMenu.classList.contains('active');
                     
-                    if (!isMobileMenuOpen) {
-                        dropdowns.forEach(drop => {
-                            drop.removeAttribute('open');
-                        });
+                    if (!navMenu.classList.contains('active')) {
+                        closeAllDropdowns();
                     }
                 });
             }
 
-            // Handle dropdown clicks
-            dropdowns.forEach(drop => {
-                const summary = drop.querySelector('summary');
-                const menu = drop.querySelector('.dropdown-menu');
+            // Close all dropdowns
+            function closeAllDropdowns() {
+                dropdownMenus.forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                dropdownBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                activeDropdown = null;
+            }
+
+            // Open specific dropdown
+            function openDropdown(btn, menu) {
+                closeAllDropdowns();
+                btn.classList.add('active');
+                menu.classList.add('show');
+                activeDropdown = btn.dataset.dropdown;
+            }
+
+            // Toggle dropdown
+            function toggleDropdown(btn, menu) {
+                // If this dropdown is already open, close it
+                if (btn.classList.contains('active')) {
+                    closeAllDropdowns();
+                } else {
+                    openDropdown(btn, menu);
+                }
+            }
+
+            // Handle dropdown button clicks
+            dropdownBtns.forEach((btn, index) => {
+                const menu = dropdownMenus[index];
                 
-                if (summary) {
-                    summary.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        // Close ALL other dropdowns
-                        dropdowns.forEach(otherDrop => {
-                            if (otherDrop !== drop) {
-                                otherDrop.removeAttribute('open');
-                            }
-                        });
-                        
-                        // Toggle the clicked dropdown
-                        if (drop.hasAttribute('open')) {
-                            drop.removeAttribute('open');
-                        } else {
-                            drop.setAttribute('open', '');
-                        }
-                    });
-                }
-
-                // Clicking inside dropdown menu - keep it open
-                if (menu) {
-                    menu.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                    });
-
-                    // Close dropdown when clicking a link inside
-                    menu.querySelectorAll('a').forEach(link => {
-                        link.addEventListener('click', function() {
-                            if (isMobile()) {
-                                drop.removeAttribute('open');
-                                navMenu.classList.remove('active');
-                                isMobileMenuOpen = false;
-                            } else {
-                                // Close dropdown after clicking a link
-                                setTimeout(() => {
-                                    drop.removeAttribute('open');
-                                }, 300);
-                            }
-                        });
-                    });
-                }
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    if (isMobile()) {
+                        toggleDropdown(btn, menu);
+                    } else {
+                        toggleDropdown(btn, menu);
+                    }
+                });
             });
 
-            // Close all dropdowns when clicking anywhere outside
+            // Close dropdown when clicking a link inside
+            dropdownMenus.forEach(menu => {
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (isMobile()) {
+                            closeAllDropdowns();
+                            navMenu.classList.remove('active');
+                        } else {
+                            setTimeout(closeAllDropdowns, 300);
+                        }
+                    });
+                });
+            });
+
+            // Close all dropdowns when clicking outside
             document.addEventListener('click', function(e) {
-                // Check if click is outside nav-container
                 const isClickInsideNav = e.target.closest('.nav-container');
                 const isClickToggle = e.target.closest('.menu-toggle');
                 
                 if (!isClickInsideNav && !isClickToggle) {
-                    dropdowns.forEach(drop => {
-                        drop.removeAttribute('open');
-                    });
+                    closeAllDropdowns();
                     
                     if (isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
-                        isMobileMenuOpen = false;
                     }
                 }
             });
@@ -516,11 +523,8 @@
                 resizeTimer = setTimeout(function() {
                     if (!isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
-                        isMobileMenuOpen = false;
                     }
-                    dropdowns.forEach(drop => {
-                        drop.removeAttribute('open');
-                    });
+                    closeAllDropdowns();
                 }, 300);
             });
         });
