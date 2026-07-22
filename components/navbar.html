@@ -406,6 +406,7 @@
             var menuToggle = document.querySelector('.menu-toggle');
             var navMenu = document.getElementById('nav-menu');
             var dropdowns = document.querySelectorAll('details.dropdown');
+            var closeTimeout = null;
             
             function isMobile() {
                 return window.innerWidth <= 850;
@@ -415,6 +416,10 @@
                 dropdowns.forEach(function(drop) {
                     drop.removeAttribute('open');
                 });
+                if (closeTimeout) {
+                    clearTimeout(closeTimeout);
+                    closeTimeout = null;
+                }
             }
 
             // ===== MOBILE MENU TOGGLE =====
@@ -456,9 +461,14 @@
             dropdowns.forEach(function(drop) {
                 var summary = drop.querySelector('summary');
 
-                // HOVER: Open dropdown when mouse enters the entire dropdown (button + menu)
+                // HOVER: Open dropdown when mouse enters
                 drop.addEventListener('mouseenter', function() {
                     if (!isMobile()) {
+                        // Clear any pending close timeout
+                        if (closeTimeout) {
+                            clearTimeout(closeTimeout);
+                            closeTimeout = null;
+                        }
                         // Close all other dropdowns
                         dropdowns.forEach(function(otherDrop) {
                             if (otherDrop !== drop) {
@@ -470,16 +480,22 @@
                     }
                 });
 
-                // HOVER: Close dropdown when mouse leaves the entire dropdown
+                // HOVER: Close dropdown when mouse leaves
                 drop.addEventListener('mouseleave', function() {
                     if (!isMobile()) {
-                        // Small delay to prevent flickering
-                        setTimeout(function() {
+                        // Clear any existing timeout
+                        if (closeTimeout) {
+                            clearTimeout(closeTimeout);
+                            closeTimeout = null;
+                        }
+                        // Set timeout to close after 200ms
+                        closeTimeout = setTimeout(function() {
                             // Check if mouse is still over the dropdown
                             if (!drop.matches(':hover')) {
                                 drop.removeAttribute('open');
                             }
-                        }, 150);
+                            closeTimeout = null;
+                        }, 200);
                     }
                 });
 
