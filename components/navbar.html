@@ -6,8 +6,6 @@
     <title>IJACM - Navbar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* ================= OPTIMIZED NAVBAR ================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -34,79 +32,73 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* ===== CENTER: NAV LINKS ===== */
         .nav-container {
             display: flex;
             align-items: center;
             gap: 8px;
             justify-content: center;
-            min-width: 0;
             flex-wrap: nowrap;
             max-width: 1200px;
             width: 100%;
         }
 
-        /* Base link styles - Larger font sizes */
-        .nav-container a, 
-        details.dropdown > summary {
+        .nav-container a {
             color: #ffffff;
-            font-size: clamp(14px, 1.3vw, 18px);
+            font-size: 16px;
             font-weight: 500;
-            padding: 8px clamp(8px, 1vw, 18px);
+            padding: 8px 16px;
             text-decoration: none;
             transition: all 0.3s ease;
             white-space: nowrap;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            list-style: none;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
-        }
-
-        /* Remove default details marker */
-        details.dropdown > summary::-webkit-details-marker {
-            display: none;
         }
 
         .nav-home {
-            font-size: clamp(15px, 1.4vw, 20px);
-            gap: 6px;
+            font-size: 17px;
             color: #00b0ff;
         }
 
         .nav-home i {
-            font-size: clamp(14px, 1.1vw, 18px);
+            font-size: 15px;
+            margin-right: 4px;
         }
 
-        .nav-container a:hover,
-        details.dropdown > summary:hover {
+        .nav-container a:hover {
             color: #00c6ff;
         }
 
-        /* DROPDOWN STYLES */
-        details.dropdown {
+        /* ===== DROPDOWN - PURE CSS HOVER ===== */
+        .dropdown-wrapper {
             position: relative;
             display: inline-block;
         }
 
-        details.dropdown > summary {
+        .dropdown-btn {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 16px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .dropdown-btn:hover {
+            color: #00c6ff;
         }
 
         .arrow {
-            font-size: 11px;
+            font-size: 10px;
             transition: transform 0.3s ease;
-            margin-left: 3px;
             color: #78909c;
         }
 
-        details.dropdown[open] > summary .arrow {
+        .dropdown-wrapper:hover .arrow {
             transform: rotate(180deg);
         }
 
@@ -119,30 +111,20 @@
             background: #0b2b4a;
             padding: 10px;
             border-radius: 12px;
-            display: none;
-            flex-direction: column;
-            gap: 5px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             z-index: 9999;
             margin-top: 8px;
             border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
+            
+            /* Hide by default */
+            display: none;
+            flex-direction: column;
+            gap: 5px;
         }
 
-        /* Desktop: Show dropdown on hover */
-        @media (min-width: 851px) {
-            details.dropdown:hover .dropdown-menu {
-                display: flex;
-            }
-            
-            details.dropdown:not(:hover) .dropdown-menu {
-                display: none;
-            }
-            
-            /* Also keep open when details has open attribute */
-            details.dropdown[open] .dropdown-menu {
-                display: flex;
-            }
+        /* Show on hover */
+        .dropdown-wrapper:hover .dropdown-menu {
+            display: flex;
         }
 
         .dropdown-menu a {
@@ -155,7 +137,6 @@
             white-space: nowrap;
             display: block;
             transition: all 0.2s ease;
-            border: none;
             text-align: left;
         }
 
@@ -165,7 +146,7 @@
             color: #ffffff;
         }
 
-        /* MENU TOGGLE - Hidden on desktop */
+        /* MENU TOGGLE */
         .menu-toggle {
             display: none;
             font-size: 24px;
@@ -177,43 +158,38 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        
         @media (max-width: 1200px) {
-            .nav-container a, details.dropdown > summary {
-                font-size: clamp(13px, 1.1vw, 16px);
-                padding: 8px clamp(6px, 0.8vw, 14px);
+            .nav-container a, .dropdown-btn {
+                font-size: 14px;
+                padding: 8px 12px;
             }
-            .nav-home { font-size: clamp(14px, 1.2vw, 18px); }
-            .nav-container { gap: 4px; }
+            .nav-home { font-size: 15px; }
         }
 
         @media (max-width: 1050px) {
-            .nav-container a, details.dropdown > summary {
-                font-size: clamp(12px, 1vw, 14px);
-                padding: 8px clamp(5px, 0.6vw, 10px);
+            .nav-container a, .dropdown-btn {
+                font-size: 13px;
+                padding: 8px 10px;
             }
-            .nav-home { font-size: clamp(13px, 1.1vw, 16px); }
-            .nav-container { gap: 2px; }
-            
+            .nav-home { font-size: 14px; }
             .nav-container a[href*="indexing"] {
                 display: none;
             }
         }
 
         @media (max-width: 950px) {
-            .nav-container a, details.dropdown > summary {
-                font-size: clamp(11px, 0.9vw, 13px);
-                padding: 8px clamp(4px, 0.5vw, 8px);
+            .nav-container a, .dropdown-btn {
+                font-size: 12px;
+                padding: 8px 8px;
             }
-            .nav-home { font-size: clamp(12px, 1vw, 15px); }
+            .nav-home { font-size: 13px; }
             .nav-home span { display: none; }
-            
             .nav-container a[href*="publication-fee"] {
                 display: none;
             }
         }
 
-        /* Mobile: Full menu (click to open, not hover) */
+        /* Mobile */
         @media (max-width: 850px) {
             .navbar {
                 height: 50px;
@@ -226,8 +202,12 @@
             }
 
             /* Disable hover on mobile */
-            details.dropdown:hover .dropdown-menu {
+            .dropdown-wrapper:hover .dropdown-menu {
                 display: none !important;
+            }
+
+            .dropdown-wrapper.active .dropdown-menu {
+                display: flex !important;
             }
 
             .nav-container {
@@ -246,7 +226,6 @@
                 z-index: 1000;
                 box-shadow: 0 15px 30px rgba(0,0,0,0.4);
                 border-top: 1px solid rgba(255,255,255,0.05);
-                max-width: 100%;
             }
 
             .nav-container.active {
@@ -255,11 +234,9 @@
                 padding-bottom: 15px;
             }
 
-            .nav-container a, 
-            details.dropdown,
-            details.dropdown > summary,
-            .nav-container a[href*="indexing"],
-            .nav-container a[href*="publication-fee"] {
+            .nav-container a,
+            .dropdown-wrapper,
+            .dropdown-btn {
                 display: block;
                 width: 100%;
                 font-size: 16px !important;
@@ -268,11 +245,10 @@
                 white-space: normal;
                 text-align: left;
                 color: #e0e6ed;
-                flex-shrink: 1;
             }
 
             .nav-container a:hover,
-            details.dropdown > summary:hover {
+            .dropdown-btn:hover {
                 background: rgba(0, 176, 255, 0.08);
             }
 
@@ -285,20 +261,22 @@
                 display: inline !important;
             }
 
-            details.dropdown {
+            .dropdown-wrapper {
                 position: static;
+                padding: 0 !important;
             }
 
-            details.dropdown > summary {
+            .dropdown-btn {
                 display: flex !important;
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
                 padding: 14px 25px !important;
                 font-size: 16px !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             }
 
-            details.dropdown > summary .arrow {
+            .dropdown-btn .arrow {
                 font-size: 14px;
             }
 
@@ -310,14 +288,13 @@
                 border-radius: 0;
                 padding: 0;
                 margin-top: 0;
-                display: none !important;
                 border: none;
                 transform: none;
                 min-width: auto;
-                backdrop-filter: none;
+                display: none !important;
             }
 
-            details.dropdown[open] .dropdown-menu {
+            .dropdown-wrapper.active .dropdown-menu {
                 display: flex !important;
             }
 
@@ -348,8 +325,8 @@
                 top: 46px;
             }
             
-            .nav-container a, 
-            details.dropdown > summary {
+            .nav-container a,
+            .dropdown-btn {
                 font-size: 15px !important;
                 padding: 12px 20px !important;
             }
@@ -365,7 +342,7 @@
         }
 
         @media (min-width: 1400px) {
-            .nav-container a, details.dropdown > summary {
+            .nav-container a, .dropdown-btn {
                 font-size: 18px;
                 padding: 8px 20px;
             }
@@ -376,13 +353,11 @@
 </head>
 <body>
     <nav class="navbar">
-        <!-- MOBILE TOGGLE -->
-        <button class="menu-toggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- CENTER: NAV LINKS -->
-        <div class="nav-container" id="nav-menu">
+        <div class="nav-container" id="navMenu">
             <a href="index.html" class="nav-home">
                 <i class="fas fa-home"></i> <span>Home</span>
             </a>
@@ -393,11 +368,11 @@
             <a href="pages/indexing.html">Indexing</a>
 
             <!-- GUIDELINES DROPDOWN -->
-            <details class="dropdown" id="guidelines-dropdown">
-                <summary class="dropbtn">
+            <div class="dropdown-wrapper">
+                <button class="dropdown-btn">
                     Guidelines
                     <span class="arrow">▼</span>
-                </summary>
+                </button>
                 <div class="dropdown-menu">
                     <a href="pages/author-guidelines.html">Author Guidelines</a>
                     <a href="pages/peer-review.html">Peer Review Policy</a>
@@ -407,20 +382,20 @@
                     <a href="pages/open-access-policy.html">Open Access Policy</a>
                     <a href="pages/copyright.html">Copyright &amp; Licensing</a>
                 </div>
-            </details>
+            </div>
 
             <!-- ARTICLES DROPDOWN -->
-            <details class="dropdown" id="articles-dropdown">
-                <summary class="dropbtn">
+            <div class="dropdown-wrapper">
+                <button class="dropdown-btn">
                     Articles
                     <span class="arrow">▼</span>
-                </summary>
+                </button>
                 <div class="dropdown-menu">
                     <a href="pages/current-issue.html">Current Issue</a>
                     <a href="pages/cover-page.html">Cover Page</a>
                     <a href="pages/previous-volume.html">Previous Volumes</a>
                 </div>
-            </details>
+            </div>
 
             <a href="pages/publication-fee.html">Fee</a>
             <a href="pages/contact.html">Contact</a>
@@ -429,11 +404,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var menuToggle = document.querySelector('.menu-toggle');
-            var navMenu = document.getElementById('nav-menu');
-            var dropdowns = document.querySelectorAll('details.dropdown');
-            var isMobileMenuOpen = false;
+            var menuToggle = document.getElementById('menuToggle');
+            var navMenu = document.getElementById('navMenu');
+            var dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
             
+            // Mobile: Click to toggle dropdowns
             function isMobile() {
                 return window.innerWidth <= 850;
             }
@@ -444,54 +419,34 @@
                     e.preventDefault();
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
-                    isMobileMenuOpen = navMenu.classList.contains('active');
                     
-                    if (!isMobileMenuOpen) {
-                        dropdowns.forEach(function(drop) {
-                            drop.removeAttribute('open');
+                    if (!navMenu.classList.contains('active')) {
+                        dropdownWrappers.forEach(function(w) {
+                            w.classList.remove('active');
                         });
                     }
                 });
             }
 
-            // DESKTOP: Hover behavior - close dropdown when mouse leaves
-            if (!isMobile()) {
-                dropdowns.forEach(function(drop) {
-                    // When mouse leaves the entire dropdown (button + menu), close it
-                    drop.addEventListener('mouseleave', function() {
-                        // Only close if not hovering over the dropdown
-                        setTimeout(function() {
-                            if (!drop.matches(':hover')) {
-                                drop.removeAttribute('open');
-                            }
-                        }, 100);
-                    });
-                });
-            }
-
-            // MOBILE: Click to toggle dropdowns
-            dropdowns.forEach(function(drop) {
-                var summary = drop.querySelector('summary');
+            // Mobile dropdown toggle
+            dropdownWrappers.forEach(function(wrapper) {
+                var btn = wrapper.querySelector('.dropdown-btn');
                 
-                if (summary) {
-                    summary.addEventListener('click', function(e) {
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
                         if (isMobile()) {
                             e.preventDefault();
                             e.stopPropagation();
                             
-                            // Close all other dropdowns
-                            dropdowns.forEach(function(otherDrop) {
-                                if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
-                                    otherDrop.removeAttribute('open');
+                            // Close other dropdowns
+                            dropdownWrappers.forEach(function(other) {
+                                if (other !== wrapper) {
+                                    other.classList.remove('active');
                                 }
                             });
                             
                             // Toggle this dropdown
-                            if (drop.hasAttribute('open')) {
-                                drop.removeAttribute('open');
-                            } else {
-                                drop.setAttribute('open', '');
-                            }
+                            wrapper.classList.toggle('active');
                         }
                     });
                 }
@@ -502,47 +457,41 @@
             dropdownLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
                     if (isMobile()) {
-                        var parentDrop = this.closest('details.dropdown');
-                        if (parentDrop) {
-                            parentDrop.removeAttribute('open');
+                        var parent = this.closest('.dropdown-wrapper');
+                        if (parent) {
+                            parent.classList.remove('active');
                         }
                         navMenu.classList.remove('active');
-                        isMobileMenuOpen = false;
-                    } else {
-                        // On desktop, close after clicking
-                        dropdowns.forEach(function(drop) {
-                            drop.removeAttribute('open');
-                        });
                     }
                 });
             });
 
-            // Close dropdowns when clicking outside
+            // Close all when clicking outside
             document.addEventListener('click', function(e) {
-                var isInsideNav = e.target.closest('.nav-container');
+                var isInside = e.target.closest('.nav-container');
                 var isToggle = e.target.closest('.menu-toggle');
                 
-                if (!isInsideNav && !isToggle) {
-                    dropdowns.forEach(function(drop) {
-                        drop.removeAttribute('open');
+                if (!isInside && !isToggle) {
+                    dropdownWrappers.forEach(function(w) {
+                        w.classList.remove('active');
                     });
-                    
                     if (isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
-                        isMobileMenuOpen = false;
                     }
                 }
             });
 
-            // Handle window resize
+            // Handle resize
             var resizeTimer;
             window.addEventListener('resize', function() {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function() {
                     if (!isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
-                        isMobileMenuOpen = false;
                     }
+                    dropdownWrappers.forEach(function(w) {
+                        w.classList.remove('active');
+                    });
                 }, 300);
             });
         });
