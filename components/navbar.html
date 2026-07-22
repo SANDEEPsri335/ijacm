@@ -129,8 +129,20 @@
             backdrop-filter: blur(10px);
         }
 
-        details.dropdown[open] .dropdown-menu {
-            display: flex;
+        /* Desktop: Show dropdown on hover */
+        @media (min-width: 851px) {
+            details.dropdown:hover .dropdown-menu {
+                display: flex;
+            }
+            
+            details.dropdown:not(:hover) .dropdown-menu {
+                display: none;
+            }
+            
+            /* Also keep open when details has open attribute */
+            details.dropdown[open] .dropdown-menu {
+                display: flex;
+            }
         }
 
         .dropdown-menu a {
@@ -201,7 +213,7 @@
             }
         }
 
-        /* Mobile: Full menu */
+        /* Mobile: Full menu (click to open, not hover) */
         @media (max-width: 850px) {
             .navbar {
                 height: 50px;
@@ -211,6 +223,11 @@
 
             .menu-toggle {
                 display: block;
+            }
+
+            /* Disable hover on mobile */
+            details.dropdown:hover .dropdown-menu {
+                display: none !important;
             }
 
             .nav-container {
@@ -417,13 +434,6 @@
             var dropdowns = document.querySelectorAll('details.dropdown');
             var isMobileMenuOpen = false;
             
-            // Function to close all dropdowns
-            function closeAllDropdowns() {
-                dropdowns.forEach(function(drop) {
-                    drop.removeAttribute('open');
-                });
-            }
-            
             function isMobile() {
                 return window.innerWidth <= 850;
             }
@@ -437,72 +447,85 @@
                     isMobileMenuOpen = navMenu.classList.contains('active');
                     
                     if (!isMobileMenuOpen) {
-                        closeAllDropdowns();
+                        dropdowns.forEach(function(drop) {
+                            drop.removeAttribute('open');
+                        });
                     }
                 });
             }
 
-            // CLOSE ALL DROPDOWNS when clicking on ANY navbar item (including dropdowns)
-            // 1. Click on regular nav links (About, Aims & Scope, etc.)
-            var navLinks = document.querySelectorAll('.nav-container > a');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    closeAllDropdowns();
-                    if (isMobile()) {
-                        navMenu.classList.remove('active');
-                        isMobileMenuOpen = false;
-                    }
+            // DESKTOP: Hover behavior - close dropdown when mouse leaves
+            if (!isMobile()) {
+                dropdowns.forEach(function(drop) {
+                    // When mouse leaves the entire dropdown (button + menu), close it
+                    drop.addEventListener('mouseleave', function() {
+                        // Only close if not hovering over the dropdown
+                        setTimeout(function() {
+                            if (!drop.matches(':hover')) {
+                                drop.removeAttribute('open');
+                            }
+                        }, 100);
+                    });
                 });
-            });
+            }
 
-            // 2. Click on dropdown summary (Guidelines, Articles)
+            // MOBILE: Click to toggle dropdowns
             dropdowns.forEach(function(drop) {
                 var summary = drop.querySelector('summary');
                 
                 if (summary) {
                     summary.addEventListener('click', function(e) {
-                        // Close ALL other dropdowns first
-                        dropdowns.forEach(function(otherDrop) {
-                            if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
-                                otherDrop.removeAttribute('open');
-                            }
-                        });
-                        
-                        // On mobile, prevent default and toggle
                         if (isMobile()) {
                             e.preventDefault();
                             e.stopPropagation();
                             
+                            // Close all other dropdowns
+                            dropdowns.forEach(function(otherDrop) {
+                                if (otherDrop !== drop && otherDrop.hasAttribute('open')) {
+                                    otherDrop.removeAttribute('open');
+                                }
+                            });
+                            
+                            // Toggle this dropdown
                             if (drop.hasAttribute('open')) {
                                 drop.removeAttribute('open');
                             } else {
                                 drop.setAttribute('open', '');
                             }
                         }
-                        // On desktop, the default behavior works
                     });
                 }
             });
 
-            // 3. Click on dropdown menu items (Author Guidelines, Current Issue, etc.)
+            // Close dropdowns when clicking a link inside
             var dropdownLinks = document.querySelectorAll('.dropdown-menu a');
             dropdownLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
-                    closeAllDropdowns();
                     if (isMobile()) {
+                        var parentDrop = this.closest('details.dropdown');
+                        if (parentDrop) {
+                            parentDrop.removeAttribute('open');
+                        }
                         navMenu.classList.remove('active');
                         isMobileMenuOpen = false;
+                    } else {
+                        // On desktop, close after clicking
+                        dropdowns.forEach(function(drop) {
+                            drop.removeAttribute('open');
+                        });
                     }
                 });
             });
 
-            // 4. Close dropdowns when clicking outside
+            // Close dropdowns when clicking outside
             document.addEventListener('click', function(e) {
                 var isInsideNav = e.target.closest('.nav-container');
                 var isToggle = e.target.closest('.menu-toggle');
                 
                 if (!isInsideNav && !isToggle) {
-                    closeAllDropdowns();
+                    dropdowns.forEach(function(drop) {
+                        drop.removeAttribute('open');
+                    });
                     
                     if (isMobile() && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
@@ -520,7 +543,6 @@
                         navMenu.classList.remove('active');
                         isMobileMenuOpen = false;
                     }
-                    closeAllDropdowns();
                 }, 300);
             });
         });
